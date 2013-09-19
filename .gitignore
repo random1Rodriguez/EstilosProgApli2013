@@ -8,3 +8,4 @@ nb-configuration.xml
 *.properties
 *.xml
 manifest.mf
+ *.MF

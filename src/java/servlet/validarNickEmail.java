@@ -48,10 +48,10 @@ public class validarNickEmail extends HttpServlet {
             }
             
             if (res){
-                out.write("Valido");
+                out.write("1");
             }
             else{
-                out.write("En uso");
+                out.write("0");
             }
             
         }catch(SQLException ex){

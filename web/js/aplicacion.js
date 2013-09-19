@@ -14,7 +14,10 @@ $(document).ready(function(){
                     mensaje = $("#validacion_email");
                 }
                 mensaje.empty();
-                mensaje.append(data);
+                if (data === "1")
+                    mensaje.append("<img src='img/valido.png'>");
+                else
+                    mensaje.append("<img src='img/invalido.png'>");
                 console.log(data);
             },
             error: function(){
