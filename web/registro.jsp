@@ -11,34 +11,51 @@
     </head>
     <body>
         <form method="post" action="registro">
-            <span>Nick</span>
-            <input id="nick" name="nick">
-            <span id="validacion_nick"></span>
-            <span>Email</span>
-            <input id="email" name="email">
-            <span id="validacion_email"></span>
-            <span>Contraseña</span>
-            <input type="password" id="pass">
-            <span>Confirmar Contraseña</span>
-            <input type="password" id="conf_pass">
+            <label class="linea">
+                <span class="titulo">Nick</span>
+                <input id="nick" name="nick">
+                <span id="validacion_nick"></span>
+            </label>
+            
+            <label class="linea">
+                <span class="titulo">Email</span>
+                <input type="text" id="email" name="email">
+                <span id="validacion_email"></span>
+            </label>
+            
+            <label class="linea">
+                <span class="titulo">Contraseña</span>
+                <input type="password" id="pass" name="pass">
+            </label>
+            
+            <label class="linea">
+                <span class="titulo">Confirmar Contraseña</span>
+                <input type="password" id="conf_pass" name="conf_pass">
+            </label>
             
             <div id="datos_perfil">
-                <span>Nombre</span>
-                <input type="text" id="nombre" value="">
-                <span>Apellido</span>
-                <input type="text" id="apellido" value="">
-                <span>Fecha Nacimiento</span>
-                <input type="date" id="fnac" value="">
-                <div>
-                    <span>Tipo de Cuenta</span>
-                    <span>Cliente</span>
-                    <input type="radio" name="tipo_cuenta" value="c">
-                    <span>Desarrollador</span>
-                    <input type="radio" name="tipo_cuenta" value="d">
-                </div>
+                <label class="linea">
+                    <span class="titulo">Nombre</span>
+                    <input id="nombre" name="nom" value="">
+                </label>
+                
+                <label class="linea">
+                    <span class="titulo">Apellido</span>
+                    <input id="apellido" name="ape"value="">
+                </label>
+                
+                <label class="linea">
+                    <span class="titulo">Fecha Nacimiento</span>
+                    <input type="date" id="fnac" name="fnac" value="">
+                </label>
+                
+                <span class="titulo">Tipo de Cuenta</span>
+                <select name="tipo" id="tipo">
+                    <option value="c">Cliente</option>
+                    <option value="d">Desarrollador</option>
+                </select>
             </div>
-            
-            <input id="boton" type="submit" name="enviar">
+            <input id="boton" type="submit" value="Registro">
         </form>
     </body>
 </html>

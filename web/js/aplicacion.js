@@ -14,10 +14,16 @@ $(document).ready(function(){
                     mensaje = $("#validacion_email");
                 }
                 mensaje.empty();
-                if (data === "1")
-                    mensaje.append("<img src='img/valido.png'>");
-                else
-                    mensaje.append("<img src='img/invalido.png'>");
+                if (data === "1"){
+                    //mensaje.css("color","green");
+                    //mensaje.append("Disponible");
+                    mensaje.append("<img src='img/tick.png'>");
+                }
+                else{
+                    //mensaje.css("color","red");
+                    //mensaje.append("Esta en Uso");
+                    mensaje.append("<img src='img/cruz.png'>");
+                }
                 console.log(data);
             },
             error: function(){
@@ -45,6 +51,30 @@ $(document).ready(function(){
             mensaje.empty();
         }
     });
+    
+    $("#tipo").change(function(){
+        var visible = false;
+        var opcion = $(this).find("option:selected").val();
+        console.log(opcion);
+        
+        var input_sitio = "<label class='linea' id='sitio'>"+
+                          "<span class='titulo'>Sitio Web</span>"+
+                           "<input name='sitio' value=''></label>";
+                   
+        console.log("cambio");
+        
+        if (! visible && opcion === "d"){
+            $(this).after(input_sitio);
+            visible = true;
+        }
+        else{
+            $("#sitio").remove();
+            visible = false;
+        }
+    });
+    
+    
+    
     
 });
 

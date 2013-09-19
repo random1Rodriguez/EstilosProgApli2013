@@ -2,3 +2,12 @@ body{
     font-family: Helvetica, Arial;
     font-size: 16px;
 }
+
+.linea{
+    display: block;
+}
+
+.titulo{
+    display: inline-block;
+    width: 160px;
+}
