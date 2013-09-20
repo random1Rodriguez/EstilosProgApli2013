@@ -5,9 +5,20 @@ body{
 
 .linea{
     display: block;
+    margin: 5px 0px 5px 0px;
 }
 
 .titulo{
     display: inline-block;
     width: 160px;
+}
+
+#reg{
+    padding: 50px 0px 50px 0px;  
+    margin: auto;
+    width: 30%;
+}
+
+#reg input{
+    border-radius: 5px;
 }

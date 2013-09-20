@@ -10,27 +10,27 @@
         <title>Registro de Usuario</title>
     </head>
     <body>
-        <form method="post" action="registro">
+        <form id="reg" method="post" action="registro">
             <label class="linea">
                 <span class="titulo">Nick</span>
-                <input id="nick" name="nick">
+                <input id="nick" name="nick" pattern="[a-zA-Z0-9]+" required autofocus title="Solo Letras y Numeros">
                 <span id="validacion_nick"></span>
             </label>
             
             <label class="linea">
                 <span class="titulo">Email</span>
-                <input type="text" id="email" name="email">
+                <input type="text" id="email" name="email" placeholder="Tu Email" required>
                 <span id="validacion_email"></span>
             </label>
             
             <label class="linea">
                 <span class="titulo">Contraseña</span>
-                <input type="password" id="pass" name="pass">
+                <input type="password" id="pass" name="pass" required>
             </label>
             
             <label class="linea">
                 <span class="titulo">Confirmar Contraseña</span>
-                <input type="password" id="conf_pass" name="conf_pass">
+                <input type="password" id="conf_pass" name="conf_pass" required>
             </label>
             
             <div id="datos_perfil">

@@ -59,7 +59,7 @@ $(document).ready(function(){
         
         var input_sitio = "<label class='linea' id='sitio'>"+
                           "<span class='titulo'>Sitio Web</span>"+
-                           "<input name='sitio' value=''></label>";
+                           "<input type='url' name='sitio' value=''></label>";
                    
         console.log("cambio");
         
