@@ -61,7 +61,7 @@ public class Registro extends HttpServlet {
         u.setNick(nick);
         u.setPass(pass);
         u.setTipo(tipo);
-        u.setFecha_nac(new Date());
+        //u.setFecha_nac(f);
         try {        
             cu.altaUsuario(u);
             out.write("Exito");

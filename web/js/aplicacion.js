@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    var mensaje;
+    var msj_validacion;
     function validar(campo, valor){
         var direccion = "validarNickEmail?"+campo+"="+valor;
         $.ajax({
@@ -8,21 +8,21 @@ $(document).ready(function(){
             success: function(data){
                 
                 if (campo === "nick"){
-                    mensaje = $("#validacion_nick");
+                    msj_validacion = $("#validacion_nick");
                 }
                 if (campo === "email"){
-                    mensaje = $("#validacion_email");
+                    msj_validacion = $("#validacion_email");
                 }
-                mensaje.empty();
+                msj_validacion.empty();
                 if (data === "1"){
                     //mensaje.css("color","green");
                     //mensaje.append("Disponible");
-                    mensaje.append("<img src='img/tick.png'>");
+                    msj_validacion.append("<img src='img/tick.png'>");
                 }
                 else{
                     //mensaje.css("color","red");
                     //mensaje.append("Esta en Uso");
-                    mensaje.append("<img src='img/cruz.png'>");
+                    msj_validacion.append("<img src='img/cruz.png'>");
                 }
                 console.log(data);
             },
@@ -32,26 +32,29 @@ $(document).ready(function(){
         });
     }
     
+    //manejo del evento de soltar una tecla en el campo nick
     $("#nick").keyup(function(){
         var nick = $(this).val();
         if (nick !== ""){
             validar("nick", nick);
         }
         else{
-            mensaje.empty();
+            msj_validacion.empty();
         }
     });
     
+    //manejo del evento de soltar una tecla en el campo email
     $("#email").keyup(function(){
         var email = $(this).val();
         if (email !== ""){
             validar("email", email);
         }
         else{
-            mensaje.empty();
+            msj_validacion.empty();
         }
     });
     
+    //manejo del evento de seleccion en el combobox del tipo de perfil
     $("#tipo").change(function(){
         var visible = false;
         var opcion = $(this).find("option:selected").val();
@@ -73,7 +76,23 @@ $(document).ready(function(){
         }
     });
     
-    
+    //manejo evento soltar tecla en campo confirmar contraseña
+    $("#conf_pass").keyup(function(){
+        msj_validacion = $("#validacion_pass");
+        msj_validacion.empty();
+        
+        var pass = $("#pass").val();
+        var conf_pass = $(this).val();
+       
+        if (pass !== ""){
+            if (conf_pass !== pass){
+               msj_validacion.append("<img src='img/cruz.png'>");
+            }
+            else{
+                msj_validacion.append("<img src='img/tick.png'>");
+            }
+        }
+    });
     
     
 });

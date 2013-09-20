@@ -11,41 +11,44 @@
     </head>
     <body>
         <form id="reg" method="post" action="registro">
-            <label class="linea">
-                <span class="titulo">Nick</span>
-                <input id="nick" name="nick" pattern="[a-zA-Z0-9]+" required autofocus title="Solo Letras y Numeros">
-                <span id="validacion_nick"></span>
-            </label>
-            
-            <label class="linea">
-                <span class="titulo">Email</span>
-                <input type="text" id="email" name="email" placeholder="Tu Email" required>
-                <span id="validacion_email"></span>
-            </label>
-            
-            <label class="linea">
-                <span class="titulo">Contraseña</span>
-                <input type="password" id="pass" name="pass" required>
-            </label>
-            
-            <label class="linea">
-                <span class="titulo">Confirmar Contraseña</span>
-                <input type="password" id="conf_pass" name="conf_pass" required>
-            </label>
+            <div id="requeridos">
+                <label class="linea">
+                    <%--<span class="titulo">Nick</span>--%>
+                    <input id="nick" name="nick" required autofocus placeholder="Nombre de Usuario">
+                    <span id="validacion_nick"></span>
+                </label>
+
+                <label class="linea">
+                    <%--<span class="titulo">Email</span>--%>
+                    <input type="text" id="email" name="email" placeholder="Email" required>
+                    <span id="validacion_email"></span>
+                </label>
+
+                <label class="linea">
+                    <%--<span class="titulo">Contraseña</span>--%>
+                    <input type="password" id="pass" name="pass" required placeholder="Contraseña">
+                </label>
+
+                <label class="linea">
+                    <%--<span class="titulo">Confirmar Contraseña</span>--%>
+                    <input type="password" id="conf_pass" name="conf_pass" required placeholder="Confirmar Contraseña">
+                    <span id="validacion_pass" ></span>
+                </label>
+            </div>
             
             <div id="datos_perfil">
                 <label class="linea">
-                    <span class="titulo">Nombre</span>
+                    <%--<span class="titulo">Nombre</span>--%>
                     <input id="nombre" name="nom" value="">
                 </label>
                 
                 <label class="linea">
-                    <span class="titulo">Apellido</span>
+                    <%--<span class="titulo">Apellido</span>--%>
                     <input id="apellido" name="ape"value="">
                 </label>
                 
                 <label class="linea">
-                    <span class="titulo">Fecha Nacimiento</span>
+                    <%--<span class="titulo">Fecha Nacimiento</span>--%>
                     <input type="date" id="fnac" name="fnac" value="">
                 </label>
                 
