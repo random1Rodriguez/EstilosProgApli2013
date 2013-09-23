@@ -10,5 +10,8 @@
         <a href="registro.jsp" >
             <button>Registrarse</button>
         </a>
+        <a href="listadoJuegos.jsp" >
+            <button>Lista Juegos</button>
+        </a>
     </body>
 </html>
