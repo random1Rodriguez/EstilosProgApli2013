@@ -8,8 +8,9 @@ body{
 
 .linea{
     display: block;
-    margin: 10px auto 10px auto;
+    margin: 15px auto 15px auto;
     width: 80%;
+    height: 42px;
 }
 
 .titulo{
@@ -17,11 +18,35 @@ body{
     width: 160px;
 }
 
+#popup_reg{
+    display: none;
+    width: 400px;
+    margin: auto;
+    z-index: 2;
+    position: relative;
+    left: 0px;
+    top: -140px;
+}
+
+#popup_reg #cerrar{
+    float: right;
+    position: relative;
+    top: 10px;
+    right: 7px;
+    cursor: pointer;
+}
+
 #reg{
     background-color: #000539;
-    padding: 50px 0px 50px 0px;  
+    border-radius: 15px;
+    padding: 35px 0px 35px 0px;  
     margin: auto;
-    width: 30%;
+}
+
+#reg #boton{
+    position: relative;
+    top: 12px;
+    left: 40%;
 }
 
 #requeridos input, #datos_perfil input {
@@ -29,12 +54,19 @@ body{
     font-size: 18px;
     height: 2em;
     padding-left: 2%;
-    width: 85%;
+    width: 97%;
 }
 
 #requeridos :focus{
     box-shadow: 0 0 15px 5px #E7EBF7;
     outline: none;
+}
+
+#validacion_nick, #validacion_email, #validacion_pass{
+    z-index: 3;
+    position: relative;
+    top: -33px;
+    left: 292px;
 }
 
 #datos_perfil :focus{
@@ -45,5 +77,5 @@ body{
 #tipo{
     height: 2.5em;
     border-radius: 5px;
-    width: 88%;
+    width: 100%;
 }

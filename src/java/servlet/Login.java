@@ -52,7 +52,7 @@ public class Login extends HttpServlet {
         PrintWriter out = response.getWriter();
         
         String user = request.getParameter("user");
-        String pass = request.getParameter("pass");
+        String pass = request.getParameter("password");
         try {
             this.conectar();
             boolean exito = cu.login(user, pass);
