@@ -1,3 +1,6 @@
+/* importa archivo para quitar los estilos propios de cada nvegador */
+@import url("normalize.css"); 
+
 body{
     font-family: Helvetica, Arial;
     font-size: 16px;
@@ -5,7 +8,8 @@ body{
 
 .linea{
     display: block;
-    margin: 5px 0px 5px 0px;
+    margin: 10px auto 10px auto;
+    width: 80%;
 }
 
 .titulo{
@@ -20,10 +24,26 @@ body{
     width: 30%;
 }
 
-#requeridos input {
+#requeridos input, #datos_perfil input {
     border-radius: 5px;
     font-size: 18px;
     height: 2em;
     padding-left: 2%;
-    width: 80%;
+    width: 85%;
+}
+
+#requeridos :focus{
+    box-shadow: 0 0 15px 5px #E7EBF7;
+    outline: none;
+}
+
+#datos_perfil :focus{
+    box-shadow: 0 0 15px 5px #E7EBF7;
+    outline: none;
+}
+
+#tipo{
+    height: 2.5em;
+    border-radius: 5px;
+    width: 88%;
 }

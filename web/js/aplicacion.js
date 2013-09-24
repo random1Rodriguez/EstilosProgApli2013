@@ -1,5 +1,8 @@
 $(document).ready(function(){
     var msj_validacion;
+    var div_datos = $("#datos_perfil");
+    
+    div_datos.hide();
     function validar(campo, valor){
         var direccion = "validarNickEmail?"+campo+"="+valor;
         $.ajax({
@@ -17,12 +20,12 @@ $(document).ready(function(){
                 if (data === "1"){
                     //mensaje.css("color","green");
                     //mensaje.append("Disponible");
-                    msj_validacion.append("<img src='img/tick.png'>");
+                    msj_validacion.append("<img src='img/tick24.png'>");
                 }
                 else{
                     //mensaje.css("color","red");
                     //mensaje.append("Esta en Uso");
-                    msj_validacion.append("<img src='img/cruz.png'>");
+                    msj_validacion.append("<img src='img/cruz24.png'>");
                 }
                 console.log(data);
             },
@@ -61,13 +64,13 @@ $(document).ready(function(){
         console.log(opcion);
         
         var input_sitio = "<label class='linea' id='sitio'>"+
-                          "<span class='titulo'>Sitio Web</span>"+
-                           "<input type='url' name='sitio' value=''></label>";
+                          "<input type='url' name='sitio' value='' placeholder='Sitio Web'>"+
+                          "</label>";
                    
         console.log("cambio");
         
         if (! visible && opcion === "d"){
-            $(this).after(input_sitio);
+            $(this).parent().after(input_sitio);
             visible = true;
         }
         else{
@@ -81,15 +84,21 @@ $(document).ready(function(){
         msj_validacion = $("#validacion_pass");
         msj_validacion.empty();
         
+        var nick = $("#nick").val();
+        var email = $("#email").val();
         var pass = $("#pass").val();
         var conf_pass = $(this).val();
        
         if (pass !== ""){
             if (conf_pass !== pass){
-               msj_validacion.append("<img src='img/cruz.png'>");
+               msj_validacion.append("<img src='img/cruz24.png'>");
+               div_datos.hide();
             }
             else{
-                msj_validacion.append("<img src='img/tick.png'>");
+                msj_validacion.append("<img src='img/tick24.png'>");
+                if (nick !== "" && email !== ""){
+                    div_datos.show();
+                }
             }
         }
     });

@@ -13,24 +13,20 @@
         <form id="reg" method="post" action="registro">
             <div id="requeridos">
                 <label class="linea">
-                    <%--<span class="titulo">Nick</span>--%>
-                    <input id="nick" name="nick" required autofocus placeholder="Nombre de Usuario">
+                    <input id="nick" name="nick" required autofocus placeholder="Usuario">
                     <span id="validacion_nick"></span>
                 </label>
 
                 <label class="linea">
-                    <%--<span class="titulo">Email</span>--%>
                     <input type="text" id="email" name="email" placeholder="Email" required>
                     <span id="validacion_email"></span>
                 </label>
 
                 <label class="linea">
-                    <%--<span class="titulo">Contraseña</span>--%>
                     <input type="password" id="pass" name="pass" required placeholder="Contraseña">
                 </label>
 
                 <label class="linea">
-                    <%--<span class="titulo">Confirmar Contraseña</span>--%>
                     <input type="password" id="conf_pass" name="conf_pass" required placeholder="Confirmar Contraseña">
                     <span id="validacion_pass" ></span>
                 </label>
@@ -38,25 +34,24 @@
             
             <div id="datos_perfil">
                 <label class="linea">
-                    <%--<span class="titulo">Nombre</span>--%>
-                    <input id="nombre" name="nom" value="">
+                    <input id="nombre" name="nom" value="" placeholder="Nombre">
                 </label>
                 
                 <label class="linea">
-                    <%--<span class="titulo">Apellido</span>--%>
-                    <input id="apellido" name="ape"value="">
+                    <input id="apellido" name="ape"value="" placeholder="Apellido">
                 </label>
                 
                 <label class="linea">
-                    <%--<span class="titulo">Fecha Nacimiento</span>--%>
                     <input type="date" id="fnac" name="fnac" value="">
                 </label>
                 
-                <span class="titulo">Tipo de Cuenta</span>
-                <select name="tipo" id="tipo">
-                    <option value="c">Cliente</option>
-                    <option value="d">Desarrollador</option>
-                </select>
+                <label class="linea">
+                    <select name="tipo" id="tipo">
+                        <option value="vacio">Tipo de Perfil</option>
+                        <option value="c">Cliente</option>
+                        <option value="d">Desarrollador</option>
+                    </select>
+                </label>
             </div>
             <input id="boton" type="submit" value="Registro">
         </form>
