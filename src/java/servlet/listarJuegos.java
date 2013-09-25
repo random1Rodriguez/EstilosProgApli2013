@@ -29,11 +29,11 @@ public class listarJuegos extends HttpServlet {
     
     public void conectar() throws SQLException{
         if (! conectado){
-            mbd.setHost("localhost");
+            mbd.setHost("201.221.15.100");
             mbd.setPuerto("3306");
             mbd.setBd("market");
-            mbd.setUsuario("root");
-            mbd.setPassword("root");
+            mbd.setUsuario("random");
+            mbd.setPassword("random1");
             
             mbd.conectar();
             conectado = true;
@@ -41,7 +41,18 @@ public class listarJuegos extends HttpServlet {
     }
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+       try {
+            PrintWriter out = response.getWriter();
+            
+            ArrayList<Categoria> lstCat;
+            this.conectar();
+            lstCat = ca.listarCategorias();
+            request.setAttribute("lstCategotias", lstCat);
+            request.getRequestDispatcher("listadoJuegos.jsp").forward(request, response);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(listarJuegos.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
 

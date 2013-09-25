@@ -1,4 +1,8 @@
 
+<%@page import="dominio.Categoria"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="controladores.ControladorCategorias"%>
+<%@page import="baseDatos.ManejadorBD"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -10,8 +14,9 @@
     <body>
         <span>
             <button id="boton_registro">Registro popup</button>
+            <a id="cat" href="listadoJuegos.jsp">Lst Cat</a>
         </span>
-        
+               
         <div>
             Prueba Login
             <form method="post" action="Login">
@@ -74,6 +79,11 @@
             </form>
         </div>
         
+            
+                
+        
+                
+                
         <jsp:include page="plantillas/footer.jsp"></jsp:include>
     </body>
     

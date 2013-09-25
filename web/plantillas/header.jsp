@@ -4,6 +4,10 @@
     Author     : Estudiantes
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="controladores.ControladorCategorias"%>
+<%@page import="baseDatos.ManejadorBD"%>
+<%@page import="dominio.Categoria"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -22,6 +26,31 @@
                     <li><a href="#">Menu 3</a></li>
                 </ul>
             </nav>
+            
+        </header>
+        <header>
+            <ul>
+                <%
+                        ManejadorBD.getInstancia().conectar();
+                        ControladorCategorias cc = ControladorCategorias.getInstancia();
+                        ArrayList categorias = cc.listarCategorias();
+
+                        if (categorias != null){
+                            int i = 0;
+                            
+                            while (i < categorias.size()){
+                                Categoria cat;
+                                cat = (Categoria)categorias.get(i);
+                                out.println("<li><a href='juegosCategoria?id=" + cat.getId() + "'>" + cat.getNombre() + "</a></li>");
+                                i++;
+                            }
+                        }
+
+                        
+
+                %>
+            </ul>
+                
         </header>
     </body>
 </html>

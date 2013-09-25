@@ -120,5 +120,6 @@ $(document).ready(function(){
         $("#popup_reg").fadeOut(300);
     });
     
+    
 });
 
