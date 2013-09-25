@@ -81,6 +81,7 @@ $(document).ready(function(){
     
     //manejo evento soltar tecla en campo confirmar contraseña
     $("#conf_pass").keyup(function(){
+        
         msj_validacion = $("#validacion_pass");
         msj_validacion.empty();
         
@@ -88,21 +89,36 @@ $(document).ready(function(){
         var email = $("#email").val();
         var pass = $("#pass").val();
         var conf_pass = $(this).val();
+        
+        console.log(nick+","+email+","+pass+","+conf_pass);
        
         if (pass !== ""){
+            console.log("pass != vacio");
             if (conf_pass !== pass){
+                console.log("pass != conf_pass");
                msj_validacion.append("<img src='img/cruz24.png'>");
                div_datos.hide();
             }
             else{
+                console.log("pass == conf_pass");
                 msj_validacion.append("<img src='img/tick24.png'>");
                 if (nick !== "" && email !== ""){
+                    console.log("nick y email != vacio");
                     div_datos.show();
                 }
             }
         }
     });
     
+    /*------------------ mostrar popup registro ------------------------*/
+    $("#boton_registro").click(function(){
+       $("#popup_reg").fadeIn(300);
+    });
+    
+    /*------------------ ocultar popup registro ------------------------*/
+    $("#cerrar").click(function(){
+        $("#popup_reg").fadeOut(300);
+    });
     
 });
 
