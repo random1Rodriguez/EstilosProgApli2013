@@ -1,7 +1,6 @@
 package servlet;
 
 import baseDatos.ManejadorBD;
-import controladores.ControladorCategorias;
 import controladores.Controladorjuegos;
 import dominio.Juego;
 import java.io.IOException;
@@ -26,7 +25,11 @@ public class juegosCategoria extends HttpServlet {
         try{
             PrintWriter out = response.getWriter();
             out.println("<html>");
-            out.println("<head></head>");         
+            out.println("<head>");
+                out.println("<meta http-equiv=\'Content-Type\' content=\'text/html; charset=UTF-8\'>");
+                out.println("<title>La Mejor Tienda de Juegos Online</title>");
+                out.println("<jsp:include page=\'plantillas/header.jsp\'></jsp:include>");
+            out.println("</head>");         
             out.println("<body>");
             ManejadorBD.getInstancia().conectar();
                     Controladorjuegos jj = Controladorjuegos.getInstancia();
