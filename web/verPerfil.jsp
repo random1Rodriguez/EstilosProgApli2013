@@ -7,19 +7,32 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body>
-        <ul>
         <%
+            Usuario u = null;
             if (request.getAttribute("perfil") != null){
-                Usuario u = (Usuario)request.getAttribute("perfil");
-                out.write("<li>"+u.getNick()+"</li>");
-                out.write("<li>"+u.getNombre()+"</li>");
-                out.write("<li>"+u.getApellido()+"</li>");
-                out.write("<li>"+u.getEmail()+"</li>");
-                out.write("<li>"+u.getTipo()+"</li>");
-                out.write("<li>"+u.getFecha_nac().toString()+"</li>");
-                out.write("<li>"+String.valueOf(u.getEdad())+"</li>");
+                u = (Usuario)request.getAttribute("perfil");
             }
         %>
-        </ul>
+        
+        <div id="imagen">
+            <span><img src="<%=u.getImg()%>"></span>
+        </div>
+        
+        <div id="info_cuenta">
+            <span><%=u.getNick()%></span>
+            <span><%=u.getEmail()%></span>
+            <span><%=u.getTipo()%></span>
+        </div>
+        
+        <div id="info_personal">
+            <span><%=u.getNombre()%></span>
+            <span><%=u.getApellido()%></span>
+            <span><%=u.getFecha_nac().toString()%></span>
+            <span><%=String.valueOf(u.getEdad())%></span>
+        </div>
+        
+        <div id="desarrollos">
+            
+        </div>
     </body>
 </html>
