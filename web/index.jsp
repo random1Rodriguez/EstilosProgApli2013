@@ -20,7 +20,7 @@
                 <input type="submit" value="Login">
             </form>
             <span>
-                Usuario: <%= session.getAttribute("usuario") %>
+                <a href="Perfil?u=<%=session.getAttribute("usuario")%>">Usuario: <%= session.getAttribute("usuario") %></a>
                 <a href='Logout'><button>Logout</button></a>
             </span>
         </div>
