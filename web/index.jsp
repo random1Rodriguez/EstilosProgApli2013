@@ -16,7 +16,7 @@
             Prueba Login
             <form method="post" action="Login">
                 <input id="user" name="user" placeholder="Usuario" required>
-                <input type="password" id="password" name="pass" placeholder="Contraseña" required>
+                <input type="password" id="password" name="password" placeholder="Contraseña" required>
                 <input type="submit" value="Login">
             </form>
             <span>

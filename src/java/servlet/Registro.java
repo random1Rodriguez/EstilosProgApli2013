@@ -1,6 +1,7 @@
 
 package servlet;
 
+import clases.EnvioEmail;
 import controladores.ControladorUsuarios;
 import dominio.Desarrollador;
 import dominio.Usuario;
@@ -74,6 +75,12 @@ public class Registro extends HttpServlet {
         try {        
             cu.altaUsuario(u);
             System.out.println("Registro exitoso");
+            
+            EnvioEmail ee = new EnvioEmail();
+            ee.elegirServidor("gmail");
+            String mensaje = u.getNick()+" Bienvenido a ProgApliPlay Game Market";
+            ee.enviarEmail(u.getEmail(), "Bienvenido", mensaje);
+            
         } catch (Exception ex) {
             Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
         }
