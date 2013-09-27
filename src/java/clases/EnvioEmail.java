@@ -16,7 +16,7 @@ public class EnvioEmail {
     }
     
     public void elegirServidor(String servidor){
-        switch(servidor){
+       /* switch(servidor){
             case "gmail": 
                 props.setProperty("mail.smtp.host", "smtp.gmail.com");
                 props.setProperty("mail.smtp.starttls.enable", "true");
@@ -24,7 +24,7 @@ public class EnvioEmail {
                 props.setProperty("mail.smtp.user", "progaplimarket@gmail.com");
                 props.setProperty("mail.smtp.auth", "true");
                 break;
-        }
+        }*/
     }
     
     public void enviarEmail(String des, String asunto, String msj) throws MessagingException{
