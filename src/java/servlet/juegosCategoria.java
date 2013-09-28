@@ -26,28 +26,28 @@ public class juegosCategoria extends HttpServlet {
             PrintWriter out = response.getWriter();
             out.println("<html>");
             out.println("<head>");
-                out.println("<meta http-equiv=\'Content-Type\' content=\'text/html; charset=UTF-8\'>");
-                out.println("<title>La Mejor Tienda de Juegos Online</title>");
-                out.println("<jsp:include page=\'plantillas/header.jsp\'></jsp:include>");
+            out.println("<meta http-equiv=\'Content-Type\' content=\'text/html; charset=UTF-8\'>");
+            out.println("<title>La Mejor Tienda de Juegos Online</title>");
+            out.println("<jsp:include page=\'plantillas/header.jsp\'></jsp:include>");
             out.println("</head>");         
             out.println("<body>");
             ManejadorBD.getInstancia().conectar();
-                    Controladorjuegos jj = Controladorjuegos.getInstancia();
-                    String cad=request.getParameter("id");
-                    int valor=Integer.parseInt(cad);
-                    ArrayList juegos = jj.listarJuegosPorCategoria(valor);
+            Controladorjuegos jj = Controladorjuegos.getInstancia();
+            String cad=request.getParameter("id");
+            int valor=Integer.parseInt(cad);
+            ArrayList juegos = jj.listarJuegosPorCategoria(valor);
 
-                    if (juegos != null){
-                          int i = 0;
+            if (juegos != null){
+                  int i = 0;
 
-                          while (i < juegos.size()){
-                              Juego jue;
-                              jue = (Juego)juegos.get(i);
-                              out.println("<li>" + jue.getNombre() + "</a></li>");
-                              i++;
-                          }
-                      }
-
+                  while (i < juegos.size()){
+                      Juego jue;
+                      jue = (Juego)juegos.get(i);
+                      out.println("<li>" + jue.getNombre() + "</a></li>");
+                      i++;
+                  }
+              }
+            
                             
              
             
@@ -57,7 +57,7 @@ public class juegosCategoria extends HttpServlet {
             Logger.getLogger(juegosCategoria.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
