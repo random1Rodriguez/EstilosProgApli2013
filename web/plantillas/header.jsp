@@ -18,39 +18,35 @@
     </head>
     <body>
         <header>
-            Aca va el cabezal y el menu, modificar en plantilla/header.jsp
+            <%
+                ManejadorBD.getInstancia().setBd("market");
+                ManejadorBD.getInstancia().setHost("localhost");
+                ManejadorBD.getInstancia().setPuerto("3306");
+                ManejadorBD.getInstancia().setUsuario("root");
+                ManejadorBD.getInstancia().setPassword("root");
+
+                if (ManejadorBD.getInstancia().estaDesconectado())
+                    ManejadorBD.getInstancia().conectar();
+
+                ControladorCategorias cc = ControladorCategorias.getInstancia();
+            %>
             <nav>
-                <ul>
-                    <li><a href="#">Menu 1</a></li>
-                    <li><a href="#">Menu 2</a></li>
-                    <li><a href="#">Menu 3</a></li>
+                <ul id="menu_categorias">
+                <%
+                    ArrayList categorias = cc.listarCategorias();
+                    if (categorias != null){
+                        int i = 0;
+
+                        while (i < categorias.size()){
+                            Categoria cat;
+                            cat = (Categoria)categorias.get(i);
+                            out.println("<li><a href='juegosCategoria?id=" + cat.getId() + "'>" + cat.getNombre() + "</a></li>");
+                            i++;
+                        }
+                    }
+                %>
                 </ul>
             </nav>
-            
-        </header>
-        <header>
-            <ul>
-                <%
-                        ManejadorBD.getInstancia().conectar();
-                        ControladorCategorias cc = ControladorCategorias.getInstancia();
-                        ArrayList categorias = cc.listarCategorias();
-
-                        if (categorias != null){
-                            int i = 0;
-                            
-                            while (i < categorias.size()){
-                                Categoria cat;
-                                cat = (Categoria)categorias.get(i);
-                                out.println("<li><a href='juegosCategoria?id=" + cat.getId() + "'>" + cat.getNombre() + "</a></li>");
-                                i++;
-                            }
-                        }
-
-                        
-
-                %>
-            </ul>
-                
         </header>
     </body>
 </html>
