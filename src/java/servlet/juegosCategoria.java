@@ -17,22 +17,26 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "juegosCategoria", urlPatterns = {"/juegosCategoria"})
 public class juegosCategoria extends HttpServlet {
-
+ ManejadorBD mbd = ManejadorBD.getInstancia();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        try {
+            mbd.setHost("localhost");
+            mbd.setPuerto("3306");
+            mbd.setBd("market");
+            mbd.setUsuario("root");
+            mbd.setPassword("root");
+            if (mbd.estaDesconectado()){
+                mbd.conectar();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Perfil.class.getName()).log(Level.SEVERE, null, ex);
+        }
        
         try{
             PrintWriter out = response.getWriter();
-
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<meta http-equiv=\'Content-Type\' content=\'text/html; charset=UTF-8\'>");
-            out.println("<title>La Mejor Tienda de Juegos Online</title>");
-            out.println("<jsp:include page=\'plantillas/header.jsp\'></jsp:include>");
-            out.println("</head>");         
-            out.println("<body>");
-            ManejadorBD.getInstancia().conectar();
             Controladorjuegos jj = Controladorjuegos.getInstancia();
             String cad=request.getParameter("id");
             int valor=Integer.parseInt(cad);
@@ -52,9 +56,7 @@ public class juegosCategoria extends HttpServlet {
                   }
               }
             
-             out.println("</body>");
-             out.println("</html>");      
-
+         
         } catch (SQLException ex) {
             Logger.getLogger(juegosCategoria.class.getName()).log(Level.SEVERE, null, ex);
         }
