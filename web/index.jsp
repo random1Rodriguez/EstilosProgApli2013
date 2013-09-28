@@ -16,18 +16,18 @@
     <body>
         <span>
             <button id="boton_registro">Registro popup</button>
-            <a id="cat" href="listadoJuegos.jsp">Lst Cat</a>
         </span>
                
         <div>
             Prueba Login
             <form method="post" action="Login">
                 <input id="user" name="user" placeholder="Usuario" required>
-                <input type="password" id="password" name="pass" placeholder="Contraseña" required>
+                <input type="password" id="password" name="password" placeholder="Contraseña" required>
                 <input type="submit" value="Login">
+                <span id="error" class="error" >${error}</span>
             </form>
             <span>
-                Usuario: <%= session.getAttribute("usuario") %>
+                Usuario: <a href="Perfil"><%= session.getAttribute("usuario") %></a>
                 <a href='Logout'><button>Logout</button></a>
             </span>
         </div>

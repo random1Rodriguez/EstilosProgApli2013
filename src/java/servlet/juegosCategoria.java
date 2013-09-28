@@ -25,6 +25,13 @@ public class juegosCategoria extends HttpServlet {
         try{
             PrintWriter out = response.getWriter();
 
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<meta http-equiv=\'Content-Type\' content=\'text/html; charset=UTF-8\'>");
+            out.println("<title>La Mejor Tienda de Juegos Online</title>");
+            out.println("<jsp:include page=\'plantillas/header.jsp\'></jsp:include>");
+            out.println("</head>");         
+            out.println("<body>");
             ManejadorBD.getInstancia().conectar();
             Controladorjuegos jj = Controladorjuegos.getInstancia();
             String cad=request.getParameter("id");
@@ -34,11 +41,25 @@ public class juegosCategoria extends HttpServlet {
            request.setAttribute("listaJuegos", juegos);
            request.getRequestDispatcher("index.jsp").forward(request, response);
            
+            if (juegos != null){
+                  int i = 0;
+
+                  while (i < juegos.size()){
+                      Juego jue;
+                      jue = (Juego)juegos.get(i);
+                      out.println("<li>" + jue.getNombre() + "</a></li>");
+                      i++;
+                  }
+              }
+            
+             out.println("</body>");
+             out.println("</html>");      
+
         } catch (SQLException ex) {
             Logger.getLogger(juegosCategoria.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

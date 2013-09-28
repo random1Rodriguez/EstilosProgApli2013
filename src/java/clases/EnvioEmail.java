@@ -16,7 +16,11 @@ public class EnvioEmail {
     }
     
     public void elegirServidor(String servidor){
+
        props.setProperty("mail.smtp.user", "progaplimarket@gmail.com");
+
+       props.setProperty("mail.smtp.user", "progaplimarket@gmail.com");
+
         props.setProperty("mail.smtp.auth", "true");
         props.setProperty("mail.smtp.starttls.enable", "true");
         switch(servidor){
