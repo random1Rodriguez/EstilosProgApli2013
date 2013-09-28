@@ -1,8 +1,3 @@
-<%-- 
-    Document   : header
-    Created on : 23-sep-2013, 19:55:23
-    Author     : Estudiantes
---%>
 
 <%@page import="java.util.ArrayList"%>
 <%@page import="controladores.ControladorCategorias"%>

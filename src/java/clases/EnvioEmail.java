@@ -16,15 +16,10 @@ public class EnvioEmail {
     }
     
     public void elegirServidor(String servidor){
-       /* switch(servidor){
-=======
-        
-        props.setProperty("mail.smtp.user", "progaplimarket@gmail.com");
+       props.setProperty("mail.smtp.user", "progaplimarket@gmail.com");
         props.setProperty("mail.smtp.auth", "true");
         props.setProperty("mail.smtp.starttls.enable", "true");
-        
         switch(servidor){
->>>>>>> branch 'master' of https://github.com/MatiasVerdier/MarketWeb.git
             case "gmail": 
                 props.setProperty("mail.smtp.host", "smtp.gmail.com");
                 props.setProperty("mail.smtp.port","587");
@@ -33,7 +28,7 @@ public class EnvioEmail {
                 props.setProperty("mail.smtp.host", "smtp.live.com");
                 props.setProperty("mail.smtp.port","25");
                 break;
-        }*/
+        }
     }
     
     public void enviarEmail(String des, String asunto, String msj) throws MessagingException{

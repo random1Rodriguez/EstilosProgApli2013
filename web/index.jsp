@@ -1,4 +1,6 @@
 
+<%@page import="dominio.Juego"%>
+<%@page import="servlet.juegosCategoria"%>
 <%@page import="dominio.Categoria"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="controladores.ControladorCategorias"%>
@@ -29,6 +31,33 @@
                 <a href='Logout'><button>Logout</button></a>
             </span>
         </div>
+                
+                <div>
+                    <ul>
+                    <%
+                        if(request.getAttribute("listaJuegos")!= null){
+                            ArrayList<Juego> juegos = (ArrayList<Juego>)request.getAttribute("listaJuegos");
+                            int i=0;
+                            
+                            while(i<juegos.size()){
+                                Juego j = juegos.get(i);
+                                out.write("<div>");
+                                    out.write("<li>");
+                                    out.write(j.getNombre());
+                                        out.write("<ul>");
+                                            out.write("<li>");
+                                                out.write(j.getDescripcion());
+                                                out.write(Double.toString(j.getPrecio()));
+                                            out.write("</li>");
+                                        out.write("</ul>");
+                                    out.write("</li>");
+                                out.write("</div>");
+                                i++;
+                            }
+                        }
+                        %>
+                        </ul>
+                </div>
         
         <div id="popup_reg">
             <div id="cerrar"><img src="img/cruz.png"></div>
@@ -78,13 +107,7 @@
                 <input id="boton" type="submit" value="Registro">
             </form>
         </div>
-        
-            
-                
-        
-                
-                
-        <jsp:include page="plantillas/footer.jsp"></jsp:include>
+  <jsp:include page="plantillas/footer.jsp"></jsp:include>
     </body>
     
 </html>
