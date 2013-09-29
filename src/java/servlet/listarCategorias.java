@@ -18,8 +18,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet(name = "listarJuegos", urlPatterns = {"/listarJuegos"})
-public class listarJuegos extends HttpServlet {
+@WebServlet(name = "listarCategorias", urlPatterns = {"/listarCategorias"})
+public class listarCategorias extends HttpServlet {
 
 
     ManejadorBD mbd = ManejadorBD.getInstancia();
@@ -29,11 +29,11 @@ public class listarJuegos extends HttpServlet {
     
     public void conectar() throws SQLException{
         if (! conectado){
-            mbd.setHost("201.221.15.100");
+            mbd.setHost("localhost");
             mbd.setPuerto("3306");
             mbd.setBd("market");
-            mbd.setUsuario("random");
-            mbd.setPassword("random1");
+            mbd.setUsuario("root");
+            mbd.setPassword("root");
             
             mbd.conectar();
             conectado = true;
@@ -51,7 +51,7 @@ public class listarJuegos extends HttpServlet {
             request.getRequestDispatcher("listadoJuegos.jsp").forward(request, response);
             
         } catch (SQLException ex) {
-            Logger.getLogger(listarJuegos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(listarCategorias.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
@@ -76,7 +76,7 @@ public class listarJuegos extends HttpServlet {
             
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(listarJuegos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(listarCategorias.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
