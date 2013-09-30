@@ -2,6 +2,9 @@ $(document).ready(function(){
     var msj_validacion;
     var div_datos = $("#datos_perfil");
     
+    $("#slide_cats").hide(); //se esconde el menu de las categorias
+    $("#slide_login").hide(); // se esconde el cuadro de login
+    
     div_datos.hide();
     function validar(campo, valor){
         var direccion = "validarNickEmail?"+campo+"="+valor;
@@ -111,7 +114,7 @@ $(document).ready(function(){
     });
     
     /*------------------ mostrar popup registro ------------------------*/
-    $("#boton_registro").click(function(){
+    $("#registro").click(function(){
        $("#popup_reg").fadeIn(300);
     });
     
@@ -120,6 +123,12 @@ $(document).ready(function(){
         $("#popup_reg").fadeOut(300);
     });
     
+    $("#menu .clickleable").click(function(){
+        $("#slide_cats").slideToggle(500);
+    });
     
+    $("#login .clickleable").click(function(){
+        $("#slide_login").slideToggle(500);
+    });
 });
 
