@@ -17,6 +17,17 @@ body{
     list-style: none;
     margin: 10px 10px 10px 10px;
     }
+    
+    .listaJuegos ul {
+        padding-top: 70px;
+        
+    }
+    
+    .listaJuegos{
+        width: 95%;
+        text-align: center;
+        
+    }
 
 
 .linea{
@@ -193,6 +204,12 @@ body{
     position: relative;
     top: -36px;
     left: 40%;
+}
+
+#imgJuego{
+        
+    background-image: url("img/ick24.png");
+    
 }
 
 #searchform { 
