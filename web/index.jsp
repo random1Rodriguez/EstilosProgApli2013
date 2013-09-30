@@ -1,10 +1,7 @@
 
 <%@page import="dominio.Juego"%>
-<%@page import="servlet.juegosCategoria"%>
 <%@page import="dominio.Categoria"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="controladores.ControladorCategorias"%>
-<%@page import="baseDatos.ManejadorBD"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,22 +12,33 @@
         <jsp:include page="plantillas/header.jsp"></jsp:include>
     </head>
     <body>
-        <span>
-            <button id="boton_registro">Registro popup</button>
-        </span>
-               
-        <div>
-            Prueba Login
-            <form method="post" action="Login">
-                <input id="user" name="user" placeholder="Usuario" required>
-                <input type="password" id="password" name="password" placeholder="Contraseña" required>
-                <input type="submit" value="Login">
-                <span id="error" class="error" >${error}</span>
-            </form>
-            <span>
-                Usuario: <a href="Perfil"><%= session.getAttribute("usuario") %></a>
-                <a href='Logout'><button>Logout</button></a>
-            </span>
+        <div id="cuerpo">
+            <div>
+                <ul>
+                <%
+                if(request.getAttribute("listaJuegos")!= null){
+                    ArrayList<Juego> juegos = (ArrayList<Juego>)request.getAttribute("listaJuegos");
+                    int i=0;
+
+                    while(i<juegos.size()){
+                        Juego j = juegos.get(i);
+                        out.write("<div>");
+                        out.write("<li>");
+                        out.write(j.getNombre());
+                        out.write("<ul>");
+                        out.write("<li>");
+                        out.write(j.getDescripcion());
+                        out.write(Double.toString(j.getPrecio()));
+                        out.write("</li>");
+                        out.write("</ul>");
+                        out.write("</li>");
+                        out.write("</div>");
+                        i++;
+                    }
+                }
+                %>
+                </ul>
+            </div>
         </div>
                 
                 <div  class='listaJuegos'>
@@ -137,5 +145,4 @@
         </div>
   <jsp:include page="plantillas/footer.jsp"></jsp:include>
     </body>
-    
 </html>

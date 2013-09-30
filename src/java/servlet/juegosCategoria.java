@@ -2,7 +2,6 @@ package servlet;
 
 import baseDatos.ManejadorBD;
 import controladores.Controladorjuegos;
-import dominio.Juego;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -44,18 +43,6 @@ public class juegosCategoria extends HttpServlet {
 
            request.setAttribute("listaJuegos", juegos);
            request.getRequestDispatcher("index.jsp").forward(request, response);
-           
-            if (juegos != null){
-                  int i = 0;
-
-                  while (i < juegos.size()){
-                      Juego jue;
-                      jue = (Juego)juegos.get(i);
-                      out.println("<li>" + jue.getNombre() + "</a></li>");
-                      i++;
-                  }
-              }
-            
          
         } catch (SQLException ex) {
             Logger.getLogger(juegosCategoria.class.getName()).log(Level.SEVERE, null, ex);
@@ -68,8 +55,7 @@ public class juegosCategoria extends HttpServlet {
             throws ServletException, IOException {
        
     }
-
-
+    
     @Override
     public String getServletInfo() {
         return "Short description";
