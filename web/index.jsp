@@ -12,34 +12,7 @@
         <jsp:include page="plantillas/header.jsp"></jsp:include>
     </head>
     <body>
-        <div id="cuerpo">
-            <div>
-                <ul>
-                <%
-                if(request.getAttribute("listaJuegos")!= null){
-                    ArrayList<Juego> juegos = (ArrayList<Juego>)request.getAttribute("listaJuegos");
-                    int i=0;
-
-                    while(i<juegos.size()){
-                        Juego j = juegos.get(i);
-                        out.write("<div>");
-                        out.write("<li>");
-                        out.write(j.getNombre());
-                        out.write("<ul>");
-                        out.write("<li>");
-                        out.write(j.getDescripcion());
-                        out.write(Double.toString(j.getPrecio()));
-                        out.write("</li>");
-                        out.write("</ul>");
-                        out.write("</li>");
-                        out.write("</div>");
-                        i++;
-                    }
-                }
-                %>
-                </ul>
-            </div>
-        </div>
+       
                 
                 <div  class='listaJuegos'>
                     <ul>
@@ -125,11 +98,11 @@
                     </label>
 
                     <label class="linea">
-                        <input id="apellido" name="ape"value="" placeholder="Apellido" autocomplete="off">
+                        <input id="apellido" name="ape" value="" placeholder="Apellido" autocomplete="off">
                     </label>
 
                     <label class="linea">
-                        <input type="date" id="fnac" name="fnac" value="">
+                        <input type="date" id="fnac" name="fnac" value="1990-01-01">
                     </label>
 
                     <label class="linea">
