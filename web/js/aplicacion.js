@@ -123,12 +123,19 @@ $(document).ready(function(){
         $("#popup_reg").fadeOut(300);
     });
     
-    $("#menu .clickleable").click(function(){
-        $("#slide_cats").slideToggle(500);
+    $("#menu .clickleable").click(function(e){
+        $("#slide_cats").slideDown(500);
+        e.stopPropagation();
     });
     
-    $("#login .clickleable").click(function(){
-        $("#slide_login").slideToggle(500);
+    $("#login .clickleable").click(function(e){
+        $("#slide_login").slideDown(500);
+        e.stopPropagation();
+    });
+    
+    $(document).click(function(){
+        $("#slide_cats").slideUp(400);
+        $("#slide_login").slideUp(400);
     });
 });
 

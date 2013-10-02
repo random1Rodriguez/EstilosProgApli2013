@@ -4,6 +4,22 @@
 body{
     font-family: Helvetica, Arial;
     font-size: 16px;
+    height: 100%;
+}
+
+#contenedor{
+    height:100%;
+    clear:both;
+    margin-bottom: 150px;
+}
+
+#footer{
+    position: relative;
+    border-top: solid 2px #03032a;
+    height: 150px;
+    margin-top: -150px;
+    width: 100%;
+    clear: both;
 }
 
 .listaJuegos div {
@@ -16,19 +32,16 @@ body{
     background-color: rgba(100,100,255,0.85);
     list-style: none;
     margin: 10px 10px 10px 10px;
-    }
+}
     
-    .listaJuegos ul {
-        padding-top: 70px;
-        
-    }
-    
-    .listaJuegos{
-        width: 95%;
-        text-align: center;
-        
-    }
+.listaJuegos ul {
+    padding-top: 70px;
+}
 
+.listaJuegos{
+    width: 95%;
+    text-align: center;
+}
 
 .linea{
     display: block;
@@ -208,7 +221,7 @@ body{
 
 #imgJuego{
         
-    background-image: url("img/ick24.png");
+    background-image: url("../img/tick24.png");
     
 }
 
