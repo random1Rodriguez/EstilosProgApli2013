@@ -5,7 +5,6 @@
 package servlet;
 
 import baseDatos.ManejadorBD;
-import dominio.Categoria;
 import dominio.Juego;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -48,7 +47,7 @@ ManejadorBD mbd = ManejadorBD.getInstancia();
             String cad=request.getParameter("id");
             int valor=Integer.parseInt(cad);
             juego = controladores.Controladorjuegos.getInstancia().verInfoJuego(valor);
-            juego.setCategorias(controladores.Controladorjuegos.getInstancia().verComentariosJuego(valor));
+            
             request.setAttribute("infoJuego", juego);
             request.getRequestDispatcher("index.jsp").forward(request, response);
             
@@ -57,29 +56,16 @@ ManejadorBD mbd = ManejadorBD.getInstancia();
         }
     }
 
-    /**
-     * Handles the HTTP
-     * <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
+    
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
     
 }

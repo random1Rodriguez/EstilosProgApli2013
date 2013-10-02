@@ -106,11 +106,11 @@
                     </label>
 
                     <label class="linea">
-                        <input id="apellido" name="ape"value="" placeholder="Apellido" autocomplete="off">
+                        <input id="apellido" name="ape" value="" placeholder="Apellido" autocomplete="off">
                     </label>
 
                     <label class="linea">
-                        <input type="date" id="fnac" name="fnac" value="">
+                        <input type="date" id="fnac" name="fnac" value="1990-01-01">
                     </label>
 
                     <label class="linea">
