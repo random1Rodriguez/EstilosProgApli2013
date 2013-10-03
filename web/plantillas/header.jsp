@@ -40,13 +40,12 @@
                             ArrayList categorias = cc.listarCategorias();
                             if (categorias != null){
                                 int i = 0;
-
-                                while (i < categorias.size()){
-                                    Categoria cat;
-                                    cat = (Categoria)categorias.get(i);
-                                    out.println("<li><a href='juegosCategoria?id=" + cat.getId() + "'>" + cat.getNombre() + "</a></li>");
-                                    i++;
-                                }
+                            while (i < categorias.size()){
+                                Categoria cat;
+                                cat = (Categoria)categorias.get(i);
+                                out.println("<li><a href='juegosCategoria?id=" + cat.getId() + "'>" + cat.getNombre() + "</a></li>");
+                                i++;
+                            }
                             }
                         %>
                         </ul>
