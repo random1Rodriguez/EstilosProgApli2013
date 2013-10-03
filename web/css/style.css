@@ -20,6 +20,7 @@ body{
     margin-top: -150px;
     width: 100%;
     clear: both;
+    z-index: -1;
 }
 
 .listaJuegos div {
