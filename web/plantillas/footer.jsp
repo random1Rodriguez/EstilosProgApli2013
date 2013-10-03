@@ -8,11 +8,13 @@
 <!DOCTYPE html>
 <html>
     <body>
-        <footer>
-            <p>
-                Aca va el pie de pagina <br>
-                Modificar en plantillas/footer.jsp
-            </p>
-        </footer>
+        <div id="footer">
+            <footer>
+                <p>
+                    Aca va el pie de pagina <br>
+                    Modificar en plantillas/footer.jsp
+                </p>
+            </footer>
+        </div>
     </body>
 </html>

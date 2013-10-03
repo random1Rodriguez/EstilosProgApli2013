@@ -11,11 +11,12 @@
         <link rel="stylesheet" href="css/style.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>La Mejor Tienda de Juegos Online</title>
-        <jsp:include page="plantillas/header.jsp"></jsp:include>
     </head>
     <body>
-        <div  class='listaJuegos'>
-                     <ul>
+        <div id="contenedor">
+            <jsp:include page="plantillas/header.jsp"></jsp:include>
+            <div  class='listaJuegos'>
+            <ul>
                      <%
                          if(request.getAttribute("listaJuegos")!= null){
                              ArrayList<Juego> juegos = (ArrayList<Juego>)request.getAttribute("listaJuegos");
@@ -24,31 +25,32 @@
                              while(i<juegos.size()){
                                  Juego j = juegos.get(i);
                                  out.write("<div>");
-                                    out.write("<div id = 'imgJuego'>");
-                                    out.write("</div>");
-
-                                    out.write("<li>");
-                                    out.write(j.getNombre());
-                                        out.write("<li>");
-                                            String desc = j.getDescripcion();
-                                            if(desc.length()>200){
-                                                out.write(desc.substring(0, 200) + "...");
-                                            }else{
-                                                out.write(desc);
-                                            }
-                                            out.write("</li>");
-                                            out.write("<li>");        
-                                                out.write(Double.toString(j.getPrecio()));
-                                            out.write("</li>");
-                                            out.write("<li>");        
-                                                 out.write("<a href='verInfoJuego?id=" + j.getId() + "'>Ver Info Juego</a>");
-                                            out.write("</li>");
-                                     out.write("</li>");
+                                 out.write("<div id = 'imgJuego'>");
+                                 out.write("<img src=" + j.getPortada() + ">");
+                                 out.write("</div>");
+                                 out.write("<li>");
+                                 out.write(j.getNombre());
+                                 //out.write("<ul>");
+                                 out.write("</li>");
+                                 out.write("<li>");
+                                 String desc = j.getDescripcion();
+                                 if(desc.length()>200){
+                                     out.write(desc.substring(0, 200) + "...");
+                                 }else{
+                                     out.write(desc);
+                                 }
+                                 out.write("</li>");
+                                 out.write("<li>");        
+                                 out.write(Double.toString(j.getPrecio()));
+                                 out.write("</li>");
+                                 out.write("<li>");        
+                                 out.write("<a href='verInfoJuego?id=" + j.getId() + "'>Ver Info Juego</a>");
                                  out.write("</div>");
                                  i++;
                              }
                          }
                          if(request.getAttribute("infoJuego")!= null){
+
                             Juego ju = (Juego)request.getAttribute("infoJuego");
                             out.write("<ul>");
                                 out.write("<li>");
@@ -89,26 +91,23 @@
                                 }
                                 out.write("</div>");
                                                                
-                                out.write("<div>");
-                                i=0;
-                                while(i<lstCat.size()){
-                                    out.write("<li>");
-                                        out.write(lstCat.get(i).getNombre());
-                                    out.write("</li>");
-                                    i++;
-                                }
-                                out.write("</div>"); 
+                                
                                 if(request.getAttribute("usuario") != null){
                                     
                                 }
                             out.write("</ul>");
                          }
                         
+
                          %>
+
                         
                          </ul>
-        
+
         </div>
-  <jsp:include page="plantillas/footer.jsp"></jsp:include>
+
+        </div>
+        
+            <jsp:include page="plantillas/footer.jsp"></jsp:include>
     </body>
 </html>
