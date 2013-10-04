@@ -111,7 +111,7 @@ $(document).ready(function(){
                 }
             }
         }
-    });
+    });   
     
     /*------------------ mostrar popup registro ------------------------*/
     $("#registro").click(function(){

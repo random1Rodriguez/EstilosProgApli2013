@@ -1,11 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package servlet;
 
 import baseDatos.ManejadorBD;
 import dominio.Juego;
+import dominio.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -17,14 +15,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "verInfoJuego", urlPatterns = {"/verInfoJuego"})
-public class verInfoJuego extends HttpServlet {
-ManejadorBD mbd = ManejadorBD.getInstancia();
 
+@WebServlet(name = "esCliente", urlPatterns = {"/esCliente"})
+public class esCliente extends HttpServlet {
+
+ManejadorBD mbd = ManejadorBD.getInstancia();
+  
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    try {
+         try {
             PrintWriter out = response.getWriter();
               try {
             mbd.setHost("localhost");
@@ -38,30 +38,30 @@ ManejadorBD mbd = ManejadorBD.getInstancia();
         } catch (SQLException ex) {
             Logger.getLogger(Perfil.class.getName()).log(Level.SEVERE, null, ex);
         }
-            Juego juego;
+            Usuario usuario;
       
-            String cad=request.getParameter("id");
-            int valor=Integer.parseInt(cad);
-            juego = controladores.Controladorjuegos.getInstancia().verInfoJuego(valor);
+            String cad=request.getParameter("userName");
             
-            request.setAttribute("infoJuego", juego);
+            usuario = controladores.ControladorUsuarios.getInstancia().find(cad);
+            
+            
+            request.setAttribute("tipo", usuario);
             request.getRequestDispatcher("index.jsp").forward(request, response);
             
         } catch (SQLException ex) {
             Logger.getLogger(listarCategorias.class.getName()).log(Level.SEVERE, null, ex);
         }
+     
     }
 
+  
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
     }
-
-    
+   
     @Override
     public String getServletInfo() {
         return "Short description";
     }
-    
 }

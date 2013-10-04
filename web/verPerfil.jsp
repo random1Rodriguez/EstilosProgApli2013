@@ -30,9 +30,16 @@
             <span><%=u.getFecha_nac().toString()%></span>
             <span><%=String.valueOf(u.getEdad())%></span>
         </div>
-        
+        <%
+            if(u.getTipo() == "d"){
+
+        %>
         <div id="desarrollos">
             
         </div>
+        <%
+
+            }
+        %>
     </body>
 </html>

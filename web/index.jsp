@@ -92,8 +92,11 @@
                                 out.write("</div>");
                                                                
                                 
-                                if(request.getAttribute("usuario") != null){
-                                    
+                                if(session.getAttribute("usuario") != null){
+                                   /* out.write("<div id=ultiVersion>");
+                                        
+                                       
+                                    out.write("</div>");*/
                                 }
                             out.write("</ul>");
                          }
