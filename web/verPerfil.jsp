@@ -7,30 +7,44 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style>
+            .imagen img {
+                max-width: 100%;
+                min-width: 20%;
+                height: auto;
+            }
+        </style>
     </head>
     <body>
-        <%
+        <%  String ubicacion_imagen = "http://progapli2013.comule.com/imagenes/perfiles/";
             Usuario u = null;
+            String tipo;
             if (request.getAttribute("perfil") != null){
                 u = (Usuario)request.getAttribute("perfil");
+            }
+            if (u.getTipo().equals("c")){
+                tipo = "Cliente";
+            }
+            else{
+                tipo = "Desarrollador";
             }
         %>
         
         <div id="imagen">
-            <span><img src="<%=u.getImg()%>"></span>
+            <span class="imagen"><img src="<%=ubicacion_imagen+u.getImg()%>"></span>
         </div>
         
         <div id="info_cuenta">
-            <span><%=u.getNick()%></span>
-            <span><%=u.getEmail()%></span>
-            <span><%=u.getTipo()%></span>
+            <span>Nick: <%=u.getNick()%></span><br>
+            <span>Email: <%=u.getEmail()%></span><br>
+            <span>Tipo de Perfil: <%=tipo%></span><br>
         </div>
         
         <div id="info_personal">
-            <span><%=u.getNombre()%></span>
-            <span><%=u.getApellido()%></span>
-            <span><%=u.getFecha_nac().toString()%></span>
-            <span><%=String.valueOf(u.getEdad())%></span>
+            <span>Nombre: <%=u.getNombre()%></span><br>
+            <span>Apellido: <%=u.getApellido()%></span><br>
+            <span>Fecha Nacimiento: <%=u.getFecha_nac().toString()%></span><br>
+            <span>Edad: <%=String.valueOf(u.getEdad())%></span><br>
         </div>
         
         <div id="desarrollos">
@@ -42,10 +56,12 @@
                     while (i < versiones.size()){
                         Version v = (Version)versiones.get(i);
                         out.write("<li>");
-                        out.write("<br>Juego: "+v.getId_juego());
+                        out.write("Juego: "+v.getJuego().getNombre());
                         out.write("<br> Numero: "+v.getNro_version());
                         out.write("<br> Estado: "+v.getEstado());
-                        out.write("<br> Motivo: "+v.getMotivo_recahazo());
+                        if (v.getEstado().equals("rechazada")){
+                            out.write("<br> Motivo: "+v.getMotivo_recahazo());
+                        }
                         out.write("</li>");
                         i++;
                     }
@@ -53,6 +69,9 @@
                 }
             %>
                 
+        </div>
+        <div id="compras">
+            
         </div>
     </body>
 </html>

@@ -61,22 +61,33 @@ public class Perfil extends HttpServlet {
                 
                 if (u.getTipo().equals("d")){ //si es desarrollador
                     System.out.println("es desarrollador");
-                    ArrayList juegos_subidos = cj.listarJuegosPorDesarrollador(u.getId());
+                    //obtengo en un arreglo todos los juegos del desarrollador logueado
+                    ArrayList juegos_subidos = cj.listarJuegosPorDesarrollador(u.getId()); 
                     int i = 0;
+                    //arreglo vacio para guardar las versiones
                     ArrayList versiones = new ArrayList();
+                    
+                    //recorro el arreglo de los juegos para obtener las categorias
+                    //pendientes y rechazadas de cada uno
                     while(i < juegos_subidos.size()) {
                         Juego j = (Juego)juegos_subidos.get(i);
                         int id_j = j.getId();
+                        //obtengo las versiones pendientes
                         ArrayList versiones_pendientes = cv.listarVersiones(id_j, 'p');
+                        //obtengo las versiones rechazadas
                         ArrayList versiones_rechazadas = cv.listarVersiones(id_j, 'r');
+                        //agrego todos los elementos del arreglo de versiones pendientes al arreglo final
                         versiones.addAll(versiones_pendientes);
+                        //agrego todos los elementos del arreglo de versiones rechazadas al arreglo final
                         versiones.addAll(versiones_rechazadas);
                         i++;
                     }
                     
+                    //seteo el arreglo con todas la versiones para obtenerlo luego desde verPerfil.jsp
                     request.setAttribute("versiones", versiones);
                 }
-
+                
+                //seteo el objeto usuario para obtenerlo en verPerfil.jsp y mostrar su informacion
                 request.setAttribute("perfil", u);
                 request.getRequestDispatcher("verPerfil.jsp").forward(request, response);
             } catch (SQLException ex) {
