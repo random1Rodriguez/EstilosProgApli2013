@@ -38,7 +38,7 @@
                 </label>
                 
                 <label class="linea">
-                    <input id="apellido" name="ape"value="" placeholder="Apellido">
+                    <input id="apellido" name="ape" value="" placeholder="Apellido">
                 </label>
                 
                 <label class="linea">
