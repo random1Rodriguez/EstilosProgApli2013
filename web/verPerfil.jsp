@@ -1,4 +1,5 @@
 
+<%@page import="dominio.Juego"%>
 <%@page import="dominio.Version"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="dominio.Usuario"%>
@@ -48,10 +49,26 @@
         </div>
         
         <div id="desarrollos">
+            
+           
             <%
                 if(request.getAttribute("versiones") != null){
+                    ArrayList<Juego> juegos = (ArrayList<Juego>)request.getAttribute("juegos");
+                    
+                     int i = 0;
+                    out.write("<ul>");
+                    
+                    while (i < juegos.size()){
+                        Juego j = (Juego)juegos.get(i);
+                        out.write("<li>");
+                        out.write("<br><a href = 'versionJuego.jsp'>Juego: "+j.getNombre() + "</a>");
+                        out.write("</li>");
+                        i++;
+                    }
+                    
+                    
                     ArrayList versiones = (ArrayList)request.getAttribute("versiones");
-                    int i = 0;
+                    i = 0;
                     out.write("<ul>");
                     while (i < versiones.size()){
                         Version v = (Version)versiones.get(i);

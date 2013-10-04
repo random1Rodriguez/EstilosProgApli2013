@@ -1,4 +1,6 @@
 
+<%@page import="org.apache.el.lang.FunctionMapperImpl.Function"%>
+<%@page import="dominio.Comentario"%>
 <%@page import="dominio.Juego"%>
 <%@page import="dominio.Categoria"%>
 <%@page import="java.util.ArrayList"%>
@@ -24,10 +26,12 @@
                                  Juego j = juegos.get(i);
                                  out.write("<div>");
                                  out.write("<div id = 'imgJuego'>");
+                                 out.write("<img src=" + j.getPortada() + ">");
                                  out.write("</div>");
                                  out.write("<li>");
                                  out.write(j.getNombre());
                                  //out.write("<ul>");
+                                 out.write("</li>");
                                  out.write("<li>");
                                  String desc = j.getDescripcion();
                                  if(desc.length()>200){
@@ -41,34 +45,72 @@
                                  out.write("</li>");
                                  out.write("<li>");        
                                  out.write("<a href='verInfoJuego?id=" + j.getId() + "'>Ver Info Juego</a>");
-
-                                 out.write("</li>");
-                                 //out.write("</ul>");
-                                 out.write("</li>");
                                  out.write("</div>");
                                  i++;
                              }
                          }
                          if(request.getAttribute("infoJuego")!= null){
-                             Juego ju = (Juego)request.getAttribute("infoJuego");
-                             out.write(ju.getNombre());
-                             out.write(ju.getDescripcion());
-                             
-                             out.write("Categorias\n");
-                             ArrayList<Categoria> lstCat = ju.getCategorias();
-                             int i=0;
-                             while(i>lstCat.size()){
-                                 out.write(lstCat.get(i).getNombre() + "\n");
-                                 i++;
-                                 
-                             }
-                             
-                             out.write(ju.getNombre());
+
+                            Juego ju = (Juego)request.getAttribute("infoJuego");
+                            out.write("<ul>");
+                                out.write("<li>");
+                                    out.write("Nombre del juego");
+                                out.write("</li>");
+                                out.write("<li>");
+                                    out.write(ju.getNombre());
+                                out.write("</li>");
+                                out.write("<li>");
+                                    out.write("Descripcion");
+                                out.write("</li>");
+                                out.write("<li>");
+                                    out.write(ju.getDescripcion());
+                                out.write("</li>");
+                                out.write("<li>");
+                                    out.write("Desarrollador");
+                                out.write("</li>");
+                                out.write("<li>");
+                                    out.write(ju.getDes().getNick());
+                                out.write("</li>"); 
+                                out.write("<li>");
+                                    out.write("Tamaño");
+                                out.write("</li>");
+                                out.write("<li>");
+                                    out.write(String.valueOf(ju.getSize()) + " Kb");
+                                out.write("</li>");
+                                out.write("<li>");
+                                    out.write("Categorias");
+                                out.write("</li>");
+                                ArrayList<Categoria> lstCat = (ArrayList<Categoria>)ju.getCategorias();
+                                int i=0;
+                                out.write("<div>");
+                                while(i<lstCat.size()){
+                                    out.write("<li>");
+                                        out.write(lstCat.get(i).getNombre());
+                                    out.write("</li>");
+                                    i++;
+                                }
+                                out.write("</div>");
+                                                               
+                                
+                                if(session.getAttribute("usuario") != null){
+                                   /* out.write("<div id=ultiVersion>");
+                                        
+                                       
+                                    out.write("</div>");*/
+                                }
+                            out.write("</ul>");
                          }
+                        
+
                          %>
-            </ul>
+
+                        
+                         </ul>
+
         </div>
+
         </div>
-    <jsp:include page="plantillas/footer.jsp"></jsp:include>
+        
+            <jsp:include page="plantillas/footer.jsp"></jsp:include>
     </body>
 </html>

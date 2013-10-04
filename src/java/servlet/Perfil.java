@@ -85,6 +85,8 @@ public class Perfil extends HttpServlet {
                     
                     //seteo el arreglo con todas la versiones para obtenerlo luego desde verPerfil.jsp
                     request.setAttribute("versiones", versiones);
+                    ArrayList<Juego> juegos_subidos_ver_aprobada = cj.listarJuegosPorDesarrolladorVersionAprobada(u.getId());
+                    request.setAttribute("juegos", juegos_subidos_ver_aprobada);
                 }
                 
                 //seteo el objeto usuario para obtenerlo en verPerfil.jsp y mostrar su informacion
