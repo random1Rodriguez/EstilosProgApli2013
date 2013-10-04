@@ -1,4 +1,6 @@
 
+<%@page import="dominio.Version"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="dominio.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -32,7 +34,25 @@
         </div>
         
         <div id="desarrollos">
-            
+            <%
+                if(request.getAttribute("versiones") != null){
+                    ArrayList versiones = (ArrayList)request.getAttribute("versiones");
+                    int i = 0;
+                    out.write("<ul>");
+                    while (i < versiones.size()){
+                        Version v = (Version)versiones.get(i);
+                        out.write("<li>");
+                        out.write("<br>Juego: "+v.getId_juego());
+                        out.write("<br> Numero: "+v.getNro_version());
+                        out.write("<br> Estado: "+v.getEstado());
+                        out.write("<br> Motivo: "+v.getMotivo_recahazo());
+                        out.write("</li>");
+                        i++;
+                    }
+                    out.write("</ul>");
+                }
+            %>
+                
         </div>
     </body>
 </html>
