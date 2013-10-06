@@ -124,18 +124,26 @@ $(document).ready(function(){
     });
     
     $("#menu .clickleable").click(function(e){
-        $("#slide_cats").slideDown(500);
-        e.stopPropagation();
+        $("#slide_cats").slideToggle()(500);
+        //e.stopPropagation();
     });
     
     $("#login .clickleable").click(function(e){
-        $("#slide_login").slideDown(500);
-        e.stopPropagation();
+        $("#slide_login").slideToggle()(500);
+        //e.stopPropagation();
     });
     
-    $(document).click(function(){
-        $("#slide_cats").slideUp(400);
-        $("#slide_login").slideUp(400);
+//    $(document).click(function(){
+//        $("#slide_cats").slideUp(400);
+//        $("#slide_login").slideUp(400);
+//    });
+
+    /*---------------------- cabezal nuevo -------------------------*/
+    $("#popup_login").hide();
+    
+    $("#login").click(function(){
+       $("#popup_login").show(); 
     });
+    
 });
 

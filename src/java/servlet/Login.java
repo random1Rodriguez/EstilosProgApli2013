@@ -2,6 +2,7 @@ package servlet;
 
 import baseDatos.ManejadorBD;
 import controladores.ControladorUsuarios;
+import dominio.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -19,20 +20,6 @@ public class Login extends HttpServlet {
     
     ManejadorBD mbd = ManejadorBD.getInstancia();
     private ControladorUsuarios cu = ControladorUsuarios.getInstancia();
-    private boolean conectado = false;
-    
-    public void conectar() throws SQLException{
-        if (! conectado){
-            mbd.setHost("localhost");
-            mbd.setPuerto("3306");
-            mbd.setBd("market");
-            mbd.setUsuario("root");
-            mbd.setPassword("root");
-            
-            mbd.conectar();
-            conectado = true;
-        }
-    }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -49,20 +36,38 @@ public class Login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        if (mbd.estaDesconectado()){
+            mbd.setHost("localhost");
+            mbd.setPuerto("3306");
+            mbd.setBd("market");
+            mbd.setUsuario("root");
+            mbd.setPassword("root");
+            try {
+                mbd.conectar();
+            } catch (SQLException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
         PrintWriter out = response.getWriter();
         
         String user = request.getParameter("user");
         String pass = request.getParameter("password");
         try {
-            this.conectar();
             boolean exito = cu.login(user, pass);
             if (exito){
                 HttpSession s = request.getSession(true);
-                s.setAttribute("usuario", user);
+                Usuario u = cu.find(user);
+                s.setAttribute("usuario", u.getNick());
+                s.setAttribute("tipo", u.getTipo());
                 response.sendRedirect("index.jsp");
             }
             else{
-                out.write("Los datos no son validos");
+                String error = "El nombre de usuario y contraseña no coinciden, "
+                        + "por favor intentelo de nuevo";
+                request.setAttribute("error", error);
+                request.getRequestDispatcher("login.jsp").forward(request, response);
             }
             
         } catch (SQLException ex) {
