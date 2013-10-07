@@ -1,4 +1,5 @@
 
+<%@page import="org.w3c.dom.Document"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -10,8 +11,19 @@
         <title>Alta de version</title>
     </head>
     <body>
+         
         <form action="altaVersionJuego" enctype="MULTIPART/FORM-DATA" method="post">
             <div>
+                
+                 <label class="linea">
+                     <input type="text"  name="idJuego" value="
+                           <% 
+                        request.getParameter("idJ"); %>
+                            "  >
+                     
+                        
+                </label>
+                
                 <label class="linea">
                     <input type="text" id="nroVersion" name="nroVersion" required autofocus placeholder="Numero de version">
                     

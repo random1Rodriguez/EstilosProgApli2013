@@ -61,7 +61,7 @@
                     while (i < juegos.size()){
                         Juego j = (Juego)juegos.get(i);
                         out.write("<li>");
-                        out.write("<br><a href = 'versionJuego?idJuego=" + j.getId() + "'>Juego: "+j.getNombre() + "</a>");
+                        out.write("<br><a href = 'versionJuego?idJ=" + j.getId() + "'>Juego: "+j.getNombre() + "</a>");
                         out.write("</li>");
                         i++;
                     }

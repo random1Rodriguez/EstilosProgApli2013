@@ -90,9 +90,7 @@ public class altaVersionJuego extends HttpServlet {
                 while ((readCount = inp.read(bytes)) > 0) {
                     os.write(bytes, 0, readCount);
                 }
-                os.flush();
-                os.close();
-                inp.close();
+                
              
                 Version v = new Version();
                 v.setEstado("pendiente");
@@ -104,7 +102,9 @@ public class altaVersionJuego extends HttpServlet {
               
                 controladores.ControladorVersiones.getInstancia().altaversion(v);
              
-                
+                os.flush();
+                os.close();
+                inp.close();
              
              
              
