@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="../css/bootstrap.css">
         <script src="../js/jquery-2.0.3.js"></script>
         <script src="../js/bootstrap.js"></script>
+        <script src="../js/aplicacion.js"></script>
         <link rel="stylesheet" href="../css/matias.css">
         
         <%
@@ -73,13 +74,19 @@
                         <input id="searchbutton" type="button" value="Ir">
                     </form>
                 </div>
-                        
                 <div id="div_usuario">
                     <div id="icono_usuario">
                         <span>
                             <img src="">
                         </span>
                     </div>
+                </div>
+                <div id="login">
+                    <form id="form_login" method="post" action="../Login">
+                        <input id="user" name="user" placeholder="Usuario" required>
+                        <input type="password" id="password" name="password" placeholder="Contraseña" required>
+                        <input class="submit" type="submit" value="Entrar">
+                    </form>
                 </div>
                 <div id="caja_usaurio">
                     <div id="imagen_usaurio">
@@ -96,5 +103,13 @@
                 </div>
             </div>
         </header>
+        <%--<div id="popup_login">
+            <form id="form_login" method="post" action="../Login">
+                <input id="user" name="user" placeholder="Usuario" required>
+                <input type="password" id="password" name="password" placeholder="Contraseña" required>
+                <input class="submit" type="submit" value="Entrar">
+            </form>
+            <span id="error" class="error" >${error}</span>
+        </div> --%>
     </body>
 </html>

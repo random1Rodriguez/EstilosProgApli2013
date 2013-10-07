@@ -34,3 +34,38 @@
     width: 300px;
     height: 150px;
 }
+
+#popup_login{
+    box-shadow: 7px 7px 10px #888;
+    width: 20%;
+    position: relative;
+    padding: 2% 0 2% 0;
+    top: 185px;
+    left: 38%;
+    z-index: 1;
+}
+
+#popup_login form{
+    width: 85%;
+    margin: 2% auto;
+}
+
+#popup_login input{
+    border-radius: 5px;
+    font-size: 18px;
+    margin-bottom: 4px;
+    height: 2em;
+    padding-left: 3%;
+    width: 100%;
+}
+
+#popup_login .submit{
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 10%;
+}
+
+#btn_modal{
+    position: relative;
+    top: 150px;
+}
