@@ -52,8 +52,8 @@
                     </nav>
                 </div>
                 <div id="search">
-                    <form id="searchform">
-                        <input id="searchfield" type="text" value="Buscar..." onfocus="if (this.value == 'Buscar...') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Buscar...';}">
+                    <form id="searchform" method="post" action="busqueda.jsp">
+                        <input id="searchfield" name="busqueda" type="text" value="Buscar..." onfocus="if (this.value == 'Buscar...') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Buscar...';}">
                         <input id="searchbutton" type="button" value="Ir">
                     </form>
                 </div>

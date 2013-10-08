@@ -29,11 +29,11 @@ public class listarJuegos extends HttpServlet {
     
     public void conectar() throws SQLException{
         if (! conectado){
-            mbd.setHost("201.221.15.100");
+            mbd.setHost("localhost");
             mbd.setPuerto("3306");
             mbd.setBd("market");
-            mbd.setUsuario("random");
-            mbd.setPassword("random1");
+            mbd.setUsuario("root");
+            mbd.setPassword("root");
             
             mbd.conectar();
             conectado = true;
@@ -80,13 +80,4 @@ public class listarJuegos extends HttpServlet {
         }
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 }
