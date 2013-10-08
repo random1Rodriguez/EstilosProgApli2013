@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package servlet;
 
 import java.io.IOException;
@@ -12,32 +9,26 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author usuario
- */
-@WebServlet(name = "versionJuego", urlPatterns = {"/versionJuego"})
-public class versionJuego extends HttpServlet {
+@WebServlet(name = "verJuego", urlPatterns = {"/verJuego"})
+public class verJuego extends HttpServlet {
 
+ 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        request.setAttribute("idJuego", request.getParameter("idJ"));
+        int valor=Integer.parseInt(request.getParameter("idJuego"));
+        request.setAttribute("idJuego", valor);
         
         request.getRequestDispatcher("versionJuego.jsp").forward(request, response);
-        
     }
 
-    
-    @Override
+   @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     }
 
-    @Override
+       @Override
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-    
 }

@@ -95,9 +95,12 @@ public class altaVersionJuego extends HttpServlet {
                 Version v = new Version();
                 v.setEstado("pendiente");
                 v.setFecha_alta(new Date());
-                v.setId_juego(Integer.valueOf(request.getParameter("idJuego")));
-                v.setJar(remotePath);
                 v.setNro_version(request.getParameter("nroVersion"));
+                String juego;
+                juego = String.valueOf(request.getParameter("idJuego"));
+                v.setId_juego(Integer.valueOf(juego));
+                v.setJar(remotePath);
+               
                 v.setSize(size/1024);
               
                 controladores.ControladorVersiones.getInstancia().altaversion(v);
