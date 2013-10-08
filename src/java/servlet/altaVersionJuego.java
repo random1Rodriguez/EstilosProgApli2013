@@ -10,10 +10,14 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.URL;
 import java.net.URLConnection;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.mail.Multipart;
 import javax.mail.Session;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -43,42 +47,37 @@ public class altaVersionJuego extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
          try {
+                
              
-              
-                   /*FileItemFactory es una interfaz para crear FileItem*/
+                 // FileItemFactory es una interfaz para crear FileItem
                 FileItemFactory file_factory = new DiskFileItemFactory();
 
                 /*ServletFileUpload esta clase convierte los input file a FileItem*/
-                ServletFileUpload servlet_up = new ServletFileUpload(file_factory);
+               ServletFileUpload servlet_up = new ServletFileUpload(file_factory);
                 /*sacando los FileItem del ServletFileUpload en una lista */
-                //List items = servlet_up.parseRequest(request);
+                List items = servlet_up.parseRequest(request);
 
               
-                    InputStream inp = null;
-                    List items = servlet_up.parseRequest(request);
-
+                InputStream inp = null;
+                  
                     /*FileItem representa un archivo en memoria que puede ser pasado al disco duro*/
-              String extension = "";
-              Long size = null;
-                    for(int i=0;i<items.size();i++){
+                String extension = "";
+                Long size = null;
+                  
                     /*FileItem representa un archivo en memoria que puede ser pasado al disco duro*/
-                    FileItem item = (FileItem) items.get(i);
+                FileItem item = (FileItem)items.get(2);
                     /*item.isFormField() false=input file; true=text field*/
-                    if (! item.isFormField()){
+                if (! item.isFormField()){
                         /*cual sera la ruta al archivo en el servidor*/
-                        inp=item.getInputStream();
-                        extension = item.getName();
-                        size = item.getSize();
-                    }
-                    
-                    }
-                String pass = "root";//url
-                
+                    inp=item.getInputStream();
+                    extension = item.getName();
+                     size = item.getSize();
+                   }
                 HttpSession s = request.getSession(true);
                 String remotePath = "/" + s.getAttribute("usuario") + extension.substring(extension.lastIndexOf("."), extension.length());
                 String user = "root";
                 String server = "127.0.0.1";//url
-               
+                String pass = "root";//url
                 URL url = new URL("ftp://" + user + ":" + pass + "@" + server + remotePath + ";type=i");
               
                 URLConnection urlc = url.openConnection();
@@ -91,31 +90,43 @@ public class altaVersionJuego extends HttpServlet {
                     os.write(bytes, 0, readCount);
                 }
                 
-             
+                os.flush();
+                os.close();
+                inp.close();
+                int juego;
+                item = (FileItem)items.get(0);
+                juego = Integer.valueOf(item.getString());
+                
+                String nroV;
+                item = (FileItem)items.get(1);
+                nroV = item.getString();
+                
+               
                 Version v = new Version();
+                
                 v.setEstado("pendiente");
+                
                 v.setFecha_alta(new Date());
-                v.setNro_version(request.getParameter("nroVersion"));
-                String juego;
-                juego = String.valueOf(request.getParameter("idJuego"));
-                v.setId_juego(Integer.valueOf(juego));
+                v.setNro_version(nroV);
+               
+                
+                v.setId_juego(juego);
                 v.setJar(remotePath);
                
                 v.setSize(size/1024);
               
                 controladores.ControladorVersiones.getInstancia().altaversion(v);
              
-                os.flush();
-                os.close();
-                inp.close();
+               
              
              
              
 
                 
-        } catch (FileUploadException ex) {
+       } catch (FileUploadException ex) {
             Logger.getLogger(altaVersionJuego.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (Exception ex) {
+        
+         }catch (Exception ex) {
             Logger.getLogger(altaVersionJuego.class.getName()).log(Level.SEVERE, null, ex);
         }
        
