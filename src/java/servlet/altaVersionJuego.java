@@ -74,11 +74,10 @@ public class altaVersionJuego extends HttpServlet {
                      size = item.getSize();
                    }
                 HttpSession s = request.getSession(true);
-                String remotePath = "/" + s.getAttribute("usuario") + extension.substring(extension.lastIndexOf("."), extension.length());
+                String archivo = s.getAttribute("usuario") + extension.substring(extension.lastIndexOf("."), extension.length());
                 String user = "root";
-                String server = "127.0.0.1";//url
                 String pass = "root";//url
-                URL url = new URL("ftp://" + user + ":" + pass + "@" + server + remotePath + ";type=i");
+                URL url = new URL("ftp://" + user + ":" + pass + "@localhost/" + archivo + ";type=i");
               
                 URLConnection urlc = url.openConnection();
                 OutputStream os = urlc.getOutputStream();
@@ -111,7 +110,7 @@ public class altaVersionJuego extends HttpServlet {
                
                 
                 v.setId_juego(juego);
-                v.setJar(remotePath);
+                v.setJar(url.getPath());
                
                 v.setSize(size/1024);
               

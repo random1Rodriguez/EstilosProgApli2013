@@ -10,11 +10,12 @@
         <title>Alta de version</title>
     </head>
     <body>
+        <div id="ver">
         <form id="altVer" method="post" action="altaVersionJuego" enctype="multipart/form-data">
             <div>
               
                 <label class="linea">
-                    <input type="text" id="idJuego" hidden="true" name="idJuego" value="<% out.write(String.valueOf(request.getAttribute("idJuego"))); %>">
+                    <input type="text" id="idJuego"  hidden="true" name="idJuego" value="<% out.write(String.valueOf(request.getAttribute("idJuego"))); %>">
                     
                 </label>            
                 <label class="linea">
@@ -23,12 +24,13 @@
                 </label>
 
                 <label class="linea">
-                    <input type="file" id="archivoJuego" name="subirJuego" required>
+                    <input type="file" id="archivoJuego" name="subirJuego" required accept=".rar , .zip, .jar">
                     
                 </label>
 
             </div>
             <input id="boton" type="submit" value="Confirmar">
         </form>
+    </div>
     </body>
 </html>
