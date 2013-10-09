@@ -1,4 +1,3 @@
-
 <%@page import="org.apache.el.lang.FunctionMapperImpl.Function"%>
 <%@page import="dominio.Comentario"%>
 <%@page import="dominio.Juego"%>
@@ -9,17 +8,71 @@
 <html>
     <head>
         <link rel="stylesheet" href="css/style.css">
+        
+        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
         <title>La Mejor Tienda de Juegos Online</title>
     </head>
     <body>
         <div id="contenedor">
             <jsp:include page="plantillas/header.jsp"></jsp:include>
-            <div  class='listaJuegos'>
+            <div id="fondotransparente">
+            <%-- SLIDER 
+            <section id="slideshow">
+	
+		<a class="commands prev commands1" href="#sl_i4" title="Go to last slide">&lt;</a>
+		<a class="commands next commands1" href="#sl_i2" title="Go to 2nd slide">&gt;</a>
+		<a class="commands prev commands2" href="#sl_i1" title="Go to 1rst slide">&lt;</a>
+		<a class="commands next commands2" href="#sl_i3" title="Go to 3rd slide">&gt;</a>
+		<a class="commands prev commands3" href="#sl_i2" title="Go to 2nd slide">&lt;</a>
+		<a class="commands next commands3" href="#sl_i4" title="Go to 4th slide">&gt;</a>
+		<a class="commands prev commands4" href="#sl_i3" title="Go to 3rd slide">&lt;</a>
+		<a class="commands next commands4" href="#sl_i1" title="Go to first slide">&gt;</a>
+		
+		<a class="play_commands pause" href="#sl_pause" title="Maintain paused">Pause</a>
+		<a class="play_commands play" href="#sl_play" title="Play the animation">Play</a>
+		
+		<div class="container">
+			<div class="c_slider"></div>
+			<div class="slider">
+				<figure>
+					<img src="img/dummy-640x310-1.jpg" alt="" width="640" height="310" />
+					<figcaption>The mirror of soul</figcaption>
+				</figure><!--
+				--><figure>
+					<img src="img/dummy-640x310-2.jpg" alt="" width="640" height="310" />
+					<figcaption>Let's cross that bridge when we come to it</figcaption>
+				</figure><!--
+				--><figure>
+					<img src="img/dummy-640x310-3.jpg" alt="" width="640" height="310" />
+					<figcaption>Sushi<em>(do)</em> time</figcaption>
+				</figure><!--
+				--><figure>
+					<img src="img/dummy-640x310-4.jpg" alt="" width="640" height="310" />
+					<figcaption>Waking Life</figcaption>
+				</figure>
+			</div>
+		</div>
+		
+		<span id="timeline"></span>
+		
+		<ul class="dots_commands"><!--
+			--><li><a title="Show slide 1" href="#sl_i1">Slide 1</a></li><!--
+			--><li><a title="Show slide 2" href="#sl_i2">Slide 2</a></li><!--
+			--><li><a title="Show slide 3" href="#sl_i3">Slide 3</a></li><!--
+			--><li><a title="Show slide 4" href="#sl_i4">Slide 4</a></li>
+		</ul>
+		
+	</section>
+             SLIDER --%>
+
+
+                <div  class='listaJuegos'>
             <ul>
                 <%
                     
-                    
+                    String ruta = "http://progapli2013.comule.com/imagenes/juegos/";
                     if(request.getAttribute("listaJuegos")!= null){
                         ArrayList<Juego> juegos = (ArrayList<Juego>)request.getAttribute("listaJuegos");
                         int i=0;
@@ -28,7 +81,7 @@
                             Juego j = juegos.get(i);
                             out.write("<div>");
                             out.write("<div id = 'imgJuego'>");
-                            out.write("<img src=" + j.getPortada() + ">");
+                            out.write("<img class='imgJuego' src='" +ruta + j.getPortada() + "'>");
                             out.write("</div>");
                             out.write("<li>");
                             out.write(j.getNombre());
@@ -107,9 +160,9 @@
             </ul>
 
         </div>
-
+</div>
         </div>
         
-            <jsp:include page="plantillas/footer.jsp"></jsp:include>
+             <jsp:include page="plantillas/footer.jsp"></jsp:include>
     </body>
 </html>

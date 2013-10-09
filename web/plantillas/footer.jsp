@@ -2,14 +2,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <body>
+    <body >
         <div id="footer">
-            <footer>
-                <p>
-                    Aca va el pie de pagina <br>
-                    Modificar en plantillas/footer.jsp
-                </p>
-            </footer>
+            <div id="txtfooter">
+                   Random PlayStore © || Todos los derechos reservados || Programacion de Aplicaciones || 2013 
+                </div>
         </div>
     </body>
 </html>

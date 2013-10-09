@@ -19,6 +19,7 @@
                 <div id="titulopagina">ProApliPlay Web Store</div>
                 <div id="menu">
                     <span class="clickleable">Categorias</span>
+                    
                 </div>
                 
                 <div id="slide_cats" class="slidingDiv">
@@ -54,15 +55,26 @@
                 <div id="search">
                     <form id="searchform" method="post" action="busqueda.jsp">
                         <input id="searchfield" name="busqueda" type="text" value="Buscar..." onfocus="if (this.value == 'Buscar...') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Buscar...';}">
-                        <input id="searchbutton" type="button" value="Ir">
+                        <input id="searchbutton" type="submit" value="Ir">
                     </form>
                 </div>
                 <div id="login">
                     <span>
-                        Usuario: <a href="Perfil"><%= session.getAttribute("usuario") %></a>
-                        <a href='Logout'>Logout</a>
+                        Usuario: 
+                            <%
+                            //Controlar botones login logout segun estado de sesion
+                            if (session.getAttribute("usuario") == null){
+                                out.println("<span>Visitante</span></li><span class='clickleable'><a href='#'>  || Login </a> </span>");
+                            }else{
+                                out.println("<a href='Perfil'><span>" +session.getAttribute("usuario")+"</span></a><a href='Logout'>  || Logout</a></li>");
+                            }
+                            
+                                    ;
+                            %>
+                           
+                        
                     </span>
-                    <span class="clickleable"> Login </span>
+                    
                     <div id="slide_login">
                         <form id="form_login" method="post" action="Login">
                             <input id="user" name="user" placeholder="Usuario" required>
