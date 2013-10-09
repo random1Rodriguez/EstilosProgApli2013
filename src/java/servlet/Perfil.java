@@ -67,7 +67,7 @@ public class Perfil extends HttpServlet {
                     //arreglo vacio para guardar las versiones
                     ArrayList versiones = new ArrayList();
                     
-                    //recorro el arreglo de los juegos para obtener las categorias
+                    //recorro el arreglo de los juegos para obtener las versiones
                     //pendientes y rechazadas de cada uno
                     while(i < juegos_subidos.size()) {
                         Juego j = (Juego)juegos_subidos.get(i);
@@ -87,6 +87,11 @@ public class Perfil extends HttpServlet {
                     request.setAttribute("versiones", versiones);
                     ArrayList<Juego> juegos_subidos_ver_aprobada = cj.listarJuegosPorDesarrolladorVersionAprobada(u.getId());
                     request.setAttribute("juegos", juegos_subidos_ver_aprobada);
+                }
+                else if (u.getTipo().equals("c")){ //si el usuario es cliente
+                    ArrayList juegos = cj.listarJuegosPorCliente(u.getId());
+
+                    request.setAttribute("juegos_comprados", juegos);
                 }
                 
                 //seteo el objeto usuario para obtenerlo en verPerfil.jsp y mostrar su informacion
