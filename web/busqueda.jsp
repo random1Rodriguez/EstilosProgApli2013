@@ -33,7 +33,7 @@
                     System.out.println("busqueda: "+request.getParameter("busqueda"));
                     ArrayList juegos = cj.buscar(request.getParameter("busqueda"));
                     
-                    
+                    if (juegos != null){
                     if(! juegos.isEmpty()){
                         int i=0;
 
@@ -66,6 +66,7 @@
                     }
                     else{
                         out.write("No se encontro ningun juego");
+                    }
                     }
                 %>
             </ul>
