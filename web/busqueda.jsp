@@ -11,7 +11,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>ProgApliPlay Market</title>
@@ -24,7 +24,21 @@
             }
             
             .div_juego{
-                
+                border: solid;
+                height: 330px;
+                max-width: 30%;
+                float: left;
+                margin: 2%;
+            }
+            
+            .imgJuego{
+                width: 95%;
+                margin: 3% auto;
+            }
+            
+            .imgJuego img{
+                width: 100%;
+                height: auto;
             }
         </style>
     </head>
@@ -48,25 +62,25 @@
                     if (juegos != null){
                         if(! juegos.isEmpty()){
                             int i=0;
-                            out.write("<div class='row'>");
+                            //out.write("<div class='row-fluid'>");
                             while(i<juegos.size()){
                                 Juego j = (Juego)juegos.get(i);
-                                /*out.write("<div class='div_juego'>"); //inicio juego
+                                out.write("<div class='div_juego'>"); //inicio juego
                                 out.write("<div class='imgJuego'>"); //inicio imagen
                                 out.write("<img src='" +servidor+ j.getPortada() + "'>");
                                 out.write("</div>"); //fin imagen
                                 out.write("<div class='info_juego'>"); //inicio info juego
-                                out.write(j.getNombre());
+                                out.write("<h3>"+j.getNombre()+"</h3>");
                                 out.write("</div>"); //fin info juego
                                 out.write("<div class='botonera_juego'>");//inicio botonera
-                                out.write("<a href='verInfoJuego?id=" + j.getId() + "'>Ver +</a>");
-                                out.write("<a href='comprarJuego?id=" + j.getId() + "'>Comprar</a>");
+                                out.write("<a class='btn' href='verInfoJuego?id=" + j.getId() + "'>Ver +</a>");
+                                out.write("<a class='btn' href='comprarJuego?id=" + j.getId() + "'>Comprar</a>");
                                 out.write("</div>");//fin botonera
-                                out.write("</div>"); //fin div_juego*/
+                                out.write("</div>"); //fin div_juego
                                 
                                 /*----- con bootstrap -----*/
                 %>
-                                
+                    <%--            
                                 <div class="col-md-4">
                                   <div class="thumbnail">
                                       <img src="<%= servidor+ j.getPortada()%>">
@@ -80,11 +94,12 @@
                                     </div>
                                   </div>
                                 </div>
+                    --%>
                <%                 
                                 
                                 i++;
                             }
-                            out.write("</div>");
+                            //out.write("</div>");
                         }
                         else{
                             out.write("No se encontro ningun juego");
