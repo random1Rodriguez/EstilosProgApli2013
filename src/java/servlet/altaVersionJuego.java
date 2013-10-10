@@ -2,23 +2,15 @@
 package servlet;
 
 import dominio.Version;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.net.URL;
 import java.net.URLConnection;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.mail.Multipart;
-import javax.mail.Session;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -77,7 +69,8 @@ public class altaVersionJuego extends HttpServlet {
                 String archivo = s.getAttribute("usuario") + extension.substring(extension.lastIndexOf("."), extension.length());
                 String user = "root";
                 String pass = "root";//url
-                URL url = new URL("ftp://" + user + ":" + pass + "@localhost/" + archivo + ";type=i");
+                String ruta= "localhost/" + archivo;
+                URL url = new URL("ftp://" + user + ":" + pass + "@" + ruta + ";type=i");
               
                 URLConnection urlc = url.openConnection();
                 OutputStream os = urlc.getOutputStream();
@@ -110,7 +103,7 @@ public class altaVersionJuego extends HttpServlet {
                
                 
                 v.setId_juego(juego);
-                v.setJar(url.getPath());
+                v.setJar(ruta);
                
                 v.setSize(size/1024);
               

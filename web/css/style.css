@@ -76,20 +76,20 @@ body{
     cursor: pointer;
 }
 
-#reg{
+#reg, #altaVer{
     background-color: #000539;
     border-radius: 15px;
     padding: 35px 0px 35px 0px;  
     margin: auto;
 }
 
-#reg #boton{
+#reg #boton, #ver{
     position: relative;
     top: 12px;
     left: 40%;
 }
 
-#requeridos input, #datos_perfil input #ver input {
+#requeridos input, #datos_perfil input, #ver label{
     border-radius: 5px;
     font-size: 18px;
     height: 2em;
@@ -97,7 +97,7 @@ body{
     width: 97%;
 }
 
-#requeridos :focus{
+#requeridos :focus, #ver :focus{
     box-shadow: 0 0 15px 5px #E7EBF7;
     outline: none;
 }
