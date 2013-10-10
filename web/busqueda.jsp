@@ -15,9 +15,21 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>ProgApliPlay Market</title>
+        <link rel="stylesheet" href="css/bootstrap.css">
+        
+        <style>
+            #listaJuegos{
+                width: 75%;
+                margin: auto;
+            }
+            
+            .div_juego{
+                
+            }
+        </style>
     </head>
     <body>
-        <div  class='listaJuegos'>
+        <div  id="listaJuegos">
             <ul>
                 <%  
                     String servidor = "http://progapli2013.comule.com/imagenes/juegos/";
@@ -34,39 +46,49 @@
                     ArrayList juegos = cj.buscar(request.getParameter("busqueda"));
                     
                     if (juegos != null){
-                    if(! juegos.isEmpty()){
-                        int i=0;
-
-                        while(i<juegos.size()){
-                            Juego j = (Juego)juegos.get(i);
-                            out.write("<div>");
-                            out.write("<div id = 'imgJuego'>");
-                            out.write("<img src='" +servidor+ j.getPortada() + "'>");
+                        if(! juegos.isEmpty()){
+                            int i=0;
+                            out.write("<div class='row'>");
+                            while(i<juegos.size()){
+                                Juego j = (Juego)juegos.get(i);
+                                /*out.write("<div class='div_juego'>"); //inicio juego
+                                out.write("<div class='imgJuego'>"); //inicio imagen
+                                out.write("<img src='" +servidor+ j.getPortada() + "'>");
+                                out.write("</div>"); //fin imagen
+                                out.write("<div class='info_juego'>"); //inicio info juego
+                                out.write(j.getNombre());
+                                out.write("</div>"); //fin info juego
+                                out.write("<div class='botonera_juego'>");//inicio botonera
+                                out.write("<a href='verInfoJuego?id=" + j.getId() + "'>Ver +</a>");
+                                out.write("<a href='comprarJuego?id=" + j.getId() + "'>Comprar</a>");
+                                out.write("</div>");//fin botonera
+                                out.write("</div>"); //fin div_juego*/
+                                
+                                /*----- con bootstrap -----*/
+                %>
+                                
+                                <div class="col-md-4">
+                                  <div class="thumbnail">
+                                      <img src="<%= servidor+ j.getPortada()%>">
+                                    <div class="caption">
+                                        <h3><%= j.getNombre()%></h3>
+                                      <p><%=j.getDescripcion()%></p>
+                                      <p>
+                                          <a href="verInfoJuego?id=<%=j.getId()%>" class="btn btn-success">Ver Mas</a> 
+                                          <a href="comprarJuego?id=<%=j.getId()%>" class="btn btn-primary">Comprar</a>
+                                      </p>
+                                    </div>
+                                  </div>
+                                </div>
+               <%                 
+                                
+                                i++;
+                            }
                             out.write("</div>");
-                            out.write("<li>");
-                            out.write(j.getNombre());
-                            //out.write("<ul>");
-                            out.write("</li>");
-                            //out.write("<li>");
-                            /*String desc = j.getDescripcion();
-                            if(desc.length()>200){
-                                out.write(desc.substring(0, 200) + "...");
-                            }else{
-                                out.write(desc);
-                            }*/
-                            //out.write("</li>");
-                            /*out.write("<li>");        
-                            out.write(Double.toString(j.getPrecio()));
-                            out.write("</li>");*/
-                            out.write("<li>");        
-                            out.write("<a href='verInfoJuego?id=" + j.getId() + "'>Ver Info Juego</a>");
-                            out.write("</div>");
-                            i++;
                         }
-                    }
-                    else{
-                        out.write("No se encontro ningun juego");
-                    }
+                        else{
+                            out.write("No se encontro ningun juego");
+                        }
                     }
                 %>
             </ul>
