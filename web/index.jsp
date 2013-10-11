@@ -1,3 +1,4 @@
+<%@page import="dominio.Version"%>
 <%@page import="org.apache.el.lang.FunctionMapperImpl.Function"%>
 <%@page import="dominio.Comentario"%>
 <%@page import="dominio.Juego"%>
@@ -135,6 +136,13 @@
                            out.write("<li>");
                                out.write("Categorias");
                            out.write("</li>");
+                           Version v = controladores.ControladorVersiones.getInstancia().ultimaVerAprobada(ju.getId());
+                           out.write("<li>");
+                            out.write("Ultima version");
+                           out.write("</li>");
+                           out.write("<li>");
+                            out.write(v.getNro_version());
+                           out.write("</li>");
                            ArrayList<Categoria> lstCat = (ArrayList<Categoria>)ju.getCategorias();
                            int i=0;
                            out.write("<div>");
@@ -145,13 +153,14 @@
                                i++;
                            }
                            out.write("</div>");
-
-
-                           if(session.getAttribute("usuario") != null){
-                              /* out.write("<div id=ultiVersion>");
-
-
-                               out.write("</div>");*/
+                           
+                           if(session.getAttribute("usuario") != null && 
+                                   controladores.ControladorCompras.getInstancia().comproJuego(
+                                   controladores.ControladorUsuarios.getInstancia().find(String.valueOf(session.getAttribute("usuario"))).getId(), 
+                                   ju.getId())){
+                            out.write("<li>");
+                                out.write("version para <a href='" + v.getJar() + "'> descargar </a>");
+                            out.write("</li>");
                            }
                        out.write("</ul>");
                     }
