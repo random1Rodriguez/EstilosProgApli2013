@@ -3,11 +3,9 @@ package servlet;
 
 import dominio.Juego;
 import dominio.Version;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -84,29 +82,31 @@ public class altaVersionJuego extends HttpServlet {
                      size = item.getSize();
                    }
                 //creo la conexion ftp
+                extension = extension.substring(extension.lastIndexOf("."), extension.length());
                 HttpSession s = request.getSession(true);
-                String archivo = j.getNombre().trim() + "-" + nroV + extension.substring(extension.lastIndexOf("."), extension.length());
+                String archivo = j.getNombre().trim() + "-" + nroV + extension;
                 String user = "a8680950";
                 String pass = "random123456";//url
                 String ruta= "progapli2013.comule.com/public_html/ejecutables/" + archivo;
-                URL url = new URL("ftp://" + user + ":" + pass + "@" + ruta + ";type=i");
-              
-                URLConnection urlc = url.openConnection();
-                OutputStream os = urlc.getOutputStream();
-                
-                byte bytes[] = new byte[1024];
-                int readCount = 0;
-                
-                
-                //subo el archivo
-                while ((readCount = inp.read(bytes)) > 0) {
-                    os.write(bytes, 0, readCount);
-                }
-                
-                os.flush();
-                os.close();
-                inp.close();
-                
+                String rutaHtml= "http://www.progapli2013.comule.com/ejecutables/" + archivo;
+//                URL url = new URL("ftp://" + user + ":" + pass + "@" + ruta + ";type=i");
+//              
+//                URLConnection urlc = url.openConnection();
+//                OutputStream os = urlc.getOutputStream();
+//                
+//                byte bytes[] = new byte[1024];
+//                int readCount = 0;
+//                
+//                
+//                //subo el archivo
+//                while ((readCount = inp.read(bytes)) > 0) {
+//                    os.write(bytes, 0, readCount);
+//                }
+//                
+//                os.flush();
+//                os.close();
+//                inp.close();
+//                
                
                 Version v = new Version();
                 v.setJuego(j);
@@ -114,10 +114,10 @@ public class altaVersionJuego extends HttpServlet {
                 
                 v.setFecha_alta(new Date());
                 v.setNro_version(nroV);
-               
+                v.setExtension(extension);
                 
                 v.setId_juego(juego);
-                v.setJar(ruta);
+                v.setJar((FileInputStream) inp);
                
                 v.setSize(size/1024);
               

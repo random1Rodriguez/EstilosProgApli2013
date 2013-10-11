@@ -70,7 +70,7 @@
 
 
                 <div  class='listaJuegos'>
-            <ul>
+            
                 <%
                     
                     String ruta = "http://progapli2013.comule.com/imagenes/juegos/";
@@ -134,39 +134,45 @@
                                out.write(String.valueOf(ju.getSize()) + " Kb");
                            out.write("</li>");
                            out.write("<li>");
-                               out.write("Categorias");
-                           out.write("</li>");
-                           Version v = controladores.ControladorVersiones.getInstancia().ultimaVerAprobada(ju.getId());
                            out.write("<li>");
                             out.write("Ultima version");
                            out.write("</li>");
+                           
+                           Version v = controladores.ControladorVersiones.getInstancia().ultimaVerAprobada(ju.getId());
+                           
+                            
+                           
                            out.write("<li>");
-                            out.write(v.getNro_version());
+                           if(session.getAttribute("usuario") != null && 
+                                   controladores.ControladorCompras.getInstancia().comproJuego(
+                                   controladores.ControladorUsuarios.getInstancia().find(String.valueOf(session.getAttribute("usuario"))).getId(), 
+                                   ju.getId())){
+                            out.write("<li>");
+                                out.write("<a href='descargaJuego?id=" + v.getId_juego() + "'>" + v.getNro_version() + "</a>");
+                            out.write("</li>");
+                           } else{
+                           out.write(v.getNro_version());
+                           
                            out.write("</li>");
+                           }
+                           out.write("Categorias");
+                           out.write("</li>");
+                           
+                           
                            ArrayList<Categoria> lstCat = (ArrayList<Categoria>)ju.getCategorias();
                            int i=0;
-                           out.write("<div>");
+                           
                            while(i<lstCat.size()){
                                out.write("<li>");
                                    out.write(lstCat.get(i).getNombre());
                                out.write("</li>");
                                i++;
                            }
-                           out.write("</div>");
-                           
-                           if(session.getAttribute("usuario") != null && 
-                                   controladores.ControladorCompras.getInstancia().comproJuego(
-                                   controladores.ControladorUsuarios.getInstancia().find(String.valueOf(session.getAttribute("usuario"))).getId(), 
-                                   ju.getId())){
-                            out.write("<li>");
-                                out.write("version para <a href='" + v.getJar() + "'> descargar </a>");
-                            out.write("</li>");
-                           }
-                       out.write("</ul>");
+                           out.write("</ul>");
                     }
 
                 %>
-            </ul>
+
 
         </div>
 </div>
