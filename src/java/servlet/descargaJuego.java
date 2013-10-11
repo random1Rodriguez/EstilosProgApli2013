@@ -25,9 +25,12 @@ public class descargaJuego extends HttpServlet {
             if (request.getParameter("id") !=null){
                v =controladores.ControladorVersiones.getInstancia().ultimaVerAprobada(Integer.valueOf(request.getParameter("id")));
             }
-            response.setContentType(".jar");
+            response.setContentType("application/x-zip-compressed");
+            response.setHeader("Content-Disposition", "attachment;filename=\"" + v.getJuego().getNombre() + "-"  + v.getNro_version() + v.getExtension() + "");
             InputStream in = v.getJarIs();
+            
             OutputStream out = response.getOutputStream();
+            
             byte [] buffer = new byte[4096];
             for (;;) {
             int nBytes = in.read(buffer);
