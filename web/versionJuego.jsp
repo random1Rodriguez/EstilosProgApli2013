@@ -9,8 +9,13 @@
         <link rel="stylesheet" href="css/style.css">
         <title>Alta de version</title>
     </head>
+     <head>
+        
+    </head>
     <body>
+        
         <div id="ver">
+            <jsp:include page="plantillas/header.jsp"></jsp:include>
         <form id="altVer" method="post" action="altaVersionJuego" enctype="multipart/form-data">
                 <label class="linea">
                     <input type="text" id="idJuego"  hidden="true" name="idJuego" value="<% out.write(String.valueOf(request.getAttribute("idJuego"))); %>">

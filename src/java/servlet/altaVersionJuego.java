@@ -1,6 +1,7 @@
 
 package servlet;
 
+import baseDatos.ManejadorBD;
 import dominio.Juego;
 import dominio.Version;
 import java.io.FileInputStream;
@@ -39,7 +40,7 @@ public class altaVersionJuego extends HttpServlet {
             throws ServletException, IOException {
          try {
                 
-             
+             ManejadorBD.getInstancia().conectar();
                  // FileItemFactory es una interfaz para crear FileItem
                 FileItemFactory file_factory = new DiskFileItemFactory();
 

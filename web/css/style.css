@@ -18,6 +18,10 @@ body{
     
 }
 
+#menu_des{
+   padding-top: 80px;
+}
+
 #fondotransparente{
    background-color: rgba(0, 0, 0, 0.12);
     width: 87%;
