@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/style2.css">
         
         
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -68,7 +68,7 @@
              SLIDER --%>
 
 
-                <div  class='listaJuegos'>
+                <div  id="contenedorJuegos" >
             <ul>
                 <%
                     
@@ -79,15 +79,15 @@
 
                         while(i<juegos.size()){
                             Juego j = juegos.get(i);
-                            out.write("<div>");
-                            out.write("<div id = 'imgJuego'>");
+                            out.write("<div class='ModuloJuego'><a href='verInfoJuego?id=" + j.getId() + "'>");
+                            out.write("<div class = 'imgJuego'>");
                             out.write("<img class='imgJuego' src='" +ruta + j.getPortada() + "'>");
                             out.write("</div>");
-                            out.write("<li>");
+                            out.write("<li class='nombrejuego'><b>");
                             out.write(j.getNombre());
                             //out.write("<ul>");
-                            out.write("</li>");
-                            out.write("<li>");
+                            out.write("</b></li>");
+                            out.write("<li class='descjuego'>");
                             String desc = j.getDescripcion();
                             if(desc.length()>200){
                                 out.write(desc.substring(0, 200) + "...");
@@ -95,11 +95,10 @@
                                 out.write(desc);
                             }
                             out.write("</li>");
-                            out.write("<li>");        
+                            out.write("<li class='preciojuego'> u$s <b>");        
                             out.write(Double.toString(j.getPrecio()));
-                            out.write("</li>");
-                            out.write("<li>");        
-                            out.write("<a href='verInfoJuego?id=" + j.getId() + "'>Ver Info Juego</a>");
+                            out.write("</b></li>");
+                            out.write("<li></a>");        
                             out.write("</div>");
                             i++;
                         }
@@ -107,34 +106,25 @@
                     if(request.getAttribute("infoJuego")!= null){
 
                        Juego ju = (Juego)request.getAttribute("infoJuego");
-                       out.write("<ul>");
-                           out.write("<li>");
-                               out.write("Nombre del juego");
-                           out.write("</li>");
-                           out.write("<li>");
+                       out.write("<div id='contenedorinputs'><ul>");
+                           
+                           out.write("<li id='infoJnombre'><b> Nombre: </b>");
                                out.write(ju.getNombre());
                            out.write("</li>");
-                           out.write("<li>");
-                               out.write("Descripcion");
-                           out.write("</li>");
-                           out.write("<li>");
+                           
+                           out.write("<li id='infoJdesc'> Descpicion: ");
                                out.write(ju.getDescripcion());
                            out.write("</li>");
-                           out.write("<li>");
-                               out.write("Desarrollador");
-                           out.write("</li>");
-                           out.write("<li>");
+                           
+                           out.write("<li id='infoJdes'> Desarrollador: ");
                                out.write(ju.getDes().getNick());
                            out.write("</li>"); 
-                           out.write("<li>");
-                               out.write("Tamaño");
-                           out.write("</li>");
-                           out.write("<li>");
+                           
+                           out.write("<li id='infoJsize'> Tamaño: ");
                                out.write(String.valueOf(ju.getSize()) + " Kb");
                            out.write("</li>");
-                           out.write("<li>");
-                               out.write("Categorias");
-                           out.write("</li>");
+                           
+                           out.write("</li id='infoJlistcats'> Categorias: ");
                            ArrayList<Categoria> lstCat = (ArrayList<Categoria>)ju.getCategorias();
                            int i=0;
                            out.write("<div>");
@@ -153,14 +143,16 @@
 
                                out.write("</div>");*/
                            }
-                       out.write("</ul>");
+                       out.write("</ul></div>");
                     }
 
                 %>
             </ul>
-
+            
         </div>
+             <div id="imgderecha"></div>
 </div>
+           
         </div>
         
              <jsp:include page="plantillas/footer.jsp"></jsp:include>

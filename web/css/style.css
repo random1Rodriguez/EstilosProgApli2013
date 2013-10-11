@@ -5,10 +5,11 @@ body{
     font-family: Helvetica, Arial;
     font-size: 16px;
     height: 100%;
-    background-image: url(../img/fondo.jpg);
+    background-color: #808080;
+    background-image: url(../img/ladoder2.png);
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background-position: center center; 
+    background-position: 76% top; 
 }
 
 #contenedor{
@@ -18,16 +19,93 @@ body{
     
 }
 
-#fondotransparente{
-   background-color: rgba(0, 0, 0, 0.12);
-    width: 87%;
+/*#imgderecha{
+    float: right;
+width: 100%;
+height: 1046px;
+position: relative;
+background: url(../img/ladoder.png) no-repeat;
+top: -2281px;
+left: 930px;
+    
+*/
+
+/*   INFO JUEGO */
+#verinfoJ{
+    background-color: white;
+}
+
+#infoJnombre{
+    font-size: 150%;
     position: relative;
-    left: 6%;
-    top: 6%;
-    z-index: 0;
-    padding-top: 3%;
-    padding-bottom: 0.2%;
-    border-radius: 10px;
+    left: -38%;
+    top: -59px;
+}
+
+#infoJdesc{
+    font-size: 150%;
+    position: relative;
+    left: -38%;
+    top: -59px;
+}
+
+
+/** JUEGOS **/
+.ModuloJuego{
+   width: 25%;
+    height: 406px;
+    position: relative;
+    top: -82px;
+    border-color: black;
+    border-style: solid;
+    display: inline-table;
+    border-radius: 5px 5px 5px 5px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 2px 1px 1px rgb(0, 0, 0);
+    list-style: none outside none;
+    margin: 10px;
+}
+
+
+
+.ModuloJuego a{
+    color: #000000;
+    text-decoration: none;
+    text-align: justify;
+    
+}
+
+.descjuego{
+    padding: 0 5% 0 5%;
+    text-align: justify;
+    height: 120px;
+}
+
+.preciojuego{
+    position: relative;
+    top: 4%;
+    color: #ea005e;
+    font-size: 181%;
+    text-align: center;
+}
+
+.nombrejuego{
+    color: #39F;
+    text-shadow: 2px #000;
+    font-size: 125%;
+    text-align: center;
+}
+
+#fondotransparente{
+   
+   width: 87%;
+   position: relative;
+   left: 6%;
+   top: 6%;
+   z-index: 0;
+   padding-top: 3%;
+   padding-bottom: 0.2%;
+   border-radius: 10px;
 }
 
 #newjuego{
@@ -76,6 +154,13 @@ border: solid 0.5px;
     text-align: center;
 }
 
+#contenedorJuegos {
+    width: 95%;
+    margin: auto;
+}
+
+
+
 .listaJuegos div {
     width: 300px;
     height: 200px;
@@ -83,7 +168,7 @@ border: solid 0.5px;
     border-style: solid;
     display: inline-table;
     border-radius: 5px;
-    /*background-color: rgba(100,100,255,0.85);*/
+    background-color: rgba(100,100,255,0.85);
     background-color: #ffffff;
     box-shadow: 2px 1px 1px #000;
     list-style: none;
@@ -232,7 +317,7 @@ background-image: -webkit-gradient(
     float: left;
     color: white;
     font-family: tahoma;
-    font-size: 22px;
+    font-size: 120%;
     padding-left: 8%;
     padding-top: 0.6%;
     text-rendering: optimizelegibility;
@@ -255,9 +340,19 @@ background-image: -webkit-gradient(
 
 /**************************** Imagen Juegos Principal**************************************/
 .imgJuego{
-    width: 300px;
-    
-    height: 190px;
+    width: 95%;
+    height: 200px;
+    border-radius: 15px;
+    margin: 1% auto;
+    /*border: 3px solid rgb(0, 0, 0);*/
+}
+
+.imgJuego img{
+    width: 100%;
+    border-radius: 15px 15px 15px 15px;
+    height: 100%;
+    margin: 0;
+   
 }
 
 #login{
