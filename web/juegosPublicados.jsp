@@ -20,6 +20,9 @@
                
                  ArrayList juegos = (ArrayList)request.getAttribute("juegos");
                 int i = 0;
+                %>
+                <div id="juegosPublicados">
+                <%
                 out.write("<ul>");
                 while (i < juegos.size()){
                     Juego j = (Juego)juegos.get(i);
@@ -32,6 +35,7 @@
             
             
         %>
+                </div>
         
         
     </body>
