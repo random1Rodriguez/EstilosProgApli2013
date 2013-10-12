@@ -151,17 +151,18 @@
                                 out.write("<a href='descargaJuego?id=" + v.getId_juego() + "'>" + v.getNro_version() + "</a>");
                             out.write("</li>");
                            } else{
+                           out.write("<li>");
                            out.write(v.getNro_version());
                            
                            out.write("</li>");
                            }
-                           out.write("Categorias");
+                           
                            out.write("</li>");
                            
                            
                            ArrayList<Categoria> lstCat = (ArrayList<Categoria>)ju.getCategorias();
                            int i=0;
-                           
+                           out.write("Categorias");
                            while(i<lstCat.size()){
                                out.write("<li>");
                                    out.write(lstCat.get(i).getNombre());
@@ -169,11 +170,44 @@
                                i++;
                            }
                            out.write("</ul>");
+                           
+                           ArrayList<Comentario> lstCom = (ArrayList<Comentario>)ju.getComentarios();
+                           i=0;
+                           out.write("Comentarios");
+                           out.write("<ul>");
+                           while(i<lstCom.size()){
+                                Comentario com = lstCom.get(i);
+                               
+                               if(com.getId_padre() == 0){
+                               out.write("<li>");
+                                    out.write("<a href = desplegarComentarios?idCP=" + com.getId() +  ">" + com.getTexto() + "</a>");
+                                    
+                                    out.write("</li>");
+                               }
+                               
+                           
+                            i++;
+                           
+                    }
+                    out.write("</ul>");
                     }
 
+                    if(request.getAttribute("comentariosHijo")!= null){
+                                         ArrayList<Comentario> lstComH = (ArrayList<Comentario>) request.getAttribute("comentariosHijo");
+                                            int f=0;
+                                            while(f<lstComH.size()){
+                                                 Comentario comH = lstComH.get(f);
+                                                out.write("<li>");
+                                                     out.write("<a href = desplegarComentarios?idCP=" + comH.getId() +  ">" + comH.getTexto() + "</a>");
+                                                out.write("</li>");
+                                                f++;
+                                            }     
+                               
+                                    }
+                    
                 %>
 
-
+         
         </div>
 </div>
         </div>
