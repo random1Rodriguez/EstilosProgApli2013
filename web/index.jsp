@@ -44,9 +44,7 @@ Leer más: http://jdwebdesign.jimdo.com/2013/05/24/aprende-a-crear-un-sencillo-s
             </div>
                             
             <%-- SLIDER --%>
-
-
-                <div  id="contenedorJuegos" >
+<div  id="contenedorJuegos" >
             <ul>
                 <%
                     
@@ -81,6 +79,7 @@ Leer más: http://jdwebdesign.jimdo.com/2013/05/24/aprende-a-crear-un-sencillo-s
                             i++;
                         }
                     }
+                    /*
                     if(request.getAttribute("infoJuego")!= null){
 
                        Juego ju = (Juego)request.getAttribute("infoJuego");
@@ -119,16 +118,19 @@ Leer más: http://jdwebdesign.jimdo.com/2013/05/24/aprende-a-crear-un-sencillo-s
                               /* out.write("<div id=ultiVersion>");
 
 
-                               out.write("</div>");*/
+                               out.write("</div>");
                            }
-                       out.write("</ul></div>");
+                           
+                       out.write("</ul></div>"); 
                     }
-
+*/
                 %>
             </ul>
             
-        </div>
-             <div id="imgderecha"></div>
+        </div> 
+
+    <div id="imgderecha"></div>
+    
 </div>
            
         </div>
