@@ -9,8 +9,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/style.css">
+        <title>Perfil de usuario</title>
     </head>
     <body>
+       <jsp:include page="plantillas/header.jsp"></jsp:include>
         <%  
             String server = "http://progapli2013.comule.com/";
             String imagenes_perfil = server + "imagenes/perfiles/";
@@ -27,7 +29,18 @@
                 tipo = "Desarrollador";
             }
         %>
-        
+        <div id="menu_des">
+            <%
+            if(!u.getTipo().equals("c"))
+            {
+                %>
+                <span>
+                        <a href="juegosPublicados">Agregar Version de Juego</a>
+                </span>
+                <%
+            }
+                %>
+        </div>
         <div id="imagen">
             <%
             if (u.getImg().equals("")){
@@ -54,9 +67,10 @@
         <%
             //si el usuario logueado 
             if(request.getAttribute("versiones") != null && u.getTipo().equals("d")){
-                ArrayList<Juego> juegos = (ArrayList<Juego>)request.getAttribute("juegos");
+                //ArrayList<Juego> juegos = (ArrayList<Juego>)request.getAttribute("juegos");
 
                 int i = 0;
+              /* 
                 out.write("<div id='desarrollos'>");
                 out.write("<ul>");
 
@@ -68,7 +82,7 @@
                     out.write("</li>");
                     i++;
                 }
-
+*/
 
                 ArrayList versiones = (ArrayList)request.getAttribute("versiones");
                 i = 0;

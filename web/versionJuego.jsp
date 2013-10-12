@@ -9,13 +9,16 @@
         <link rel="stylesheet" href="css/style.css">
         <title>Alta de version</title>
     </head>
+     <head>
+        
+    </head>
     <body>
+        
+        <div id="ver">
+            <jsp:include page="plantillas/header.jsp"></jsp:include>
         <form id="altVer" method="post" action="altaVersionJuego" enctype="multipart/form-data">
-            <div>
-              
                 <label class="linea">
-                    <input type="text" id="idJuego" hidden="true" name="idJuego" value="<% out.write(String.valueOf(request.getAttribute("idJuego"))); %>">
-                    
+                    <input type="text" id="idJuego"  hidden="true" name="idJuego" value="<% out.write(String.valueOf(request.getAttribute("idJuego"))); %>">
                 </label>            
                 <label class="linea">
                     <input type="text" id="nroVersion" name="nroVersion" required autofocus placeholder="Numero de version">
@@ -23,12 +26,13 @@
                 </label>
 
                 <label class="linea">
-                    <input type="file" id="archivoJuego" name="subirJuego" required>
-                    
-                </label>
+                    <input type="file" id="archivoJuego" name="subirJuego" required accept=".rar , .zip, .jar">
 
-            </div>
-            <input id="boton" type="submit" value="Confirmar">
+                </label>
+                <label>    
+                    <input id="boton" type="submit" value="Confirmar">
+                </label>
         </form>
+    </div>
     </body>
 </html>
