@@ -19,6 +19,10 @@ body{
     
 }
 
+#selectcategorias{
+    
+}
+
 /*#imgderecha{
     float: right;
 width: 100%;
@@ -109,7 +113,7 @@ left: 930px;
    width: 87%;
    position: relative;
    left: 6%;
-   top: 15%;
+   top: 0;
    z-index: 0;
    padding-top: 3%;
    padding-bottom: 0.2%;
@@ -138,7 +142,7 @@ left: 930px;
     position: relative;
 float: right;
 top: -305px;
-left: -312px;
+left: -524px;
 background: #fff;
 padding: 21px;
 border-radius: 0px 20px 0 20px;
@@ -146,8 +150,8 @@ border: solid 0.5px;
 }
 
 #footer{
-    position: absolute;
-    bottom: auto;
+    position: relative;
+    bottom: 0;
     background-image: url(../img/imgfooter.png);
     height: 301px;
     margin-top: -150px;
@@ -165,6 +169,8 @@ border: solid 0.5px;
 #contenedorJuegos {
     width: 95%;
     margin: auto;
+    position: relative;
+top: 51px;
 }
 
 
@@ -298,7 +304,19 @@ background-image: -webkit-gradient(
 /********************  Menu Superior HEADER  **********************/
 
 #encabezado{
-    background: none repeat scroll 0% 0% rgb(255, 255, 255);
+    background-image: linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
+background-image: -o-linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
+background-image: -moz-linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
+background-image: -webkit-linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
+background-image: -ms-linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
+
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0.15, rgb(41,41,41)),
+	color-stop(0.58, rgb(122,122,122))
+);
     height: 48px;
     position: fixed;
     top: 0px;
@@ -331,12 +349,24 @@ background-image: -webkit-gradient(
     text-rendering: optimizelegibility;
     width: 18%;
     height: 39px;
-    background: activecaption;
+    background-image: linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
+background-image: -o-linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
+background-image: -moz-linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
+background-image: -webkit-linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
+background-image: -ms-linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
+
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0.15, rgb(41,41,41)),
+	color-stop(0.58, rgb(122,122,122))
+);
 }
 
 #menu{
     font-family: "Roboto Slab", serif;
-    color: rgb(115, 115, 115);
+    color: white;
     text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     padding-top: 1%;
     padding-left: 5px;
@@ -493,4 +523,82 @@ background-image: -webkit-gradient(
     max-width: 20%;
     min-width: 10%;
     height: auto;
+}
+
+#desc{
+    width: 20%;
+    
+}
+
+/* SLIDER */
+
+#sliderContainer{
+ width: 1115px;
+height: 400px;
+position: relative;
+top: -9%;
+margin: 0 auto;
+left: -102px;
+}
+.slidesContainer{
+	border-top: 6px solid green;
+}
+#slider {
+    width: 900px;
+    height: 380px;
+    background: #FFF;
+    border: 5px solid #FFF;
+    overflow: hidden;
+    position: relative;
+    margin: auto;
+    top: -30%;
+}
+#slider .slide{
+    width: 900px;
+    height: 380px;
+    float: left;
+}
+.slide p{
+	color: #000;
+	position: absolute;
+	left: 0px;
+	bottom: 20px;
+	padding: 12px;
+	background: rgba(255, 255, 255, 0.8);
+	border-left: 5px solid green;
+}
+.prev, .next{
+    display: block;
+    height: 56px;
+    width: 56px;
+    position: absolute;
+    top: 147px;
+}
+.prev{
+    background: url('http://jdwebfiles.webcindario.com/Easy%20slider/images/prev.png') no-repeat;
+    background-position: 0 0;
+    left: 0;
+    position: relative;
+top: 42%;
+z-index: 1;
+left: 7%;
+}
+.prev:hover{
+    background-position: 0 1px;
+}
+.next{
+/*    background: url('http://jdwebfiles.webcindario.com/Easy%20slider/images/next.png') no-repeat;
+    background-position: 0 0;
+    right: 0;*/
+
+background: url('http://jdwebfiles.webcindario.com/Easy%20slider/images/next.png') no-repeat;
+background-position: 0 0;
+right: 0;
+position: relative;
+top: 57%;
+left: 89%;
+z-index: 1;
+}
+.next:hover{
+    background-position: 0 1px;
 }

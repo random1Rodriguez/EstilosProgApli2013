@@ -41,7 +41,7 @@
 
                        <%--       Descripcion Juego          --%>
                        <label class="linea">
-                        <input id="desc" name="desc" required autofocus placeholder="Descripcion">
+                           <textarea id="desc" name="desc" required autofocus placeholder="Descripcion"></textarea>
                        </label>
                        
                        <%--       Precio Juego          --%>
@@ -60,9 +60,10 @@
                        </label>--%>
                        
                         <nav>
-                            <h3 id="seleccategorias">Seleccione las categorias:</h3>
+                            
                             <ul id="categoriasAltaJuego">
                                <%
+                         out.println("<span><b> Categorias </b></span><br><br>");
                                 ArrayList categorias = cc.listarCategorias();
                                 if (categorias != null){
                                 int i = 0;

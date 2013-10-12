@@ -139,7 +139,7 @@ border: solid 0.5px;
 
 #footer{
     position: absolute;
-    bottom: auto;
+    bottom: 0;
     background-image: url(../img/imgfooter.png);
     height: 301px;
     margin-top: -150px;
