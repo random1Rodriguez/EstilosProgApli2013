@@ -202,15 +202,14 @@
                                                 out.write("</li>");
                                                 f++;
                                             }     
-                               
-                                    }
+                                        }
                     
                 %>
 
          
         </div>
+    </div>
 </div>
-        </div>
         
              <jsp:include page="plantillas/footer.jsp"></jsp:include>
     </body>
