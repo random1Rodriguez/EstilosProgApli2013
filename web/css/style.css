@@ -11,6 +11,10 @@ body{
     background-position: center center; 
 }
 
+#juegosPublicados{
+    padding-top: 70px;
+}
+
 #contenedor{
     height:100%;
     clear:both;
