@@ -104,11 +104,14 @@
             }
         %>
         <div id="compras">
-            <div class="titulo">
-                <span>Juegos Comprados</span>
-            </div>
+            
             <% 
             if (request.getAttribute("juegos_comprados") != null && u.getTipo().equals("c")) {
+                %>
+                out.write(<div class="titulo">)
+                <span>Juegos Comprados</span>
+                </div>
+                <%
                 ArrayList <Juego>juegos = (ArrayList)request.getAttribute("juegos_comprados");
                 int i = 0;
                 out.write("<ul>");

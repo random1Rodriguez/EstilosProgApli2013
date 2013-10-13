@@ -19,6 +19,8 @@
         <div id="contenedor">
             <jsp:include page="plantillas/header.jsp"></jsp:include>
             <div id="fondotransparente">
+            
+                    
             <%-- SLIDER 
             <section id="slideshow">
 	
@@ -71,6 +73,7 @@
 
                 <div  class='listaJuegos'>
             
+                    
                 <%
                     
                     String ruta = "http://progapli2013.comule.com/imagenes/juegos/";
@@ -139,8 +142,6 @@
                            out.write("</li>");
                            
                            Version v = controladores.ControladorVersiones.getInstancia().ultimaVerAprobada(ju.getId());
-                           
-                            
                            
                            out.write("<li>");
                            if(session.getAttribute("usuario") != null && 

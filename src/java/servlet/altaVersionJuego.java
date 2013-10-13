@@ -7,6 +7,7 @@ import dominio.Version;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -49,7 +50,6 @@ public class altaVersionJuego extends HttpServlet {
                 /*sacando los FileItem del ServletFileUpload en una lista */
                 List items = servlet_up.parseRequest(request);
 
-              
                 InputStream inp = null;
                   
                     /*FileItem representa un archivo en memoria que puede ser pasado al disco duro*/
@@ -75,6 +75,9 @@ public class altaVersionJuego extends HttpServlet {
                 nroV = item.getString();
                 
                 /*item.isFormField() false=input file; true=text field*/
+                int i=0;
+                
+                        
                 item = (FileItem)items.get(2);
                 if (! item.isFormField()){
                         /*cual sera la ruta al archivo en el servidor*/
@@ -123,13 +126,24 @@ public class altaVersionJuego extends HttpServlet {
                 v.setSize(size/1024);
               
                 controladores.ControladorVersiones.getInstancia().altaversion(v);
+                String ok = "La version del juego se dio de alta " + 
+                    "con exito";
+                request.setAttribute("ok", ok);
+                request.getRequestDispatcher("versionJuego.jsp").forward(request, response);
                 
        } catch (FileUploadException ex) {
-            Logger.getLogger(altaVersionJuego.class.getName()).log(Level.SEVERE, null, ex);
-        
-         }catch (Exception ex) {
-            Logger.getLogger(altaVersionJuego.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            String error = "La version del juego no se pudo dar de alta, " + 
+                    "ocurrio un error al subir el juego";
+            request.setAttribute("error", error);
+            request.getRequestDispatcher("versionJuego.jsp").forward(request, response);
+                 
+           
+         }catch (SQLException ex) {
+            String error = "La version del juego no se pudo dar de alta";
+            request.setAttribute("error", error);
+            request.getRequestDispatcher("versionJuego.jsp").forward(request, response);
+            
+         }
        
     }
 

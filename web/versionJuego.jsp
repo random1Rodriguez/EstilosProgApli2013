@@ -26,11 +26,13 @@
                 </label>
 
                 <label class="linea">
-                    <input type="file" id="archivoJuego" name="subirJuego" required accept=".rar , .zip, .jar">
+                    <input type="file" id="archivoJuego" name="subirJuego" required accept=".jar">
 
                 </label>
                 <label>    
                     <input id="boton" type="submit" value="Confirmar">
+                    <span id="error" class="error" >${error}</span>
+                    <span id="ok" class="error" >${ok}</span>
                 </label>
         </form>
     </div>

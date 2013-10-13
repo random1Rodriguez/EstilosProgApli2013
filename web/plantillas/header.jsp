@@ -86,7 +86,6 @@
                     </div>
                 </div>
             </div>
-                    
             <div id="popup_reg">
             <div id="cerrar"><img src="img/cruz.png"></div>
                 <form id="reg" method="post" action="registro">
