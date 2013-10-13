@@ -45,7 +45,7 @@ ManejadorBD mbd = ManejadorBD.getInstancia();
             juego = controladores.Controladorjuegos.getInstancia().verInfoJuego(valor);
             
             request.setAttribute("infoJuego", juego);
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            request.getRequestDispatcher("VerInfoJuego.jsp").forward(request, response);
             
         } catch (SQLException ex) {
             Logger.getLogger(listarCategorias.class.getName()).log(Level.SEVERE, null, ex);

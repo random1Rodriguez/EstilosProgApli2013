@@ -45,10 +45,8 @@
             </div>
                             
             <%-- SLIDER --%>
-
-
-                <div  id="contenedorJuegos" >
-            
+<div  id="contenedorJuegos" >
+            <ul>
                 <%
                     
                     String ruta = "http://progapli2013.comule.com/imagenes/juegos/";
@@ -82,6 +80,7 @@
                             i++;
                         }
                     }
+                    /*
                     if(request.getAttribute("infoJuego")!= null){
 
                        Juego ju = (Juego)request.getAttribute("infoJuego");
@@ -169,12 +168,3 @@
                                             }     
                                         }
                     
-                %>
-
-            
-        </div>
-    </div>
-</div>
-             <jsp:include page="plantillas/footer.jsp"></jsp:include>
-    </body>
-</html>
