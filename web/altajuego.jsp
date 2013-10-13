@@ -32,7 +32,7 @@
                     %>
                     <div id="contenedorinputs">
                         <h2> Crear Nuevo Juego</h2>
-                        <form id="crearjuego" method="post" action="AltaJuego">
+                        <form enctype="multipart/form-data" id="crearjuego" method="post" action="UpImgJuego">
                      <div>
                        <%--       Nombre Juego          --%>  
                        <label class="linea">
@@ -41,7 +41,7 @@
 
                        <%--       Descripcion Juego          --%>
                        <label class="linea">
-                        <input id="desc" name="desc" required autofocus placeholder="Descripcion">
+                           <textarea id="desc" name="desc" required autofocus placeholder="Descripcion"></textarea>
                        </label>
                        
                        <%--       Precio Juego          --%>
@@ -49,20 +49,25 @@
                         <input id="precio" name="precio" required autofocus placeholder="Precio">
                        </label>
                        
-                       <%--       Numero de Version del Juego          --%>
+                       <%--       Numero de Version del Juego          
                        <label class="linea">
                         <input id="version" name="version" required autofocus placeholder="Numero de Version">
                        </label>
+                       --%>
                        
-                       <%--       Archivo de Version del Juego          
-                       <label class="linea">
-                           <input type="File" id="versionfile" name="VersionFile" required autofocus placeholder="Archivo de Version">
-                       </label>--%>
+                       <%--       IMG SUBIR --%>
+                       
+                       <label class="imgjuego">
+                            <b>Imagen: </b><br>
+                            <input type="file" id="imgjuego" name="subirImgJuego" required accept=".png , .jpg, .gif">
+                        </label>
+                       
                        
                         <nav>
-                            <h3 id="seleccategorias">Seleccione las categorias:</h3>
+                            
                             <ul id="categoriasAltaJuego">
                                <%
+                         out.println("<span><b> Categorias </b></span><br><br>");
                                 ArrayList categorias = cc.listarCategorias();
                                 if (categorias != null){
                                 int i = 0;
@@ -76,8 +81,9 @@
                         %>
                             </ul>
                         </nav>
+                
                      </div>    
-                            <input id="newjuego" type="submit" value="Crear Juego">
+                            <input id="newjuego" type="submit" value="Siguiente >> ">
                     </form>
                             </div>
                             </div>

@@ -9,7 +9,7 @@
     <head>
         <script src="js/jquery-2.0.3.js"></script>
         <script src="js/aplicacion.js"></script>
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/style2.css">
     </head>
     
     <body>
