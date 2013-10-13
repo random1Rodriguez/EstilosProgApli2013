@@ -1,6 +1,13 @@
 $(document).ready(function(){
     var msj_validacion;
     var div_datos = $("#datos_perfil");
+    $("#sitio").hide();
+    var sitio_visible = false;
+    
+    var nick_valido = false;
+    var email_valido = false;
+    var pass_valida = false;
+    
     
     $("#slide_cats").hide(); //se esconde el menu de las categorias
     $("#slide_login").hide(); // se esconde el cuadro de login
@@ -24,11 +31,24 @@ $(document).ready(function(){
                     //mensaje.css("color","green");
                     //mensaje.append("Disponible");
                     msj_validacion.append("<img src='img/tick24.png'>");
+                    if (msj_validacion.is("#validacion_nick")){
+                        nick_valido = true;
+                    }
+                    else{
+                        email_valido = true;
+                    }
+                        
                 }
                 else{
                     //mensaje.css("color","red");
                     //mensaje.append("Esta en Uso");
                     msj_validacion.append("<img src='img/cruz24.png'>");
+                    if (msj_validacion.is("#validacion_nick")){
+                        nick_valido = false;
+                    }
+                    else{
+                        email_valido = false;
+                    }
                 }
                 console.log(data);
             },
@@ -62,23 +82,20 @@ $(document).ready(function(){
     
     //manejo del evento de seleccion en el combobox del tipo de perfil
     $("#tipo").change(function(){
-        var visible = false;
+        console.log("change");
+        
         var opcion = $(this).find("option:selected").val();
         console.log(opcion);
+       
         
-        var input_sitio = "<label class='linea' id='sitio'>"+
-                          "<input type='url' name='sitio' value='' placeholder='Sitio Web'>"+
-                          "</label>";
-                   
-        console.log("cambio");
-        
-        if (! visible && opcion === "d"){
-            $(this).parent().after(input_sitio);
-            visible = true;
+        if (sitio_visible === false && opcion === "d"){
+            console.log($(this));
+            $("#sitio").show();
+            sitio_visible = true;
         }
         else{
-            $("#sitio").remove();
-            visible = false;
+            $("#sitio").hide();
+            sitio_visible = false;
         }
     });
     
@@ -87,49 +104,44 @@ $(document).ready(function(){
         
         msj_validacion = $("#validacion_pass");
         msj_validacion.empty();
-        
-        var nick = $("#nick").val();
-        var email = $("#email").val();
         var pass = $("#pass").val();
         var conf_pass = $(this).val();
-        
-        console.log(nick+","+email+","+pass+","+conf_pass);
        
         if (pass !== ""){
-            console.log("pass != vacio");
+            //console.log("pass != vacio");
             if (conf_pass !== pass){
-                console.log("pass != conf_pass");
+                //console.log("pass != conf_pass");
                msj_validacion.append("<img src='img/cruz24.png'>");
-               div_datos.hide();
+               pass_valida = false;
             }
             else{
-                console.log("pass == conf_pass");
+                //console.log("pass == conf_pass");
                 msj_validacion.append("<img src='img/tick24.png'>");
-                if (nick !== "" && email !== ""){
-                    console.log("nick y email != vacio");
-                    div_datos.show();
-                }
+                pass_valida = true;
             }
         }
-    });   
-    
-    /*------------------ mostrar popup registro ------------------------*/
-    $("#registro").click(function(){
-       $("#popup_reg").fadeIn(300);
     });
     
-    /*------------------ ocultar popup registro ------------------------*/
-    $("#cerrar").click(function(){
-        $("#popup_reg").fadeOut(300);
+    $("#contenedor-registro input").keyup(function(){
+       //console.log("escribio");
+       
+       if (nick_valido && email_valido && pass_valida){
+           console.log("muestra div-datos");
+           div_datos.show();
+       }
+       else{
+           console.log("oculta div-datos");
+           div_datos.hide();
+       }
     });
     
     $("#menu .clickleable").click(function(e){
-        $("#slide_cats").slideToggle()(500);
+        $("#slide_cats").slideToggle(500);
         //e.stopPropagation();
     });
     
     $("#login .clickleable").click(function(e){
-        $("#slide_login").slideToggle()(500);
+        $("#slide_login").slideToggle(500);
         //e.stopPropagation();
     });
     
