@@ -12,7 +12,7 @@
         <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js' type='text/javascript'> </script> 
         <script src="http://jdwebfiles.webcindario.com/Easy%20slider/easy-slider.js"></script> 
 
-Leer más: http://jdwebdesign.jimdo.com/2013/05/24/aprende-a-crear-un-sencillo-slider-2/#ixzz2hTHqCoze
+
         
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         

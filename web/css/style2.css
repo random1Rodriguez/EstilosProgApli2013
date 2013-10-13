@@ -122,9 +122,10 @@ left: 930px;
 
 #newjuego{
     position: relative;
-    left: 49%;
-    top: 10%;
+    left: 91%;
+    top: 19px;
     margin-top: 47px;
+    border-radius: 30px 0 42px 10px;
     background-color: white;
     color: #00000;
     height: 52px;
@@ -138,10 +139,16 @@ left: 930px;
     left: 650px;
 }
 
+.imgjuego{
+    position: relative;
+    top: -78px;
+    right: -656px;
+}
+
 #categoriasAltaJuego{
     position: relative;
 float: right;
-top: -305px;
+top: -247px;
 left: -524px;
 background: #fff;
 padding: 21px;
@@ -305,18 +312,18 @@ background-image: -webkit-gradient(
 
 #encabezado{
     background-image: linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
-background-image: -o-linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
-background-image: -moz-linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
-background-image: -webkit-linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
-background-image: -ms-linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
+    background-image: -o-linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
+    background-image: -moz-linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
+    background-image: -webkit-linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
+    background-image: -ms-linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
 
-background-image: -webkit-gradient(
-	linear,
-	left bottom,
-	left top,
-	color-stop(0.15, rgb(41,41,41)),
-	color-stop(0.58, rgb(122,122,122))
-);
+    background-image: -webkit-gradient(
+            linear,
+            left bottom,
+            left top,
+            color-stop(0.15, rgb(41,41,41)),
+            color-stop(0.58, rgb(122,122,122))
+    );
     height: 48px;
     position: fixed;
     top: 0px;
@@ -374,6 +381,11 @@ background-image: -webkit-gradient(
     width: 82%;
     position: relative;
     left: 1.5%;
+}
+
+#menu_categorias ul li{
+    color: #454545;
+    display: block;
 }
 
 /**************************** Imagen Juegos Principal**************************************/
@@ -437,14 +449,57 @@ background-image: -webkit-gradient(
 /****************************** Mostrar/Ocultar Cats y login **************************/
 
 .slidingDiv {
-    height: 300px;
-    background: none repeat scroll 0% 0% #FFF;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    border-bottom: 5px solid #39F;
+    height: 58%;
+    background: none repeat scroll 0% 0% rgba(0,0,0,0.7);
+    box-shadow: 6px 7px 10px rgba(0, 0, 0, 0.1);
+    border-bottom: 2px solid #39F;
     width: 16%;
     position: fixed;
     left: 26%;
-    top: 51px;
+    top: 40px;
+    
+}
+
+.slidingDiv a {
+    color: white;
+    display: block;
+    font-size: 109%;
+    text-decoration: none;
+   
+}
+
+.slidingDiv li{
+    padding: 1% 6%;
+}
+
+.slidingDiv ul li :hover{
+    padding: 1% 5%;
+    color: #ea005e;
+    font-weight: bold;
+    display: block;
+    text-decoration: none;
+    display: block;
+    background-color: #E7EBF7;
+}
+
+.clickleable{
+    font-family: "Tahoma", serif;
+    color: #FFFFFF;
+    font-weight: bold;
+    display: block;
+    text-shadow: 1px 0px black;
+}
+
+.slidingDiv ul{
+    list-style: none;
+    padding: 0px;
+}
+
+.slidingDiv ul :hover{
+    list-style: none;
+    padding: 0px;
+    border-top: #000;
+    border-bottom: #000;
 }
 
 /******************************* BUSCADOR ***********************************/

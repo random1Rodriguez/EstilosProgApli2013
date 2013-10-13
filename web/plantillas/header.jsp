@@ -18,7 +18,7 @@
                 <div id="logo"></div>
                 <div id="titulopagina">ProApliPlay Web Store</div>
                 <div id="menu">
-                    <span class="clickleable">Categorias</span>
+                    <span class="clickleable">CATEGORIAS</span>
                     
                 </div>
                 
