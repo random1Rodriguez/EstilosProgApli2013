@@ -42,17 +42,37 @@ left: 930px;
 #infoJnombre{
     font-size: 150%;
     position: relative;
-    left: -38%;
-    top: -59px;
+    left: 30%;
+    top: -5px;
+    color: #39F;
+    margin: 1% auto;
 }
 
 #infoJdesc{
-    font-size: 150%;
+    font-size: 100%;
     position: relative;
-    left: -38%;
-    top: -59px;
+    left: 0%;
+    top: -5px;
+    color: darkslateblue;
 }
 
+#DesarrolladorJuego {
+    font-size: 100%;
+    position: relative;
+    left: -5%;
+    top: 0px;
+    color: deeppink;
+}
+
+#DesarrolladorJuego li{
+    list-style: none;
+}
+
+#imagenJuego {
+    width: 25%;
+    height: 150px;
+    margin: 1% auto;
+}
 
 /** JUEGOS **/
 .ModuloJuego{
@@ -170,7 +190,7 @@ border: solid 0.5px;
     width: 95%;
     margin: auto;
     position: relative;
-top: 51px;
+    top: 5px;
 }
 
 
@@ -602,3 +622,4 @@ z-index: 1;
 .next:hover{
     background-position: 0 1px;
 }
+
