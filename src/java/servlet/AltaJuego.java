@@ -5,10 +5,13 @@ import controladores.Controladorjuegos;
 import dominio.Categoria;
 import dominio.Desarrollador;
 import dominio.Juego;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,6 +20,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpSession;
+import org.apache.tomcat.util.http.fileupload.FileItem;
+import org.apache.tomcat.util.http.fileupload.FileItemFactory;
+import org.apache.tomcat.util.http.fileupload.FileUploadException;
+import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
+import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 /**
  *
@@ -54,11 +62,16 @@ public class AltaJuego extends HttpServlet {
         String version = request.getParameter("version");
         String cats[] = request.getParameterValues("cats");
         
+        
+        
+        
         if (cats != null){
             System.out.println("tam"+cats.length);
         }
+        Juego j = new Juego();
         
         
+                
         /* Obtener ID Desarrollador */
         HttpSession s = request.getSession(true);
         if(s.getAttribute("usuario") != null){
@@ -83,12 +96,13 @@ public class AltaJuego extends HttpServlet {
         }
         
         System.out.println(nombre + desc + precio + version+"i: "+i);
-        Juego j = new Juego();
+        
         j.setNombre(nombre);
         j.setDescripcion(desc);
         j.setPrecio(precio);
         j.setCategorias(categorias);
         j.setDes(des);
+  
 
         try {        
             cj.altaJuego(j, categorias);
