@@ -32,7 +32,7 @@
                     %>
                     <div id="contenedorinputs">
                         <h2> Crear Nuevo Juego</h2>
-                        <form id="crearjuego" method="post" action="AltaJuego">
+                        <form id="crearjuego" method="post" action="UpImgJuego" enctype="multipart/form-data">
                      <div>
                        <%--       Nombre Juego          --%>  
                        <label class="linea">
@@ -49,15 +49,25 @@
                         <input id="precio" name="precio" required autofocus placeholder="Precio">
                        </label>
                        
-                       <%--       Numero de Version del Juego          --%>
+                       
+                       
+                       <%--       IMG SUBIR --%>
+                       
+                       <label class="imgjuego">
+                            <b>Imagen: </b><br>
+                            <input type="file" id="imgjuego" name="subirImgJuego" required accept=".png , .jpg, .gif">
+                        </label>
+                       
+                       
+                       <label class="imgjuego">
+                            <b><br><br>Version: </b><br>
+                            <input type="file" id="versionjuego" name="subirVersionJuego" required accept=".jar">
+                        </label>
+                       
+                       <%--       Numero de Version del Juego   --%>       
                        <label class="linea">
                         <input id="version" name="version" required autofocus placeholder="Numero de Version">
                        </label>
-                       
-                       <%--       Archivo de Version del Juego          
-                       <label class="linea">
-                           <input type="File" id="versionfile" name="VersionFile" required autofocus placeholder="Archivo de Version">
-                       </label>--%>
                        
                         <nav>
                             
@@ -77,8 +87,9 @@
                         %>
                             </ul>
                         </nav>
+                
                      </div>    
-                            <input id="newjuego" type="submit" value="Crear Juego">
+                            <input id="newjuego" type="submit" value="   Finalizar    ">
                     </form>
                             </div>
                             </div>

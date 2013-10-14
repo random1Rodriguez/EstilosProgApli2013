@@ -4,11 +4,13 @@
  */
 package servlet;
 
+
 import baseDatos.ManejadorBD;
-import dominio.Juego;
+import dominio.Comentario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -17,15 +19,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "verInfoJuego", urlPatterns = {"/verInfoJuego"})
-public class verInfoJuego extends HttpServlet {
-ManejadorBD mbd = ManejadorBD.getInstancia();
 
-    @Override
+@WebServlet(name = "desplegarComentarios", urlPatterns = {"/desplegarComentarios"})
+public class desplegarComentarios extends HttpServlet {
+    
+ManejadorBD mbd = ManejadorBD.getInstancia();
+  @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    try {
-            PrintWriter out = response.getWriter();
+       PrintWriter out = response.getWriter();
               try {
             mbd.setHost("localhost");
             mbd.setPuerto("3306");
@@ -38,30 +40,24 @@ ManejadorBD mbd = ManejadorBD.getInstancia();
         } catch (SQLException ex) {
             Logger.getLogger(Perfil.class.getName()).log(Level.SEVERE, null, ex);
         }
-            Juego juego;
+            ArrayList<Comentario> comentariosH;
       
-            String cad=request.getParameter("id");
-            int valor=Integer.parseInt(cad);
-            juego = controladores.Controladorjuegos.getInstancia().verInfoJuego(valor);
+            int idComentarioPadre = Integer.valueOf(request.getParameter("idCP"));
+            comentariosH = controladores.ControladorComentarios.getInstancia().obtenerHijos(idComentarioPadre);
             
-            request.setAttribute("infoJuego", juego);
-            request.getRequestDispatcher("VerInfoJuego.jsp").forward(request, response);
+            request.setAttribute("comentariosHijo", comentariosH);
+            request.getRequestDispatcher("index.jsp").forward(request, response);
             
-        } catch (SQLException ex) {
-            Logger.getLogger(listarCategorias.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+      
+   }
 
-    @Override
+   @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
     }
 
-    
-    @Override
+   @Override
     public String getServletInfo() {
         return "Short description";
     }
-    
 }
