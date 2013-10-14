@@ -135,6 +135,7 @@
             %>
         </div>
         </div>
-    </body>
+        </div>
     <jsp:include page="plantillas/footer.jsp"></jsp:include>
+     </body>
 </html>

@@ -167,7 +167,7 @@ public class UpImgJuego extends HttpServlet {
                      }   
                 //    String archivo = j.getNombre().trim() + "-" + nroV + extension;
                     extensionv = extensionv.substring(extensionv.lastIndexOf("."), extensionv.length());
-                    String archivo = des.getNick() + extension;
+                    String archivo = nom + extension;
                     String user = "a8680950";
                     String pass = "random123456";//url
                     String ruta= "progapli2013.comule.com/public_html/imagenes/juegos/" + archivo;
@@ -191,8 +191,7 @@ public class UpImgJuego extends HttpServlet {
                     inp.close();
                          
                     
-                    os.flush();
-                    os.close();
+                   
 //                    Juego j = new Juego();
                     j.setCategorias(categorias);
                     j.setNombre(nom);
@@ -213,7 +212,7 @@ public class UpImgJuego extends HttpServlet {
                     v.setEstado("pendiente");
                     v.setFecha_alta(new Date());
                     v.setId_juego(id);
-                    v.setJarIs(inpv);
+                    v.setJar((FileInputStream)inpv);
                     
                     v.setSize(size/1024);
                     controladores.ControladorVersiones.getInstancia().altaversion(v);
