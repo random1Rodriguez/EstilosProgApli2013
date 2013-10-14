@@ -46,7 +46,7 @@ ManejadorBD mbd = ManejadorBD.getInstancia();
             comentariosH = controladores.ControladorComentarios.getInstancia().obtenerHijos(idComentarioPadre);
             
             request.setAttribute("comentariosHijo", comentariosH);
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            request.getRequestDispatcher("VerInfoJuego.jsp").forward(request, response);
             
       
    }

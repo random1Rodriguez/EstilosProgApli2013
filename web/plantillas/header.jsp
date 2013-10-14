@@ -11,7 +11,54 @@
         <script src="js/aplicacion.js"></script>
         <link rel="stylesheet" href="css/style2.css">
     </head>
-    
+    <style>
+        .btn {
+        text-decoration: none;
+        display: inline-block;
+        padding: 6px 12px;
+        margin-bottom: 0;
+        font-size: 14px;
+        font-weight: normal;
+        line-height: 1.428571429;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        cursor: pointer;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        -webkit-user-select: none;
+           -moz-user-select: none;
+            -ms-user-select: none;
+             -o-user-select: none;
+                user-select: none;
+    }
+
+        .btn:focus {
+      outline: thin dotted #333;
+      outline: 5px auto -webkit-focus-ring-color;
+      outline-offset: -2px;
+    }
+
+        .btn:hover,
+        .btn:focus {
+      color: #333333;
+      text-decoration: none;
+    }
+
+        .btn-default {
+      color: #333333;
+      background-color: #ffffff;
+      border-color: #cccccc;
+    }
+
+        .btn-default:hover,
+        .btn-default:focus,
+        .btn-default:active {
+      color: #333333;
+      background-color: #ebebeb;
+      border-color: #adadad;
+    }
+    </style>
     <body>
         <header>
             <div id="encabezado">
@@ -81,58 +128,9 @@
                             <input type="password" id="password" name="password" placeholder="Contraseña" required>
                             <input type="submit" value="Login">
                         </form>
-                        <button id="registro">Registro</button>
-                        <span id="error" class="error" >${error}</span>
+                        <a href="registro.jsp" class="btn btn-default" id="registro">Registro</a>
                     </div>
                 </div>
-            </div>
-            <div id="popup_reg">
-            <div id="cerrar"><img src="img/cruz.png"></div>
-                <form id="reg" method="post" action="registro">
-                <div id="requeridos">
-                    <label class="linea">
-                        <input id="nick" name="nick" required autofocus placeholder="Usuario" autocomplete="off">
-                        <span id="validacion_nick"></span>
-                    </label>
-
-                    <label class="linea">
-                        <input type="text" id="email" name="email" placeholder="Email" required autocomplete="off">
-                        <span id="validacion_email"></span>
-                    </label>
-
-                    <label class="linea">
-                        <input type="password" id="pass" name="pass" required placeholder="Contraseña">
-                    </label>
-
-                    <label class="linea">
-                        <input type="password" id="conf_pass" name="conf_pass" required placeholder="Confirmar Contraseña">
-                        <span id="validacion_pass" ></span>
-                    </label>
-                </div>
-
-                <div id="datos_perfil">
-                    <label class="linea">
-                        <input id="nombre" name="nom" value="" placeholder="Nombre" autocomplete="off">
-                    </label>
-
-                    <label class="linea">
-                        <input id="apellido" name="ape" value="" placeholder="Apellido" autocomplete="off">
-                    </label>
-
-                    <label class="linea">
-                        <input type="date" id="fnac" name="fnac" value="1990-01-01">
-                    </label>
-
-                    <label class="linea">
-                        <select name="tipo" id="tipo">
-                            <option value="vacio">Tipo de Perfil</option>
-                            <option value="c">Cliente</option>
-                            <option value="d">Desarrollador</option>
-                        </select>
-                    </label>
-                </div>
-                <input id="boton" type="submit" value="Registro">
-            </form>
             </div>
         </header>
     </body>
