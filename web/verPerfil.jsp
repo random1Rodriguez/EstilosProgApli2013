@@ -35,10 +35,14 @@
             {
                 %>
                 <div id="contenedorinputs">
-                <span>
+                    <span>
+                            <a href="altajuego.jsp">Agregar Juego</a>
+                    </span>
+
+                    <span>
                         <a href="juegosPublicados">Agregar Version de Juego</a>
-                </span>
-                <%
+                    </span>
+                 <%
             }
                 %>
         
@@ -117,7 +121,7 @@
             <% 
             if (request.getAttribute("juegos_comprados") != null && u.getTipo().equals("c")) {
                 %>
-                out.write(<div class="titulo">)
+                <div class="titulo">
                 <span>Juegos Comprados</span>
                 </div>
                 <%
