@@ -32,7 +32,7 @@
                     %>
                     <div id="contenedorinputs">
                         <h2> Crear Nuevo Juego</h2>
-                        <form enctype="multipart/form-data" id="crearjuego" method="post" action="UpImgJuego">
+                        <form id="crearjuego" method="post" action="UpImgJuego" enctype="multipart/form-data">
                      <div>
                        <%--       Nombre Juego          --%>  
                        <label class="linea">
@@ -50,6 +50,23 @@
                        </label>
                        
                        <%--       Numero de Version del Juego          
+=======
+                       
+                       
+                       <%--       IMG SUBIR --%>
+                       
+                       <label class="imgjuego">
+                            <b>Imagen: </b><br>
+                            <input type="file" id="imgjuego" name="subirImgJuego" required accept=".png , .jpg, .gif">
+                        </label>
+                       
+                       
+                       <label class="imgjuego">
+                            <b><br><br>Version: </b><br>
+                            <input type="file" id="versionjuego" name="subirVersionJuego" required accept=".jar">
+                        </label>
+                       
+                       <%--       Numero de Version del Juego   --%>       
                        <label class="linea">
                         <input id="version" name="version" required autofocus placeholder="Numero de Version">
                        </label>
@@ -83,7 +100,7 @@
                         </nav>
                 
                      </div>    
-                            <input id="newjuego" type="submit" value="Siguiente >> ">
+                            <input id="newjuego" type="submit" value="   Finalizar    ">
                     </form>
                             </div>
                             </div>
