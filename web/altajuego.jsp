@@ -49,8 +49,7 @@
                         <input id="precio" name="precio" required autofocus placeholder="Precio">
                        </label>
                        
-                       <%--       Numero de Version del Juego          
-=======
+                       <%--       Numero de Version del Juego          --%>
                        
                        
                        <%--       IMG SUBIR --%>
@@ -70,14 +69,8 @@
                        <label class="linea">
                         <input id="version" name="version" required autofocus placeholder="Numero de Version">
                        </label>
-                       --%>
                        
-                       <%--       IMG SUBIR --%>
                        
-                       <label class="imgjuego">
-                            <b>Imagen: </b><br>
-                            <input type="file" id="imgjuego" name="subirImgJuego" required accept=".png , .jpg, .gif">
-                        </label>
                        
                        
                         <nav>

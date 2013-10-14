@@ -117,17 +117,17 @@
             <% 
             if (request.getAttribute("juegos_comprados") != null && u.getTipo().equals("c")) {
                 %>
-                out.write(<div class="titulo">)
-                <span>Juegos Comprados</span>
-                </div>
+                
+                <span><b>Juegos Comprados: <br></b></span>
+                
                 <%
                 ArrayList <Juego>juegos = (ArrayList)request.getAttribute("juegos_comprados");
                 int i = 0;
                 out.write("<ul>");
                 while (i < juegos.size()){
                     Juego j = juegos.get(i);
-                    out.write("<li><a href='verInfoJuego?id="+j.getId()+"'>"+j.getNombre()+"</a>"
-                            + "<div class='imagen'><img src='"+imagenes_juegos+j.getPortada()+"'></div></li>");
+                    out.write("<li style='list-style:none'><a href='verInfoJuego?id="+j.getId()+"'>"
+                            + "<div class='imagenJuegoComprado'><img src='"+imagenes_juegos+j.getPortada()+"'></a></div></li>");
                     i++;
                 }
                 out.write("</ul>");
