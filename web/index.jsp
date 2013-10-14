@@ -16,7 +16,9 @@
 
         
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        
+        <link rel="stylesheet" href="css/style2.css">
+        <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js' type='text/javascript'> </script> 
+        <script src="http://jdwebfiles.webcindario.com/Easy%20slider/easy-slider.js"></script> 
         <title>La Mejor Tienda de Juegos Online</title>
     </head>
     <body>
@@ -105,8 +107,6 @@
                            out.write("</li>");
                            
                            Version v = controladores.ControladorVersiones.getInstancia().ultimaVerAprobada(ju.getId());
-                           
-                            
                            
                            out.write("<li>");
                            if(session.getAttribute("usuario") != null && 

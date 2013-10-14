@@ -34,13 +34,14 @@
             if(!u.getTipo().equals("c"))
             {
                 %>
+                <div id="contenedorinputs">
                 <span>
                         <a href="juegosPublicados">Agregar Version de Juego</a>
                 </span>
                 <%
             }
                 %>
-        </div>
+        
         <div id="imagen">
             <%
             if (u.getImg().equals("")){
@@ -86,29 +87,40 @@
 
                 ArrayList versiones = (ArrayList)request.getAttribute("versiones");
                 i = 0;
-                out.write("<ul>");
+                out.write("<ul class='JuegosDesarrollador'><b>Versiones: <br></b>");
                 while (i < versiones.size()){
                     Version v = (Version)versiones.get(i);
+                    if (v.getEstado().equals("pendiente")){
+                        out.write("<div id='versionesP'>");
+                    }else{
+                        out.write("<div id='versionesR'>");
+                    }
+                    
                     out.write("<li>");
-                    out.write("Juego: "+v.getJuego().getNombre());
-                    out.write("<br> Numero Version: "+v.getNro_version());
-                    out.write("<br> Estado version: "+v.getEstado());
+                    out.write("<b>Juego: </b>"+v.getJuego().getNombre());
+                    out.write("<br><b> Numero Version: </b>"+v.getNro_version());
+                    out.write("<br><b> Estado version: </b>"+v.getEstado());
                     if (v.getEstado().equals("rechazada")){
-                        out.write("<br> Motivo: "+v.getMotivo_recahazo());
+                        out.write("<br><b> Motivo: </b>"+v.getMotivo_recahazo());
                     }
                     out.write("</li>");
+                    out.write("</div>");
                     i++;
                 }
+                
                 out.write("</ul>");
                 out.write("</div>");
             }
         %>
         <div id="compras">
-            <div class="titulo">
-                <span>Juegos Comprados</span>
-            </div>
+            
             <% 
             if (request.getAttribute("juegos_comprados") != null && u.getTipo().equals("c")) {
+                %>
+                out.write(<div class="titulo">)
+                <span>Juegos Comprados</span>
+                </div>
+                <%
                 ArrayList <Juego>juegos = (ArrayList)request.getAttribute("juegos_comprados");
                 int i = 0;
                 out.write("<ul>");
@@ -122,5 +134,7 @@
             }
             %>
         </div>
+        </div>
     </body>
+    <jsp:include page="plantillas/footer.jsp"></jsp:include>
 </html>
