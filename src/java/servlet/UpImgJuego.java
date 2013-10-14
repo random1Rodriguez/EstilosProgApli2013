@@ -166,7 +166,7 @@ public class UpImgJuego extends HttpServlet {
                         }
                      }   
                 //    String archivo = j.getNombre().trim() + "-" + nroV + extension;
-                    extension = extension.substring(extension.lastIndexOf("."), extension.length());
+                    extensionv = extensionv.substring(extensionv.lastIndexOf("."), extensionv.length());
                     String archivo = des.getNick() + extension;
                     String user = "a8680950";
                     String pass = "random123456";//url
@@ -209,7 +209,7 @@ public class UpImgJuego extends HttpServlet {
                 Version v = new Version();
                     
                     v.setNro_version(version);
-                    v.setExtension(extension);
+                    v.setExtension(extensionv);
                     v.setEstado("pendiente");
                     v.setFecha_alta(new Date());
                     v.setId_juego(id);

@@ -80,7 +80,9 @@
                             i++;
                         }
                     }
-                    /*
+                    %>
+                    </ul>
+                    <%--
                     if(request.getAttribute("infoJuego")!= null){
 
                        Juego ju = (Juego)request.getAttribute("infoJuego");
@@ -167,4 +169,4 @@
                                                 f++;
                                             }     
                                         }
-                    
+                     --%>
