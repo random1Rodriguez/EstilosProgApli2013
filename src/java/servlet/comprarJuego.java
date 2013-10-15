@@ -57,7 +57,7 @@ public class comprarJuego extends HttpServlet {
                 String user =(String)s.getAttribute("usuario");
                 Usuario usuario = cu.find(user); //a usuario de tipo Usuario le digo que busque y asigne el cliente solicitado
 
-                int idj = Integer.parseInt(request.getParameter("idjuego"));//guardo el id en un valor de tipo int
+                int idj = Integer.parseInt(request.getParameter("id"));//guardo el id en un valor de tipo int
 
                 Date fecha = new Date(); //objeto Date con la fecha altual
 

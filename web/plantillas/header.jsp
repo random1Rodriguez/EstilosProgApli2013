@@ -9,7 +9,7 @@
     <head>
         <script src="js/jquery-2.0.3.js"></script>
         <script src="js/aplicacion.js"></script>
-        <link rel="stylesheet" href="css/style2.css">
+        <link rel="stylesheet" href="css/style.css">
     </head>
     <style>
         .btn {
@@ -111,7 +111,7 @@
                             <%
                             //Controlar botones login logout segun estado de sesion
                             if (session.getAttribute("usuario") == null){
-                                out.println("<span>Visitante</span></li><span class='clickleable'><a href='#'>  || Login </a> </span>");
+                                out.println("<span>Visitante</span><span class='clickleable'><a href='#' id='btnlogin'>  || Login </a> </span>");
                             }else{
                                 out.println("<a href='Perfil'><span>" +session.getAttribute("usuario")+"</span></a><a href='Logout'>  || Logout</a></li>");
                             }

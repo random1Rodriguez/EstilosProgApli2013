@@ -40,14 +40,16 @@ ManejadorBD mbd = ManejadorBD.getInstancia();
         } catch (SQLException ex) {
             Logger.getLogger(Perfil.class.getName()).log(Level.SEVERE, null, ex);
         }
-            ArrayList<Comentario> comentariosH;
+            ArrayList<Comentario> comentariosH = null;
       
+            if(request.getParameter("idCP")!= ""){
             int idComentarioPadre = Integer.valueOf(request.getParameter("idCP"));
             comentariosH = controladores.ControladorComentarios.getInstancia().obtenerHijos(idComentarioPadre);
             
+
+            }
             request.setAttribute("comentariosHijo", comentariosH);
-            request.getRequestDispatcher("VerInfoJuego.jsp").forward(request, response);
-            
+            request.getRequestDispatcher("VerInfoJuego2.jsp").forward(request, response);
       
    }
 

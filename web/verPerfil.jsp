@@ -29,7 +29,6 @@
                 tipo = "Desarrollador";
             }
         %>
-        <div id="menu_des">
             <%
             if(!u.getTipo().equals("c"))
             {
@@ -37,6 +36,7 @@
                 <div id="contenedorinputs">
                 <span>
                         <a href="juegosPublicados">Agregar Version de Juego</a>
+                        <a href="altajuego.jsp">Dar de Alta Juego</a>
                 </span>
                 <%
             }
@@ -88,8 +88,10 @@
                 ArrayList versiones = (ArrayList)request.getAttribute("versiones");
                 i = 0;
                 out.write("<ul class='JuegosDesarrollador'><b>Versiones: <br></b>");
+
                 while (i < versiones.size()){
                     Version v = (Version)versiones.get(i);
+                    
                     if (v.getEstado().equals("pendiente")){
                         out.write("<div id='versionesP'>");
                     }else{
@@ -123,7 +125,7 @@
                 <%
                 ArrayList <Juego>juegos = (ArrayList)request.getAttribute("juegos_comprados");
                 int i = 0;
-                out.write("<ul>");
+                out.write("<ul id='info_compras'>");
                 while (i < juegos.size()){
                     Juego j = juegos.get(i);
                     out.write("<li style='list-style:none'><a href='verInfoJuego?id="+j.getId()+"'>"
@@ -133,7 +135,6 @@
                 out.write("</ul>");
             }
             %>
-        </div>
         </div>
         </div>
     <jsp:include page="plantillas/footer.jsp"></jsp:include>

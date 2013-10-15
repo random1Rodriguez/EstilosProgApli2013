@@ -16,19 +16,20 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>ProgApliPlay Market</title>
         <link rel="stylesheet" href="css/bootstrap.css">
-        
+        <link rel="stylesheet" href="css/style.css">
         <style>
             #listaJuegos{
                 width: 75%;
-                margin: auto;
+                margin: 5% auto;
             }
             
             .div_juego{
                 border: solid;
                 height: 330px;
-                max-width: 30%;
+                width: 25%;
                 float: left;
-                margin: 2%;
+                margin: 1% 1%;
+                background: rgba(148, 148, 148, 0.69);
             }
             
             .imgJuego{
@@ -40,9 +41,63 @@
                 width: 100%;
                 height: auto;
             }
+            
+            
+        .btn {
+        text-decoration: none;
+        display: inline-block;
+        padding: 6px 12px;
+        margin-bottom: 0;
+        font-size: 14px;
+        font-weight: normal;
+        line-height: 1.428571429;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        cursor: pointer;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        -webkit-user-select: none;
+           -moz-user-select: none;
+            -ms-user-select: none;
+             -o-user-select: none;
+                user-select: none;
+    }
+
+        .btn:focus {
+      outline: thin dotted #333;
+      outline: 5px auto -webkit-focus-ring-color;
+      outline-offset: -2px;
+    }
+
+        .btn:hover,
+        .btn:focus {
+      color: #333333;
+      text-decoration: none;
+    }
+
+        .btn-default {
+      color: #333333;
+      background-color: #ffffff;
+      border-color: #cccccc;
+    }
+
+        .btn-default:hover,
+        .btn-default:focus,
+        .btn-default:active {
+      color: #333333;
+      background-color: #ebebeb;
+      border-color: #adadad;
+    }
+    .info_juego {
+margin-left: 5%;
+}
+    
         </style>
     </head>
     <body>
+        <jsp:include page="plantillas/header.jsp"></jsp:include>
+        
         <div  id="listaJuegos">
             <ul>
                 <%  
@@ -109,5 +164,6 @@
             </ul>
 
         </div>
+                <jsp:include page="plantillas/footer.jsp"></jsp:include>
     </body>
 </html>
