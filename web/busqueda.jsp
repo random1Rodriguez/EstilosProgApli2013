@@ -17,81 +17,108 @@
         <title>ProgApliPlay Market</title>
         
         <style>
-            #listaJuegos{
-                width: 75%;
-                margin: auto;
-            }
-            
-            .div_juego{
+            #resultado-busqueda{
+                position: relative;
+                top: 0px;
+                left: -7%;
+                width: 60%;
+                height: 130px;
+                margin: 0 auto;
                 border: solid;
-                height: 330px;
-                max-width: 30%;
-                float: left;
-                margin: 2%;
             }
             
-            .imgJuego{
-                width: 95%;
-                margin: 3% auto;
+            #contenedor{
+                position: relative;
+                top: 100px;
+                margin-bottom: 325px !important;
             }
             
-            .imgJuego img{
-                width: 100%;
-                height: auto;
+            #footer{
+               margin-top: 0px !important;
             }
         </style>
     </head>
     <body>
         <jsp:include page="plantillas/header.jsp"></jsp:include>
         <div id="contenedor">
-            <div id="fondotransparente">
-                <div  id="contenedorJuegos">/*
-                    <ul>
-                        <%  
-                            String ruta = "http://progapli2013.comule.com/imagenes/juegos/";
-                            Controladorjuegos cj = Controladorjuegos.getInstancia();
-                            System.out.println("busqueda: "+request.getParameter("busqueda"));
-                            ArrayList juegos = cj.buscar(request.getParameter("busqueda"));
+            
+            <%
+                String ruta = "http://progapli2013.comule.com/imagenes/juegos/";
+                Controladorjuegos cj = Controladorjuegos.getInstancia();
+                System.out.println("busqueda: "+request.getParameter("busqueda"));
+                ArrayList juegos = cj.buscar(request.getParameter("busqueda"));
+                
+                if(juegos != null){
+                    System.out.println("juego not null");
+                    int cant = juegos.size();
+                    
+                    if(cant > 0){
+                        System.out.println("tamaño mayor a 0");
+            %>
+                    <div id="resultado-busqueda">
+                        <div id="busqueda-filtros">
+                            <select id="ordenar">
+                                <option>Ordenar por...</option>
+                                <option>Alfabeticamente</option>
+                                <option>Por Ventas</option>
+                            </select>
 
-                            if (juegos != null){
-                                if(! juegos.isEmpty()){
-                                    int i=0;
-                                    while(i<juegos.size()){
-                                        Juego j = (Juego)juegos.get(i);
-                                        out.write("<div class='ModuloJuego'><a href='verInfoJuego?id=" + j.getId() + "'>");
-                                        out.write("<div class = 'imgJuego'>");
-                                        out.write("<img class='imgJuego' src='" +ruta + j.getPortada() + "'>");
-                                        out.write("</div>");
-                                        out.write("<li class='nombrejuego'><b>");
-                                        out.write(j.getNombre());
-                                        //out.write("<ul>");
-                                        out.write("</b></li>");
-                                        out.write("<li class='descjuego'>");
-                                        String desc = j.getDescripcion();
-                                        if(desc.length()>200){
-                                            out.write(desc.substring(0, 200) + "...");
-                                        }else{
-                                            out.write(desc);
-                                        }
-                                        out.write("</li>");
-                                        out.write("<li class='preciojuego'> u$s <b>");        
-                                        out.write(Double.toString(j.getPrecio()));
-                                        out.write("</b></li>");
-                                        out.write("<li></a>");        
-                                        out.write("</div>");
-                                        i++;
-                                    }
+                            <select>
+                                <option>Precio</option>
+                                <option>$0 a $3</option>
+                                <option>$3 a $10</option>
+                                <option>mas de $10</option>
+                            </select>
+                        </div>
+                        <div id="cantidad-resultados">
+                            <span>Resultados para: <span><%= request.getParameter("busqueda") %> </span>(<%= cant%> Resultados)</span>
+                        </div>
+                    </div>
+                    
+                <div id="fondotransparente"> <%--comienza fondo transparente --%>
+                    <div  id="contenedorJuegos"> <%-- comienza contenedor juegos --%>
+                        <ul>
+                        <%
+                            int i=0;
+                            while(i<juegos.size()){
+                                Juego j = (Juego)juegos.get(i);
+                                out.write("<div class='ModuloJuego'><a href='verInfoJuego?id=" + j.getId() + "'>");
+                                out.write("<div class = 'imgJuego'>");
+                                out.write("<img class='imgJuego' src='" +ruta + j.getPortada() + "'>");
+                                out.write("</div>");
+                                out.write("<li class='nombrejuego'><b>");
+                                out.write(j.getNombre());
+                                //out.write("<ul>");
+                                out.write("</b></li>");
+                                out.write("<li class='descjuego'>");
+                                String desc = j.getDescripcion();
+                                if(desc.length()>200){
+                                    out.write(desc.substring(0, 200) + "...");
+                                }else{
+                                    out.write(desc);
                                 }
-                                else{
-                                    out.write("No se encontro ningun juego");
-                                }
+                                out.write("</li>");
+                                out.write("<li class='preciojuego'> u$s <b>");        
+                                out.write(Double.toString(j.getPrecio()));
+                                out.write("</b></li>");
+                                out.write("<li></a>");        
+                                out.write("</div>");
+                                i++;
                             }
+                                    
                         %>
-                    </ul>
-
-                </div>
-            </div>
-        </div>
+                        </ul>
+                    </div> <%-- termina contenedor juegos --%>
+                </div> <%--termina fondo transparente --%>
+        <%
+                }
+                else{
+                    System.out.println("entro al else");
+                    out.write("No se encontro ningun juego");
+                }
+            }
+        %>
+        </div> <%--termina contenedor --%>
         <jsp:include page="plantillas/footer.jsp"></jsp:include>
     </body>
 </html>
