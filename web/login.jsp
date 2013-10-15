@@ -48,6 +48,7 @@
         </style>
     </head>
     <body>
+        <jsp:include page="plantillas/header.jsp"></jsp:include>
         <div id="contenedor">
             <div id="caja_error">
                 <span id="error" class="error" >${error}</span>
