@@ -14,9 +14,11 @@
     </head>
     <body>
         
-        <div id="ver">
+        <div id="fondotransparente">
             <jsp:include page="plantillas/header.jsp"></jsp:include>
-        <form id="altVer" method="post" action="altaVersionJuego" enctype="multipart/form-data">
+        <div id="contenedorinputs">
+            <h2> Crear nueva version de juego</h2>
+            <form id="altVer" method="post" action="altaVersionJuego" enctype="multipart/form-data">
                 <label class="linea">
                     <input type="text" id="idJuego"  hidden="true" name="idJuego" value="<% out.write(String.valueOf(request.getAttribute("idJuego"))); %>">
                 </label>            
@@ -26,15 +28,16 @@
                 </label>
 
                 <label class="linea">
-                    <input type="file" id="archivoJuego" name="subirJuego" required accept=".jar">
+                    <input type="file" id="archivoJuego" name="subirJuego" required accept=".jar" class="btnAltaV">
 
                 </label>
                 <label>    
-                    <input id="boton" type="submit" value="Confirmar">
+                    <input id="boton" type="submit" value="Confirmar" class="btnAltaV">
                     <span id="error" class="error" >${error}</span>
                     <span id="ok" class="error" >${ok}</span>
                 </label>
         </form>
+            </div>
     </div>
     </body>
 </html>
