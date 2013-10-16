@@ -16,6 +16,28 @@
                 border-radius: 00px 15px 0 15px;
                 border: solid 1px #3071a9;
 }
+
+#contenedorInformacionJuego{
+/*    background-image: linear-gradient(bottom, rgb(227,227,227) 0%, rgb(219,219,219) 56%, rgb(217,217,217) 100%);
+background-image: -o-linear-gradient(bottom, rgb(227,227,227) 0%, rgb(219,219,219) 56%, rgb(217,217,217) 100%);
+background-image: -moz-linear-gradient(bottom, rgb(227,227,227) 0%, rgb(219,219,219) 56%, rgb(217,217,217) 100%);
+background-image: -webkit-linear-gradient(bottom, rgb(227,227,227) 0%, rgb(219,219,219) 56%, rgb(217,217,217) 100%);
+background-image: -ms-linear-gradient(bottom, rgb(227,227,227) 0%, rgb(219,219,219) 56%, rgb(217,217,217) 100%);
+
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0, rgb(227,227,227)),
+	color-stop(0.56, rgb(219,219,219)),
+	color-stop(1, rgb(217,217,217))
+);*/
+background: rgba(0, 0, 0, 0.3);
+    border-radius: 15px 0 15px;
+    width: 80%;
+    padding: 2%;
+    margin: 5%;
+}
             
         </style>
         <link rel="stylesheet" href="css/style2.css">
@@ -28,12 +50,14 @@
     <body>
             <jsp:include page="plantillas/header.jsp"></jsp:include>
 
-            <div id="contendorinputs">          
+                     
                 <%
             String server = "http://progapli2013.comule.com/";
             String imagenes_perfil = server + "imagenes/perfiles/";
             String imagenes_juegos = server + "imagenes/juegos/";
-               if(request.getAttribute("infoJuego")!= null){
+            out.write("<div id='contenedorInformacionJuego'>");    
+            
+            if(request.getAttribute("infoJuego")!= null){
 
                        Juego ju = (Juego)request.getAttribute("infoJuego");
                        out.write("<ul id='infoGralJuego'>");//Genera UL InfoGeneral
@@ -94,7 +118,7 @@
                            ArrayList<Comentario> lstCom = (ArrayList<Comentario>)ju.getComentarios();
                            i=0;
                            if(lstCom.size() != 0 ){
-                           out.write("<b>Comentarios:</b> ");
+                           out.write("<b style='color:white;'>Comentarios:</b> ");
                            out.write("<div id='comentsPH' style='clear: both; height: 267px;'> <ul id='InfoJComents'>");
                            Comentario com = null;
                            while(i<lstCom.size()){
@@ -102,7 +126,7 @@
                                com = lstCom.get(i);
                                if(com.getId_padre() == 0){
                                out.write("<li>");
-                                    out.write("<a href = desplegarComentarios?idCP=" + com.getId() +  " target='ComentsResp'>" + com.getTexto() + " >> </a>");
+                               out.write("<a href = desplegarComentarios?idCP=" + com.getId() +  " target='ComentsResp'>" + com.getTexto() + " >> </a>");
                                     
                                     
                                }

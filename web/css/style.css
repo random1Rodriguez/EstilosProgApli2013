@@ -119,7 +119,7 @@ border: solid 0.5px;
     -o-user-select: none;
     user-select: none;
     background: dodgerblue;
-    color: black;
+    color: white;
 }
 
 .footer, .push {
@@ -439,13 +439,14 @@ z-index: 1;
 /*Ver info Juego*/
 
 #infoGralJuego{
-    width: 57%;
+    width: 82%;
     background: rgb(248, 248, 248);
     border-radius: 0px 10px;
     border: solid 1px gray;
     padding: 1%;
-    margin: 1%;
-    
+    margin: auto;
+    list-style: none outside none;
+
 }
 
 #infoGralJuego{

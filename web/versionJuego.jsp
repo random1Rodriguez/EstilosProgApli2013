@@ -6,6 +6,12 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="js/jquery-2.0.3.js"></script>
         <script src="js/aplicacion.js"></script>
+        <style>
+            #ver{
+                margin: auto;
+            }
+        </style>
+        
         <link rel="stylesheet" href="css/style.css">
         <title>Alta de version</title>
     </head>
@@ -13,9 +19,10 @@
         
     </head>
     <body>
-        
+        <jsp:include page="plantillas/header.jsp"></jsp:include>
+        <div id="contenedorinputs">
         <div id="ver">
-            <jsp:include page="plantillas/header.jsp"></jsp:include>
+            
         <form id="altVer" method="post" action="altaVersionJuego" enctype="multipart/form-data">
                 <label class="linea">
                     <input type="text" id="idJuego"  hidden="true" name="idJuego" value="<% out.write(String.valueOf(request.getAttribute("idJuego"))); %>">
@@ -36,5 +43,6 @@
                 </label>
         </form>
     </div>
+                </div>
     </body>
 </html>
