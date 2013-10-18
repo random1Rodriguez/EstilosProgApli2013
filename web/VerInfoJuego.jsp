@@ -10,8 +10,8 @@
     <head>
         <style>
             .imagenJuego img {
-                margin: 0 24%;
-                width: 52%;
+                margin: 0 33%;
+                width: 34%;
                 height: 224px;
                 border-radius: 00px 15px 0 15px;
                 border: solid 1px #3071a9;
@@ -77,7 +77,7 @@ background: rgba(0, 0, 0, 0.3);
                            out.write("<li id='infoJsize'><b> Tamaño: </b>");
                                out.write(String.valueOf(ju.getSize()) + " Kb");
                            out.write("</li>");
-                           
+                          
                            
                            
                            
@@ -89,10 +89,10 @@ background: rgba(0, 0, 0, 0.3);
                                    controladores.ControladorUsuarios.getInstancia().find(String.valueOf(session.getAttribute("usuario"))).getId(), 
                                    ju.getId())){
                             out.write("<li>");
-                                out.write("<b> Download: </b><a href='descargaJuego?id=" + v.getId_juego() + "'>" + v.getNro_version() + "</a>");
+                                out.write("<b> Download: </b> v <a href='descargaJuego?id=" + v.getId_juego() + "'>" + v.getNro_version() + "</a>");
                             out.write("</li>");
                            } else{
-                           out.write("<li>");
+                           out.write("<li><b> Version: </b>"); 
                            out.write(v.getNro_version());
                            
                            out.write("</li>");
@@ -110,6 +110,7 @@ background: rgba(0, 0, 0, 0.3);
                                out.write("</li>");
                                i++;
                            }
+                            out.write(("<li> Alexandro<li>"));
                            out.write("</ul>");//Info Gral Cierre
                            
                           

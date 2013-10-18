@@ -61,7 +61,7 @@ public class Login extends HttpServlet {
                 Usuario u = cu.find(user);
                 s.setAttribute("usuario", u.getNick());
                 s.setAttribute("tipo", u.getTipo());
-                response.sendRedirect("index.jsp");
+                response.sendRedirect("juegosCategoria?id=18");
             }
             else{
                 String error = "El nombre de usuario y contraseña no coinciden, "

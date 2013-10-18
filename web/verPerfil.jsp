@@ -14,6 +14,7 @@
     <body>
         
        <jsp:include page="plantillas/header.jsp"></jsp:include>
+       <div id="contenedor">
        <div id="contenedorinputs">
        <%  
             String server = "http://progapli2013.comule.com/";
@@ -142,6 +143,7 @@
             %>
         </div>
         </div>
+       </div>
     <jsp:include page="plantillas/footer.jsp"></jsp:include>
      </body>
 </html>

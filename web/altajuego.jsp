@@ -70,18 +70,18 @@
                        <div id="inputsfiles">
                        <label class="imgjuego">
                             <b style="color:white;">Imagen: </b><br>
-                            <input type="file" id="imgjuego" name="subirImgJuego" required accept=".png , .jpg, .gif">
+                            <input style="color:#ffffff;" type="file" id="imgjuego" name="subirImgJuego" required accept=".png , .jpg, .gif">
                         </label>
                        
                        
                        <label class="imgjuego">
                             <b style="color:white;"><br><br>Version: </b><br>
-                            <input type="file" id="versionjuego" name="subirVersionJuego" required accept=".jar">
+                            <input style="color:#ffffff;" type="file" id="versionjuego" name="subirVersionJuego" required accept=".jar">
                         </label>
                        </div>
                        <%--       Numero de Version del Juego   --%>       
                        <label class="linea">
-                        <input id="version" name="version" required autofocus placeholder="Numero de Version">
+                        <input  id="version" name="version" required autofocus placeholder="Numero de Version">
                        </label>
                        
                        
