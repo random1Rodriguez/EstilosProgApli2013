@@ -20,16 +20,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpSession;
-import org.apache.tomcat.util.http.fileupload.FileItem;
-import org.apache.tomcat.util.http.fileupload.FileItemFactory;
-import org.apache.tomcat.util.http.fileupload.FileUploadException;
-import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
-import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
-/**
- *
- * @author BlackArmor
- */
+
 @WebServlet(name = "AltaJuego", urlPatterns = {"/AltaJuego"})
 public class AltaJuego extends HttpServlet {
 
