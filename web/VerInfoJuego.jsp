@@ -114,8 +114,10 @@ background: rgba(0, 0, 0, 0.3);
                            out.write("</ul>");//Info Gral Cierre
                            
                           
-               out.write("<a class='btn' href='comprarJuego?id=" + ju.getId() + "'>Comprar</a><br><br>");
-               
+               out.write("<a class='btn' href='comprarJuego?id=" + ju.getId() + "'>Comprar</a>");
+               %>
+               <a class="btn" href='altaReclamo?id="<%out.write(ju.getId());%>"'> Hacer Reclamo </a><br><br>;
+               <%
                            ArrayList<Comentario> lstCom = (ArrayList<Comentario>)ju.getComentarios();
                            i=0;
                            if(lstCom.size() != 0 ){
