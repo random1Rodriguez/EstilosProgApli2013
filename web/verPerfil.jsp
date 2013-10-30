@@ -12,8 +12,11 @@
         <title>Perfil de usuario</title>
     </head>
     <body>
+        
        <jsp:include page="plantillas/header.jsp"></jsp:include>
-        <%  
+       <div id="contenedor">
+       <div id="contenedorinputs">
+       <%  
             String server = "http://progapli2013.comule.com/";
             String imagenes_perfil = server + "imagenes/perfiles/";
             String imagenes_juegos = server + "imagenes/juegos/";
@@ -33,14 +36,13 @@
             if(!u.getTipo().equals("c"))
             {
                 %>
-                <div id="contenedorinputs">
+                
                     <span>
-                            <a href="altajuego.jsp">Agregar Juego</a>
+                        <a href="altajuego.jsp" class="btn">Agregar Juego</a>
                     </span>
 
                     <span>
-                        <a href="juegosPublicados">Agregar Version de Juego</a>
-                        <a href="altajuego.jsp">Dar de Alta Juego</a>
+                        <a href="juegosPublicados" class="btn">Agregar Version de Juego</a>
                 </span>
                 <%
             }
@@ -124,7 +126,7 @@
             if (request.getAttribute("juegos_comprados") != null && u.getTipo().equals("c")) {
                 %>
                 <div class="titulo">
-                <span>Juegos Comprados</span>
+                <span style="color:white;"><b>Juegos Comprados</b></span>
                 </div>
                 <%
                 ArrayList <Juego>juegos = (ArrayList)request.getAttribute("juegos_comprados");
@@ -141,6 +143,7 @@
             %>
         </div>
         </div>
+       </div>
     <jsp:include page="plantillas/footer.jsp"></jsp:include>
      </body>
 </html>

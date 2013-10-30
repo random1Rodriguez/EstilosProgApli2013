@@ -16,15 +16,18 @@
                 width: 480px;
                 height: 340px;
                 border: solid #000;
-                margin: 0 auto;
+                margin: 5% auto;
             }
             #caja_error{
-                border: solid #c81616;
                 height: 20%;
+                background: rgba(255,0,0,0.5);
+                color: white;
+                text-align: center;
+                padding: 2%;
+                box-shadow: -1px 2px 9px #000;
+                font-weight: bold;
             }
             #contenedor_login{
-                height: 64%;
-                padding: 5%;
             }
             #contenedor_login form{
                 padding: 5%;
@@ -42,7 +45,7 @@
             }
             #contenedor_login form .submit{
                 width: 40%;
-                margin: 10% auto 0;
+                margin: auto 29px;
                 display: inline;
             }
         </style>

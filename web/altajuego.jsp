@@ -9,14 +9,28 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/style.css">
-        
+        <style>
+            #inputsfiles{
+                float: right;
+                position: relative;
+                top: -125px;
+            }
+            
+            #cats{
+               float: right;
+               position: relative;
+               top: -60px; 
+               margin: auto -50%;
+            }
+        </style>
         
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Alta Juego</title>
     </head>
     <body>
-        <div id="contenedor">
+        
             <jsp:include page="plantillas/header.jsp"></jsp:include>
+            <div id="contenedor">
             <div id="fondotransparente">
         <%
                         ManejadorBD.getInstancia().setBd("market");
@@ -30,8 +44,8 @@
 
                         ControladorCategorias cc = ControladorCategorias.getInstancia();
                     %>
-                    <div id="contenedorinputs">
-                        <h2> Crear Nuevo Juego</h2>
+                    <div id="contenedorinputs" >
+                        <h2 style="color:white;"> Crear Nuevo Juego</h2>
                         <form id="crearjuego" method="post" action="UpImgJuego" enctype="multipart/form-data">
                      <div>
                        <%--       Nombre Juego          --%>  
@@ -53,26 +67,26 @@
                        
                        
                        <%--       IMG SUBIR --%>
-                       
+                       <div id="inputsfiles">
                        <label class="imgjuego">
-                            <b>Imagen: </b><br>
-                            <input type="file" id="imgjuego" name="subirImgJuego" required accept=".png , .jpg, .gif">
+                            <b style="color:white;">Imagen: </b><br>
+                            <input style="color:#ffffff;" type="file" id="imgjuego" name="subirImgJuego" required accept=".png , .jpg, .gif">
                         </label>
                        
                        
                        <label class="imgjuego">
-                            <b><br><br>Version: </b><br>
-                            <input type="file" id="versionjuego" name="subirVersionJuego" required accept=".jar">
+                            <b style="color:white;"><br><br>Version: </b><br>
+                            <input style="color:#ffffff;" type="file" id="versionjuego" name="subirVersionJuego" required accept=".jar">
                         </label>
-                       
+                       </div>
                        <%--       Numero de Version del Juego   --%>       
                        <label class="linea">
-                        <input id="version" name="version" required autofocus placeholder="Numero de Version">
+                        <input  id="version" name="version" required autofocus placeholder="Numero de Version">
                        </label>
                        
                        
                        
-                       
+                       <div id="cats">
                         <nav>
                             
                             <ul id="categoriasAltaJuego">
@@ -91,7 +105,7 @@
                         %>
                             </ul>
                         </nav>
-                
+                       </div>
                      </div>    
                             <input id="newjuego" type="submit" value="   Finalizar    ">
                     </form>

@@ -21,6 +21,14 @@
     padding: 2%;
     
             } 
+            
+            #InfoJComentsR a{
+            text-decoration: none;
+            color: black;
+            list-style: armenian;
+            font-size: 1.1em;
+            padding: 1%;
+            }
         </style>
         <title>JSP Page</title>
     </head>

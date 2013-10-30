@@ -12,7 +12,7 @@ body{
     background-image: url(../img/ladoder.png);
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background-position: 76% top; 
+    background-position: 76% 100%;
 }
 
 .btnAltaV{
@@ -132,7 +132,7 @@ border: solid 0.5px;
     -o-user-select: none;
     user-select: none;
     background: dodgerblue;
-    color: black;
+    color: white;
 }
 
 .footer, .push {
@@ -144,7 +144,7 @@ height: 9em;
     bottom: -20px;
     background-image: url(../img/imgfooter.png);
     height: 301px;
-    margin-top: -150px;
+    margin-top: 0;
     width: 100%;
     clear: both;
 }
@@ -452,13 +452,14 @@ z-index: 1;
 /*Ver info Juego*/
 
 #infoGralJuego{
-    width: 57%;
+    width: 82%;
     background: rgb(248, 248, 248);
     border-radius: 0px 10px;
     border: solid 1px gray;
     padding: 1%;
-    margin: 1%;
-    
+    margin: auto;
+    list-style: none outside none;
+
 }
 
 #infoGralJuego{
@@ -567,7 +568,7 @@ border: solid 0.5px;
     bottom: 0;
     background-image: url(../img/imgfooter.png);
     height: 301px;
-    margin-top: -150px;
+    margin-top: 0;
     width: 100%;
     clear: both;
 }

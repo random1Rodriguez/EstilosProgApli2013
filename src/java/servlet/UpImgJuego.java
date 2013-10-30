@@ -200,8 +200,10 @@ public class UpImgJuego extends HttpServlet {
                     
                     v.setSize(size/1024);
                     controladores.ControladorVersiones.getInstancia().altaversion(v);
+                    response.sendRedirect("verInfoJuego?id="+ id);
             } catch (SQLException ex) {
                 Logger.getLogger(UpImgJuego.class.getName()).log(Level.SEVERE, null, ex);
+                response.sendRedirect("index.jsp?msj='El Juego no se ha dado de alta.'");
             }
             
              

@@ -6,6 +6,12 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="js/jquery-2.0.3.js"></script>
         <script src="js/aplicacion.js"></script>
+        <style>
+            #ver{
+                margin: auto;
+            }
+        </style>
+        
         <link rel="stylesheet" href="css/style.css">
         <title>Alta de version</title>
     </head>
@@ -39,5 +45,6 @@
         </form>
             </div>
     </div>
+                </div>
     </body>
 </html>

@@ -80,6 +80,8 @@ public class Registro extends HttpServlet {
             ee.elegirServidor("gmail");
             String mensaje = u.getNick()+" Bienvenido a ProgApliPlay Game Market";
             ee.enviarEmail(u.getEmail(), "Bienvenido", mensaje);
+            //response.sendRedirect("juegosCategoria?id=18");
+            
             
         } catch (Exception ex) {
             Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
@@ -87,6 +89,7 @@ public class Registro extends HttpServlet {
         finally{
             out.flush();
             out.close();
+            response.sendRedirect("juegosCategoria?id=18");
         }
             
     }
