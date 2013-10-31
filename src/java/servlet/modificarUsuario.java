@@ -4,7 +4,6 @@
  */
 package servlet;
 
-import clases.UploadFTPFiles;
 import controladores.Controladorjuegos;
 import dominio.Categoria;
 import dominio.Desarrollador;
@@ -29,7 +28,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.apache.catalina.Session;
 import org.apache.tomcat.util.http.fileupload.FileItem;
 import org.apache.tomcat.util.http.fileupload.FileItemFactory;
 import org.apache.tomcat.util.http.fileupload.FileUploadException;
@@ -38,34 +36,21 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 /**
  *
- * @author BlackArmor
+ * @author usuario
  */
-@WebServlet(name = "UpImgJuego", urlPatterns = {"/UpImgJuego"})
-public class UpImgJuego extends HttpServlet {
+@WebServlet(name = "modificarUsuario", urlPatterns = {"/modificarUsuario"})
+public class modificarUsuario extends HttpServlet {
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        try {
-           
-        } finally {            
-            out.close();
-        }
-    }
-
-    
-    @Override
+     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
     }
 
-   
+  
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
+         try {
             //processRequest(request, response);
             
             /*item.isFormField() false=input file; true=text field*/
@@ -169,11 +154,28 @@ public class UpImgJuego extends HttpServlet {
                 //    String archivo = j.getNombre().trim() + "-" + nroV + extension;
                     extensionv = extensionv.substring(extensionv.lastIndexOf("."), extensionv.length());
                     String archivo = nom + extension;
-                    
-                    //llamo a la calse que se encarga de subir
-                    
-                    UploadFTPFiles up = new UploadFTPFiles();
-                    up.subirArchivo(archivo, inp);
+                    String user = "a8680950";
+                    String pass = "random123456";//url
+                    String ruta= "progapli2013.comule.com/public_html/imagenes/juegos/" + archivo;
+                    //String rutaHtml= extension;
+                    URL url = new URL("ftp://" + user + ":" + pass + "@" + ruta + ";type=i");
+              
+                    URLConnection urlc = url.openConnection();
+                    OutputStream os = urlc.getOutputStream();
+
+                    byte bytes[] = new byte[1024];
+                    int readCount = 0;
+
+
+                    //subo el archivo
+                    while ((readCount = inp.read(bytes)) > 0) {
+                        os.write(bytes, 0, readCount);
+                    }
+
+                    os.flush();
+                    os.close();
+                    inp.close();
+                         
                     
                    
 //                    Juego j = new Juego();
@@ -200,10 +202,8 @@ public class UpImgJuego extends HttpServlet {
                     
                     v.setSize(size/1024);
                     controladores.ControladorVersiones.getInstancia().altaversion(v);
-                    response.sendRedirect("verInfoJuego?id="+ id);
             } catch (SQLException ex) {
                 Logger.getLogger(UpImgJuego.class.getName()).log(Level.SEVERE, null, ex);
-                response.sendRedirect("index.jsp?msj='El Juego no se ha dado de alta.'");
             }
             
              
@@ -212,12 +212,7 @@ public class UpImgJuego extends HttpServlet {
             Logger.getLogger(UpImgJuego.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        
-    }
+       }
 
-    
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+   
 }
