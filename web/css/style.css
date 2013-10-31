@@ -1019,3 +1019,31 @@ margin-left: 27%;
 }
 
 /*Termina slider*/
+
+
+
+/*----------------- ESTILOS MATIAS V----------------------*/
+
+.titulo-grande{
+    width: 83%;
+    border: solid #000;
+    height: 60px;
+}
+
+.titulo-grande span{
+    font-size: 2em;
+    position: relative;
+    left: 32%;
+    top: 20%;
+    color: #FFF;
+}
+
+.contenedor-destacados{
+    position: relative;
+    width: 100%;
+    margin: auto 6%;
+    top: 30px;
+}
+
+/*----------------- ESTILOS MATIAS V----------------------*/
+

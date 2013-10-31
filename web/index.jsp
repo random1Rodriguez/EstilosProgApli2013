@@ -1,3 +1,4 @@
+<%@page import="controladores.Controladorjuegos"%>
 <%@page import="dominio.Version"%>
 <%@page import="org.apache.el.lang.FunctionMapperImpl.Function"%>
 <%@page import="dominio.Comentario"%>
@@ -40,8 +41,68 @@
             </div>
                             
             <%-- SLIDER --%>
-<div  id="contenedorJuegos" >
-            <ul>
+            
+            <%
+                // si el atributo listaJuegos es null quiere decir que no 
+                // eligio ninguna categoria para mostrar, entonces muestra los mas
+                // comprados y los que tienen mejor puntuacion
+                if (request.getAttribute("listaJuegos")== null){
+            %>
+                    <%-- MAS COMPRADOS --%>
+                    <div id="mas-comprados" class="contenedor-destacados">
+                        <div class="titulo-grande">
+                            <span>LOS MAS COMPRADOS</span>
+                        </div>
+                        <ul>
+                        <%
+                            Controladorjuegos cj = Controladorjuegos.getInstancia();
+                            String ruta = "http://progapli2013.comule.com/imagenes/juegos/";
+
+                            ArrayList juegos_masComprados = (ArrayList)cj.listarMasComprados(3);
+                            int i=0;
+
+                            while(i<juegos_masComprados.size()){
+                                Juego j = (Juego)juegos_masComprados.get(i);
+                                out.write("<div class='ModuloJuego'><a href='verInfoJuego?id=" + j.getId() + "'>");
+                                out.write("<div class='imgJuego'>");
+                                out.write("<img class='imgJuego' src='" +ruta + j.getPortada() + "'>");
+                                out.write("</div>");
+                                out.write("<li class='nombrejuego'><b>");
+                                out.write(j.getNombre());
+                                out.write("</b></li>");
+                                out.write("<li class='descjuego'>");
+                                String desc = j.getDescripcion();
+                                if(desc.length()>200){
+                                    out.write(desc.substring(0, 200) + "...");
+                                }else{
+                                    out.write(desc);
+                                }
+                                out.write("</li>");
+                                out.write("<li class='preciojuego'> u$s <b>");        
+                                out.write(Double.toString(j.getPrecio()));
+                                out.write("</b></li>");
+                                out.write("<li></a>");        
+                                out.write("</div>");
+                                i++;
+                            }
+                        %>
+                        </ul>
+                    </div>
+                    <%-- FIN MAS COMPRADOS --%>
+
+                    <%-- MEJOR PUNTUADOS --%>
+                    <div id="mejor-puntuados" class="contenedor-destacados">
+                        <div class="titulo-grande">
+                            <span>LOS MEJORES PUNTUADOS</span>
+                        </div>
+                    </div>
+                    <%-- TERMINA MEJOR PUNTUADOS --%>
+            <%
+                }
+            %>
+            
+            <div  id="contenedorJuegos" >
+                <ul>
                 <%
                     
                     String ruta = "http://progapli2013.comule.com/imagenes/juegos/";
@@ -77,9 +138,9 @@
                     }
                     %>
                     </ul>
-                    </div>
                 </div>
             </div>
-              <jsp:include page="plantillas/footer.jsp"></jsp:include>
+        </div>
+        <jsp:include page="plantillas/footer.jsp"></jsp:include>
     </body>
 </html>
