@@ -11,13 +11,14 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/style.css">
-        <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js' type='text/javascript'> </script> 
+        <script src='js/jquery-2.0.3.js'></script>
         <script src="http://jdwebfiles.webcindario.com/Easy%20slider/easy-slider.js"></script> 
         <title>La Mejor Tienda de Juegos Online</title>
+        
     </head>
     <body>
+        <jsp:include page="plantillas/header.jsp"></jsp:include>
         <div id="contenedor">
-            <jsp:include page="plantillas/header.jsp"></jsp:include>
             <div id="fondotransparente">
             <%-- SLIDER --%>
             <div id="sliderContainer"> 
@@ -53,7 +54,7 @@
                         <div class="titulo-grande">
                             <span>LOS MAS COMPRADOS</span>
                         </div>
-                        <ul>
+                        <div>
                         <%
                             Controladorjuegos cj = Controladorjuegos.getInstancia();
                             String ruta = "http://progapli2013.comule.com/imagenes/juegos/";
@@ -63,30 +64,32 @@
 
                             while(i<juegos_masComprados.size()){
                                 Juego j = (Juego)juegos_masComprados.get(i);
+                                //out.write("<li>");
                                 out.write("<div class='ModuloJuego'><a href='verInfoJuego?id=" + j.getId() + "'>");
                                 out.write("<div class='imgJuego'>");
                                 out.write("<img class='imgJuego' src='" +ruta + j.getPortada() + "'>");
                                 out.write("</div>");
-                                out.write("<li class='nombrejuego'><b>");
+                                out.write("<div class='nombrejuego'><b>");
                                 out.write(j.getNombre());
-                                out.write("</b></li>");
-                                out.write("<li class='descjuego'>");
+                                out.write("</b></div>");
+                                out.write("<div class='descjuego'>");
                                 String desc = j.getDescripcion();
                                 if(desc.length()>200){
                                     out.write(desc.substring(0, 200) + "...");
                                 }else{
                                     out.write(desc);
                                 }
-                                out.write("</li>");
-                                out.write("<li class='preciojuego'> u$s <b>");        
-                                out.write(Double.toString(j.getPrecio()));
-                                out.write("</b></li>");
-                                out.write("<li></a>");        
                                 out.write("</div>");
+                                out.write("<div class='preciojuego'> u$s <b>");        
+                                out.write(Double.toString(j.getPrecio()));
+                                out.write("</b></div>");
+                                out.write("</a>");        
+                                out.write("</div>");
+                                //out.write("</li>");
                                 i++;
                             }
                         %>
-                        </ul>
+                        </div>
                     </div>
                     <%-- FIN MAS COMPRADOS --%>
 
@@ -102,7 +105,7 @@
             %>
             
             <div  id="contenedorJuegos" >
-                <ul>
+                <div>
                 <%
                     
                     String ruta = "http://progapli2013.comule.com/imagenes/juegos/";
@@ -116,31 +119,35 @@
                             out.write("<div class = 'imgJuego'>");
                             out.write("<img class='imgJuego' src='" +ruta + j.getPortada() + "'>");
                             out.write("</div>");
-                            out.write("<li class='nombrejuego'><b>");
+                            out.write("<div class='nombrejuego'><b>");
                             out.write(j.getNombre());
                             //out.write("<ul>");
-                            out.write("</b></li>");
-                            out.write("<li class='descjuego'>");
+                            out.write("</b></div>");
+                            out.write("<div class='descjuego'>");
                             String desc = j.getDescripcion();
                             if(desc.length()>200){
                                 out.write(desc.substring(0, 200) + "...");
                             }else{
                                 out.write(desc);
                             }
-                            out.write("</li>");
-                            out.write("<li class='preciojuego'> u$s <b>");        
+                            out.write("</div>");
+                            out.write("<div class='preciojuego'> u$s <b>");        
                             out.write(Double.toString(j.getPrecio()));
-                            out.write("</b></li>");
-                            out.write("<li></a>");        
+                            out.write("</b></div>");
+                            out.write("</a>");        
                             out.write("</div>");
                             i++;
                         }
                     }
                     %>
-                    </ul>
+                    </div>
                 </div>
             </div>
         </div>
-        <jsp:include page="plantillas/footer.jsp"></jsp:include>
+        <footer id="footer">
+            <div id="txtfooter">
+                Random PlayStore © || Todos los derechos reservados || Programacion de Aplicaciones || 2013 
+            </div>
+        </footer>
     </body>
 </html>

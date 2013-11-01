@@ -42,46 +42,52 @@
     <body>
         
         <jsp:include page="plantillas/header.jsp"></jsp:include>
-        
+        <div id="contenedor">
         <div id="contenedorinputs">   
         <%
                
-                 ArrayList juegos = (ArrayList)request.getAttribute("juegos");
-                int i = 0;
-                %>
-                <div id="juegosPublicados" class="JuegosDesarrollador">
-                <%
-                out.write("<b><span style='color:white'>Selecione un juego, para dar de alta una version:</span><b> <ul id='nombreJuego'>");
-                while (i < juegos.size()){
-                    Juego j = (Juego)juegos.get(i);
-                    out.write("<li>");
-                    out.write("<a href= 'verJuego?idJuego=" + j.getId() + "'>"+j.getNombre() + "</a>");
-                    out.write("</li>");
-                    i++;
-                }
-                out.write("</ul>");
-            
+            ArrayList juegos = (ArrayList)request.getAttribute("juegos");
+            int i = 0;
+            %>
+            <div id="juegosPublicados" class="JuegosDesarrollador">
+            <%
+            out.write("<b><span style='color:white'>Selecione un juego, para dar de alta una version:</span><b> <ul id='nombreJuego'>");
+            while (i < juegos.size()){
+                Juego j = (Juego)juegos.get(i);
+                out.write("<li>");
+                out.write("<a href= 'verJuego?idJuego=" + j.getId() + "'>"+j.getNombre() + "</a>");
+                out.write("</li>");
+                i++;
+            }
+            out.write("</ul>");
             
         %>
-        --%>
-    <div id="compras">
-            <div class="titulo">
-                    <span>Juegos con versiones aprobadas</span>
-                </div>
-                <%
-                ArrayList juegos = (ArrayList)request.getAttribute("juegos");
-                int i = 0;
-                out.write("<ul id='info_compras'>");
-                while (i < juegos.size()){
-                    Juego j = (Juego)juegos.get(i);
-                    out.write("<li style='list-style:none'><a href='verJuego?idJuego="+j.getId()+"'>"
-                            + "<div class='imagenJuegoComprado'><img src='http://progapli2013.comule.com/imagenes/juegos/" + j.getPortada()+"'></a></div></li>");
-                    i++;
-                }
-                out.write("</ul>");
-            
-            %>
+        
+            <div id="compras">
+                <div class="titulo">
+                        <span>Juegos con versiones aprobadas</span>
+                    </div>
+                    <%
+                    juegos = (ArrayList)request.getAttribute("juegos");
+                    i = 0;
+                    out.write("<ul id='info_compras'>");
+                    while (i < juegos.size()){
+                        Juego j = (Juego)juegos.get(i);
+                        out.write("<li style='list-style:none'><a href='verJuego?idJuego="+j.getId()+"'>"
+                                + "<div class='imagenJuegoComprado'><img src='http://progapli2013.comule.com/imagenes/juegos/" + j.getPortada()+"'></a></div></li>");
+                        i++;
+                    }
+                    out.write("</ul>");
+
+                %>
+            </div>
+            </div>
         </div>
-         
+        </div>
+        <footer id="footer">
+            <div id="txtfooter">
+                Random PlayStore © || Todos los derechos reservados || Programacion de Aplicaciones || 2013 
+            </div>
+        </footer>
     </body>
 </html>
