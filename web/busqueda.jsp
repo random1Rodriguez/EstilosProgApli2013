@@ -19,12 +19,11 @@
         <style>
             #resultado-busqueda{
                 position: relative;
-                top: 80px;
                 width: 80%;
                 height: 130px;
-                margin: 0 auto;
+                margin: 5% auto;
                 border: solid;
-                left: -4%;
+                left: -10%;
             }
 
             .btn {

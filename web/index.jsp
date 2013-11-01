@@ -98,6 +98,39 @@
                         <div class="titulo-grande">
                             <span>LOS MEJORES PUNTUADOS</span>
                         </div>
+                        <div>
+                            <%
+                            ArrayList juegos_masPuntuados = (ArrayList)cj.listarMejorPuntuados(3);
+                            i=0;
+
+                            while(i<juegos_masPuntuados.size()){
+                                Juego j = (Juego)juegos_masPuntuados.get(i);
+                                //out.write("<li>");
+                                out.write("<div class='ModuloJuego'><a href='verInfoJuego?id=" + j.getId() + "'>");
+                                out.write("<div class='imgJuego'>");
+                                out.write("<img class='imgJuego' src='" +ruta + j.getPortada() + "'>");
+                                out.write("</div>");
+                                out.write("<div class='nombrejuego'><b>");
+                                out.write(j.getNombre());
+                                out.write("</b></div>");
+                                out.write("<div class='descjuego'>");
+                                String desc = j.getDescripcion();
+                                if(desc.length()>200){
+                                    out.write(desc.substring(0, 200) + "...");
+                                }else{
+                                    out.write(desc);
+                                }
+                                out.write("</div>");
+                                out.write("<div class='preciojuego'> u$s <b>");        
+                                out.write(Double.toString(j.getPrecio()));
+                                out.write("</b></div>");
+                                out.write("</a>");        
+                                out.write("</div>");
+                                //out.write("</li>");
+                                i++;
+                            }
+                            %>
+                        </div>
                     </div>
                     <%-- TERMINA MEJOR PUNTUADOS --%>
             <%

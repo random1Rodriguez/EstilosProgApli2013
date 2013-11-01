@@ -428,7 +428,7 @@ z-index: 1;
     border-radius: 0px 10px;
     border: solid 1px gray;
     padding: 1%;
-    margin: auto;
+    /*margin: auto;*/
     list-style: none outside none;
 
 }
@@ -1011,16 +1011,17 @@ margin-left: 27%;
 }
 
 .titulo-grande{
-    width: 83%;
-    border: solid #000;
-    height: 60px;
+    width: 80%;
+    height: 90px;
+    background-color: rgba(58, 54, 46, 0.76);
+    border-radius: 10px;
 }
 
 .titulo-grande span{
     font-size: 2em;
     position: relative;
     left: 32%;
-    top: 20%;
+    top: 33%;
     color: #FFF;
 }
 
