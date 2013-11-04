@@ -149,17 +149,5 @@ $(document).ready(function(){
 //        $("#slide_cats").slideUp(400);
 //        $("#slide_login").slideUp(400);
 //    });
-
-    /*---------------------- cabezal nuevo -------------------------*/
-    $("#popup_login").hide();
-    
-    $("#login").click(function(){
-       $("#popup_login").show(); 
-    });
-    
-    
-    
-    
-    
 });
 

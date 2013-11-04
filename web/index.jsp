@@ -1,3 +1,4 @@
+<%@page import="controladores.Controladorjuegos"%>
 <%@page import="dominio.Version"%>
 <%@page import="org.apache.el.lang.FunctionMapperImpl.Function"%>
 <%@page import="dominio.Comentario"%>
@@ -10,13 +11,14 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/style.css">
-        <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js' type='text/javascript'> </script> 
+        <script src='js/jquery-2.0.3.js'></script>
         <script src="http://jdwebfiles.webcindario.com/Easy%20slider/easy-slider.js"></script> 
         <title>La Mejor Tienda de Juegos Online</title>
+        
     </head>
     <body>
+        <jsp:include page="plantillas/header.jsp"></jsp:include>
         <div id="contenedor">
-            <jsp:include page="plantillas/header.jsp"></jsp:include>
             <div id="fondotransparente">
             <%-- SLIDER --%>
             <div id="sliderContainer"> 
@@ -41,8 +43,103 @@
             </div>
                             
             <%-- SLIDER --%>
-<div  id="contenedorJuegos" >
-            <ul>
+            
+            <%
+                // si el atributo listaJuegos es null quiere decir que no 
+                // eligio ninguna categoria para mostrar, entonces muestra los mas
+                // comprados y los que tienen mejor puntuacion
+                if (request.getAttribute("listaJuegos")== null){
+            %>
+                    <%-- MAS COMPRADOS --%>
+                    <div id="mas-comprados" class="contenedor-destacados">
+                        <div class="titulo-grande">
+                            <span>LOS MAS COMPRADOS</span>
+                        </div>
+                        <div>
+                        <%
+                            Controladorjuegos cj = Controladorjuegos.getInstancia();
+                            String ruta = "http://progapli2013.comule.com/imagenes/juegos/";
+
+                            ArrayList juegos_masComprados = (ArrayList)cj.listarMasComprados(3);
+                            int i=0;
+
+                            while(i<juegos_masComprados.size()){
+                                Juego j = (Juego)juegos_masComprados.get(i);
+                                //out.write("<li>");
+                                out.write("<div class='ModuloJuego'><a href='verInfoJuego?id=" + j.getId() + "'>");
+                                out.write("<div class='imgJuego'>");
+                                out.write("<img class='imgJuego' src='" +ruta + j.getPortada() + "'>");
+                                out.write("</div>");
+                                out.write("<div class='nombrejuego'><b>");
+                                out.write(j.getNombre());
+                                out.write("</b></div>");
+                                out.write("<div class='descjuego'>");
+                                String desc = j.getDescripcion();
+                                if(desc.length()>200){
+                                    out.write(desc.substring(0, 200) + "...");
+                                }else{
+                                    out.write(desc);
+                                }
+                                out.write("</div>");
+                                out.write("<div class='preciojuego'> u$s <b>");        
+                                out.write(Double.toString(j.getPrecio()));
+                                out.write("</b></div>");
+                                out.write("</a>");        
+                                out.write("</div>");
+                                //out.write("</li>");
+                                i++;
+                            }
+                        %>
+                        </div>
+                    </div>
+                    <%-- FIN MAS COMPRADOS --%>
+
+                    <%-- MEJOR PUNTUADOS --%>
+                    <div id="mejor-puntuados" class="contenedor-destacados">
+                        <div class="titulo-grande">
+                            <span>LOS MEJORES PUNTUADOS</span>
+                        </div>
+                        <div>
+                            <%
+                            ArrayList juegos_masPuntuados = (ArrayList)cj.listarMejorPuntuados(3);
+                            i=0;
+
+                            while(i<juegos_masPuntuados.size()){
+                                Juego j = (Juego)juegos_masPuntuados.get(i);
+                                //out.write("<li>");
+                                out.write("<div class='ModuloJuego'><a href='verInfoJuego?id=" + j.getId() + "'>");
+                                out.write("<div class='imgJuego'>");
+                                out.write("<img class='imgJuego' src='" +ruta + j.getPortada() + "'>");
+                                out.write("</div>");
+                                out.write("<div class='nombrejuego'><b>");
+                                out.write(j.getNombre());
+                                out.write("</b></div>");
+                                out.write("<div class='descjuego'>");
+                                String desc = j.getDescripcion();
+                                if(desc.length()>200){
+                                    out.write(desc.substring(0, 200) + "...");
+                                }else{
+                                    out.write(desc);
+                                }
+                                out.write("</div>");
+                                out.write("<div class='preciojuego'> u$s <b>");        
+                                out.write(Double.toString(j.getPrecio()));
+                                out.write("</b></div>");
+                                out.write("</a>");        
+                                out.write("</div>");
+                                //out.write("</li>");
+                                i++;
+                            }
+                            %>
+                        </div>
+                    </div>
+                    <%-- TERMINA MEJOR PUNTUADOS --%>
+            <%
+                }
+            %>
+            
+            <div  id="contenedorJuegos" >
+                <div>
                 <%
                     
                     String ruta = "http://progapli2013.comule.com/imagenes/juegos/";
@@ -56,31 +153,35 @@
                             out.write("<div class = 'imgJuego'>");
                             out.write("<img class='imgJuego' src='" +ruta + j.getPortada() + "'>");
                             out.write("</div>");
-                            out.write("<li class='nombrejuego'><b>");
+                            out.write("<div class='nombrejuego'><b>");
                             out.write(j.getNombre());
                             //out.write("<ul>");
-                            out.write("</b></li>");
-                            out.write("<li class='descjuego'>");
+                            out.write("</b></div>");
+                            out.write("<div class='descjuego'>");
                             String desc = j.getDescripcion();
                             if(desc.length()>200){
                                 out.write(desc.substring(0, 200) + "...");
                             }else{
                                 out.write(desc);
                             }
-                            out.write("</li>");
-                            out.write("<li class='preciojuego'> u$s <b>");        
+                            out.write("</div>");
+                            out.write("<div class='preciojuego'> u$s <b>");        
                             out.write(Double.toString(j.getPrecio()));
-                            out.write("</b></li>");
-                            out.write("<li></a>");        
+                            out.write("</b></div>");
+                            out.write("</a>");        
                             out.write("</div>");
                             i++;
                         }
                     }
                     %>
-                    </ul>
                     </div>
                 </div>
             </div>
-              <jsp:include page="plantillas/footer.jsp"></jsp:include>
+        </div>
+        <footer id="footer">
+            <div id="txtfooter">
+                Random PlayStore © || Todos los derechos reservados || Programacion de Aplicaciones || 2013 
+            </div>
+        </footer>
     </body>
 </html>

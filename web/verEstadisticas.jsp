@@ -92,12 +92,13 @@
 
     <body>  
         <!--Div that will hold the pie chart-->
-        <div  id="graficasG">
-            <div>
-                <div id="chart_div" ></div>
-                <div id="chart2_div"></div>
+        <div id="chart_div"></div>
+        <div id="chart2_div" style="width: 900px; height: 500px;"></div>
+        
+        <footer id="footer">
+            <div id="txtfooter">
+                Random PlayStore © || Todos los derechos reservados || Programacion de Aplicaciones || 2013 
             </div>
-        </div>
-        <jsp:include page="plantillas/footer.jsp"></jsp:include>
+        </footer>
     </body>
 </html>

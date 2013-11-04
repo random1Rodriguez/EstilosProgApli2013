@@ -1,6 +1,10 @@
 /* importa archivo para quitar los estilos propios de cada nvegador */
 @import url("normalize.css");
 
+html{
+    height: 100%;
+}
+
 body{
     font-family: Helvetica, Arial;
     font-size: 16px;
@@ -314,16 +318,6 @@ li .menos{
     border: solid 0.5px;
 }
 
-#footer{
-    position: relative;
-    bottom: 0;
-    background-image: url(../img/imgfooter.png);
-    height: 301px;
-    margin-top: -150px;
-    width: 100%;
-    clear: both;
-}
-
 #txtfooter{
     color: white;
     position: relative;
@@ -461,7 +455,7 @@ li .menos{
     border-radius: 0px 10px;
     border: solid 1px gray;
     padding: 1%;
-    margin: auto;
+    /*margin: auto;*/
     list-style: none outside none;
 
 }
@@ -591,8 +585,6 @@ li .menos{
     top: 5px;
 }
 
-
-
 .listaJuegos div {
     width: 300px;
     height: 200px;
@@ -627,8 +619,6 @@ li .menos{
     display: inline-block;
     width: 160px;
 }
-
-
 
 #contenedorinputs{
     /*    background-image: linear-gradient(bottom, rgb(227,227,227) 0%, rgb(219,219,219) 56%, rgb(217,217,217) 100%);
@@ -706,7 +696,7 @@ li .menos{
     padding-left: 8%;
     padding-top: 0.6%;
     text-rendering: optimizelegibility;
-    width: 18%;
+    width: 13%;
     height: 39px;
     background-image: linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
     background-image: -o-linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
@@ -725,14 +715,15 @@ li .menos{
 
 #menu{
     font-family: "Roboto Slab", serif;
-    color: white;
+    color: #FFF;
     text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     padding-top: 1%;
     padding-left: 5px;
-    margin-left: 11%;
-    width: 82%;
+    margin-left: 23%;
+    width: 8%;
     position: relative;
-    left: 1.5%;
+    left: 2.5%;
+    cursor: pointer;
 }
 
 #menu_categorias ul li{
@@ -823,7 +814,7 @@ li .menos{
     border-bottom: 2px solid #39F;
     width: 16%;
     position: fixed;
-    left: 26%;
+    left: 25%;
     top: 40px;
 
 }
@@ -1045,3 +1036,64 @@ li .menos{
 }
 
 /*Termina slider*/
+
+
+
+/*----------------- ESTILOS MATIAS V----------------------*/
+
+#contenedor{
+    height: auto !important;
+    min-height: 100%;
+    margin-bottom: 0px;
+    clear: both
+}
+
+#contenedor:after{
+    height: 300px;
+}
+
+#footer{
+    height: 300px;
+    background-image: url(../img/imgfooter.png);
+    width: 100%;
+    position: relative;
+    clear: both;
+}
+
+#txtfooter{
+    color: white;
+    position: relative;
+    top: 268px;
+    text-align: center;
+}
+
+.titulo-grande{
+    width: 80%;
+    height: 90px;
+    background-color: rgba(58, 54, 46, 0.76);
+    border-radius: 10px;
+}
+
+.titulo-grande span{
+    font-size: 2em;
+    position: relative;
+    left: 32%;
+    top: 33%;
+    color: #FFF;
+}
+
+.contenedor-destacados{
+    position: relative;
+    width: 100%;
+    margin: auto 6%;
+    top: 30px;
+}
+
+#sin-resultados #mensaje{
+    height: 200px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+/*----------------- ESTILOS MATIAS V----------------------*/
+

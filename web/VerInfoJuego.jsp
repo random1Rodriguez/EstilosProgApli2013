@@ -16,6 +16,10 @@
                 border-radius: 00px 15px 0 15px;
                 border: solid 1px #3071a9;
             }
+            
+            #btn-comprar{
+                font-size: 1.5em;
+            }
 
             #contenedorInformacionJuego{
                 /*    background-image: linear-gradient(bottom, rgb(227,227,227) 0%, rgb(219,219,219) 56%, rgb(217,217,217) 100%);
@@ -48,6 +52,10 @@
         <script src="js/jquery-2.0.3.js"></script>
         <script>
             $(document).ready(function() {
+                
+                var path = document.location.pathname.toString();
+                var nombreApp = path.split("/")[1];
+                var host = document.location.host;
 
                 $(".root-coments").css("list-style-image", "url('img/mas.png')");
 
@@ -56,8 +64,8 @@
 
                     var comentario = $(this);
                     //console.log(comentario);
-                    var dir = "http://localhost:8080/MarketWeb/" + comentario.attr("href");
-                    //console.log(dir);
+                    var dir = "http://"+host+"/"+nombreApp +"/"+ comentario.attr("href");
+                    console.log(dir);
                     //console.log(comentario.attr("href"));
                     var id_com = dir.substring(dir.indexOf("=") + 1, dir.length);
                     //console.log(id_com);
@@ -102,13 +110,21 @@
                         });
                     }
                 });
+                
+                $("#btn-comprar").hover(function(){
+                    console.log($(this).html());
+                    var precio = $(this).attr("value");
+                    $(this).text("u$s "+precio);
+                }, function(){
+                    $(this).text("Comprar");
+                });
             });
         </script>
 
     </head>
     <body>
         <jsp:include page="plantillas/header.jsp"></jsp:include>
-
+        <div id="contenedor">
         <%
             String server = "http://progapli2013.comule.com/";
             String imagenes_perfil = server + "imagenes/perfiles/";
@@ -178,7 +194,7 @@
                 out.write("</ul>");//Info Gral Cierre
 
 
-                out.write("<a class='btn' href='comprarJuego?id=" + ju.getId() + "'>Comprar</a><br><br>");
+                out.write("<a id='btn-comprar' class='btn' value='"+ju.getPrecio()+"' href='comprarJuego?id=" + ju.getId() + "'>Comprar</a><br><br>");
 
                 ArrayList<Comentario> lstCom = (ArrayList<Comentario>) ju.getComentarios();
                 i = 0;
@@ -194,14 +210,20 @@
                         }
                         i++;
                     }
+                    out.write("</div>");
                 }
 
             } else {
                 out.write("<div id='comentsPH'> <ul id='InfoJComents'> El juego no tiene comentarios</ul></div>");
             }
+            out.write("</div>");
         %>
-        <%-- </div> --%>
-        <jsp:include page="plantillas/footer.jsp"></jsp:include>
+        </div>
+        <footer id="footer">
+            <div id="txtfooter">
+                Random PlayStore © || Todos los derechos reservados || Programacion de Aplicaciones || 2013 
+            </div>
+        </footer>
     </body>
 
 </html>
