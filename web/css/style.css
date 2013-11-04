@@ -29,11 +29,11 @@ body{
     height:100%;
     clear:both;
     margin-bottom: 150px;
-    
+
 }
 
 #selectcategorias{
-    
+
 }
 
 /*#imgderecha{
@@ -54,11 +54,11 @@ left: 930px;
 
 #infoJnombre{
     font-size: 150%;
-position: relative;
-left: -46px;
-top: -2px;
-color: #ea005e;
-margin: 2% 6%;
+    position: relative;
+    left: -46px;
+    top: -2px;
+    color: #ea005e;
+    margin: 2% 6%;
 }
 
 #InfoJComents{
@@ -106,13 +106,13 @@ li .menos{
 
 #categoriasAltaJuego{
     position: relative;
-float: right;
-top: -247px;
-left: -524px;
-background: #fff;
-padding: 21px;
-border-radius: 0px 20px 0 20px;
-border: solid 0.5px;
+    float: right;
+    top: -247px;
+    left: -524px;
+    background: #fff;
+    padding: 21px;
+    border-radius: 0px 20px 0 20px;
+    border: solid 0.5px;
 }
 
 .btn{
@@ -140,7 +140,7 @@ border: solid 0.5px;
 }
 
 .footer, .push {
-height: 9em;
+    height: 9em;
 }
 
 #footer{
@@ -154,7 +154,7 @@ height: 9em;
 }
 
 #txtfooter{
-   color: white;
+    color: white;
     position: relative;
     top: 268px;
     text-align: center;
@@ -185,12 +185,12 @@ height: 9em;
     background-image: -ms-linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
 
     background-image: -webkit-gradient(
-            linear,
-            left bottom,
-            left top,
-            color-stop(0.15, rgb(41,41,41)),
-            color-stop(0.58, rgb(122,122,122))
-    );
+        linear,
+        left bottom,
+        left top,
+        color-stop(0.15, rgb(41,41,41)),
+        color-stop(0.58, rgb(122,122,122))
+        );
     height: 48px;
     position: fixed;
     top: 0px;
@@ -206,18 +206,18 @@ height: 9em;
 /*------------ imagenes en perfil --------------*/
 
 .imagen img{
-max-width: 25%;
-min-width: 10%;
-height: auto;
-float: right;
-margin-right: 7%;
-border-radius: 0px 24px;
-box-shadow: 1px 1px 13px 2px;
+    max-width: 25%;
+    min-width: 10%;
+    height: auto;
+    float: right;
+    margin-right: 7%;
+    border-radius: 0px 24px;
+    box-shadow: 1px 1px 13px 2px;
 }
 
 #desc{
     width: 20%;
-    
+
 }
 
 #info_compras{
@@ -286,10 +286,10 @@ box-shadow: 1px 1px 13px 2px;
 }
 #versionesP li{
     display: inline;
-    
+
 }
 #versionesR li{
-   display: inline;
+    display: inline;
 }
 
 #versionesR{
@@ -300,18 +300,18 @@ box-shadow: 1px 1px 13px 2px;
     padding: 1%;
     margin: 1%;
     list-style: none;
-    
+
 }
 
 #categoriasAltaJuego{
     position: relative;
-float: right;
-top: -305px;
-left: -524px;
-background: #fff;
-padding: 21px;
-border-radius: 0px 20px 0 20px;
-border: solid 0.5px;
+    float: right;
+    top: -305px;
+    left: -524px;
+    background: #fff;
+    padding: 21px;
+    border-radius: 0px 20px 0 20px;
+    border: solid 0.5px;
 }
 
 #footer{
@@ -325,7 +325,7 @@ border: solid 0.5px;
 }
 
 #txtfooter{
-   color: white;
+    color: white;
     position: relative;
     top: 268px;
     text-align: center;
@@ -338,18 +338,18 @@ border: solid 0.5px;
 
 #encabezado{
     background-image: linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
-background-image: -o-linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
-background-image: -moz-linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
-background-image: -webkit-linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
-background-image: -ms-linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
+    background-image: -o-linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
+    background-image: -moz-linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
+    background-image: -webkit-linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
+    background-image: -ms-linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
 
-background-image: -webkit-gradient(
-	linear,
-	left bottom,
-	left top,
-	color-stop(0.15, rgb(41,41,41)),
-	color-stop(0.58, rgb(122,122,122))
-);
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0.15, rgb(41,41,41)),
+        color-stop(0.58, rgb(122,122,122))
+        );
     height: 48px;
     position: fixed;
     top: 0px;
@@ -368,7 +368,7 @@ background-image: -webkit-gradient(
 
 #desc{
     width: 20%;
-    
+
 }
 
 #slider .slide{
@@ -377,13 +377,13 @@ background-image: -webkit-gradient(
     float: left;
 }
 .slide p{
-	color: #000;
-	position: absolute;
-	left: 0px;
-	bottom: 20px;
-	padding: 12px;
-	background: rgba(255, 255, 255, 0.8);
-	border-left: 5px solid green;
+    color: #000;
+    position: absolute;
+    left: 0px;
+    bottom: 20px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.8);
+    border-left: 5px solid green;
 }
 .prev, .next{
     display: block;
@@ -397,25 +397,25 @@ background-image: -webkit-gradient(
     background-position: 0 0;
     left: 0;
     position: relative;
-top: 42%;
-z-index: 1;
-left: 7%;
+    top: 42%;
+    z-index: 1;
+    left: 7%;
 }
 .prev:hover{
     background-position: 0 1px;
 }
 .next{
-/*    background: url('http://jdwebfiles.webcindario.com/Easy%20slider/images/next.png') no-repeat;
-    background-position: 0 0;
-    right: 0;*/
+    /*    background: url('http://jdwebfiles.webcindario.com/Easy%20slider/images/next.png') no-repeat;
+        background-position: 0 0;
+        right: 0;*/
 
-background: url('http://jdwebfiles.webcindario.com/Easy%20slider/images/next.png') no-repeat;
-background-position: 0 0;
-right: 0;
-position: relative;
-top: 57%;
-left: 89%;
-z-index: 1;
+    background: url('http://jdwebfiles.webcindario.com/Easy%20slider/images/next.png') no-repeat;
+    background-position: 0 0;
+    right: 0;
+    position: relative;
+    top: 57%;
+    left: 89%;
+    z-index: 1;
 }
 .next:hover{
     background-position: 0 1px;
@@ -473,23 +473,23 @@ z-index: 1;
 
 /*esta es*/
 .ModuloJuego{
-   width: 25%;
-    
-   /* color: white; */
-   height: 406px;
+    width: 25%;
+
+    /* color: white; */
+    height: 406px;
     position: relative;
     top: 0px;
-    
-   /* border-color: black; */
-    
-   /* border-style: solid; */
-    
-   display: inline-table;
+
+    /* border-color: black; */
+
+    /* border-style: solid; */
+
+    display: inline-table;
     border-radius: 5px 5px 5px 5px;
-    
-   background-color: rgba(224, 213, 190, 0.7);
-    
-   box-shadow: 5px 7px 19px rgba(0, 0, 0, 0.8);
+
+    background-color: rgba(224, 213, 190, 0.7);
+
+    box-shadow: 5px 7px 19px rgba(0, 0, 0, 0.8);
     list-style: none outside none;
     margin: 10px;
 }
@@ -500,7 +500,7 @@ z-index: 1;
     color: #000000;
     text-decoration: none;
     text-align: justify;
-    
+
 }
 
 .descjuego{
@@ -527,15 +527,15 @@ z-index: 1;
 
 /*se esta aplicando este*/
 #fondotransparente{
-   background-color: rgba(0,0,0,0.3);
-   width: 80%;
-   position: relative;
-   left: 6%;
-   top: 0;
-   z-index: 0;
-   padding-top: 3%;
-   padding-bottom: 0.2%;
-   border-radius: 10px;
+    background-color: rgba(0,0,0,0.3);
+    width: 80%;
+    position: relative;
+    left: 6%;
+    top: 0;
+    z-index: 0;
+    padding-top: 3%;
+    padding-bottom: 0.2%;
+    border-radius: 10px;
 }
 
 #newjuego{
@@ -558,13 +558,13 @@ z-index: 1;
 
 #categoriasAltaJuego{
     position: relative;
-float: right;
-top: -247px;
-left: -524px;
-background: #fff;
-padding: 21px;
-border-radius: 0px 20px 0 20px;
-border: solid 0.5px;
+    float: right;
+    top: -247px;
+    left: -524px;
+    background: #fff;
+    padding: 21px;
+    border-radius: 0px 20px 0 20px;
+    border: solid 0.5px;
 }
 
 #footer{
@@ -578,7 +578,7 @@ border: solid 0.5px;
 }
 
 #txtfooter{
-   color: white;
+    color: white;
     position: relative;
     top: 268px;
     text-align: center;
@@ -606,7 +606,7 @@ border: solid 0.5px;
     list-style: none;
     margin: 10px 10px 10px 10px;
 }
-    
+
 .listaJuegos ul {
     padding-top: 70px;
 }
@@ -631,21 +631,21 @@ border: solid 0.5px;
 
 
 #contenedorinputs{
-/*    background-image: linear-gradient(bottom, rgb(227,227,227) 0%, rgb(219,219,219) 56%, rgb(217,217,217) 100%);
-background-image: -o-linear-gradient(bottom, rgb(227,227,227) 0%, rgb(219,219,219) 56%, rgb(217,217,217) 100%);
-background-image: -moz-linear-gradient(bottom, rgb(227,227,227) 0%, rgb(219,219,219) 56%, rgb(217,217,217) 100%);
-background-image: -webkit-linear-gradient(bottom, rgb(227,227,227) 0%, rgb(219,219,219) 56%, rgb(217,217,217) 100%);
-background-image: -ms-linear-gradient(bottom, rgb(227,227,227) 0%, rgb(219,219,219) 56%, rgb(217,217,217) 100%);
-
-background-image: -webkit-gradient(
-	linear,
-	left bottom,
-	left top,
-	color-stop(0, rgb(227,227,227)),
-	color-stop(0.56, rgb(219,219,219)),
-	color-stop(1, rgb(217,217,217))
-);*/
-background: rgba(0, 0, 0, 0.3);
+    /*    background-image: linear-gradient(bottom, rgb(227,227,227) 0%, rgb(219,219,219) 56%, rgb(217,217,217) 100%);
+    background-image: -o-linear-gradient(bottom, rgb(227,227,227) 0%, rgb(219,219,219) 56%, rgb(217,217,217) 100%);
+    background-image: -moz-linear-gradient(bottom, rgb(227,227,227) 0%, rgb(219,219,219) 56%, rgb(217,217,217) 100%);
+    background-image: -webkit-linear-gradient(bottom, rgb(227,227,227) 0%, rgb(219,219,219) 56%, rgb(217,217,217) 100%);
+    background-image: -ms-linear-gradient(bottom, rgb(227,227,227) 0%, rgb(219,219,219) 56%, rgb(217,217,217) 100%);
+    
+    background-image: -webkit-gradient(
+            linear,
+            left bottom,
+            left top,
+            color-stop(0, rgb(227,227,227)),
+            color-stop(0.56, rgb(219,219,219)),
+            color-stop(1, rgb(217,217,217))
+    );*/
+    background: rgba(0, 0, 0, 0.3);
     border-radius: 15px 0 15px;
     width: 80%;
     padding: 2%;
@@ -670,12 +670,12 @@ background: rgba(0, 0, 0, 0.3);
     background-image: -ms-linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
 
     background-image: -webkit-gradient(
-            linear,
-            left bottom,
-            left top,
-            color-stop(0.15, rgb(41,41,41)),
-            color-stop(0.58, rgb(122,122,122))
-    );
+        linear,
+        left bottom,
+        left top,
+        color-stop(0.15, rgb(41,41,41)),
+        color-stop(0.58, rgb(122,122,122))
+        );
     height: 48px;
     position: fixed;
     top: 0px;
@@ -693,7 +693,7 @@ background: rgba(0, 0, 0, 0.3);
     -moz-background-size:100% 100%;
     top:1%;
     left:1%;
-     
+
 }
 
 #titulopagina{
@@ -709,18 +709,18 @@ background: rgba(0, 0, 0, 0.3);
     width: 18%;
     height: 39px;
     background-image: linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
-background-image: -o-linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
-background-image: -moz-linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
-background-image: -webkit-linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
-background-image: -ms-linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
+    background-image: -o-linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
+    background-image: -moz-linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
+    background-image: -webkit-linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
+    background-image: -ms-linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
 
-background-image: -webkit-gradient(
-	linear,
-	left bottom,
-	left top,
-	color-stop(0.15, rgb(41,41,41)),
-	color-stop(0.58, rgb(122,122,122))
-);
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0.15, rgb(41,41,41)),
+        color-stop(0.58, rgb(122,122,122))
+        );
 }
 
 #menu{
@@ -774,8 +774,8 @@ background-image: -webkit-gradient(
 
 #btnlogin{
     position: relative;
-top: -20px;
-left: 133px;
+    top: -20px;
+    left: 133px;
 }
 
 #login a{
@@ -825,7 +825,7 @@ left: 133px;
     position: fixed;
     left: 26%;
     top: 40px;
-    
+
 }
 
 .slidingDiv a {
@@ -833,7 +833,7 @@ left: 133px;
     display: block;
     font-size: 109%;
     text-decoration: none;
-   
+
 }
 
 .slidingDiv li{
@@ -919,7 +919,7 @@ left: 133px;
     height: 27px;
     width: 27px; 
     text-shadow: 0 1px 1px rgba(0,0,0,.6); 
-    
+
     background: #5f5f5f;
     background: -webkit-gradient(linear, left top, left bottom, from(#9e9e9e), to(#454545)); 
     background: -moz-linear-gradient(top,  #9e9e9e,  #454545);
@@ -930,7 +930,7 @@ left: 133px;
 
 /* LISTADO JUEGOS BUSCADOR */
 .botonera_juego {
-margin-left: 27%;
+    margin-left: 27%;
 }
 
 
@@ -941,9 +941,9 @@ margin-left: 27%;
     -o-transition:  -o-transform 0.33s linear;
     transition: transform 0.33s linear;
 
-   -webkit-transform: rotate(360deg);
-   -moz-transform: rotate(360deg);
-   transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg);
 }
 
 /*------------ imagenes en perfil --------------*/
@@ -956,7 +956,7 @@ margin-left: 27%;
 
 #desc{
     width: 20%;
-    
+
 }
 
 /* SLIDER */
@@ -969,9 +969,22 @@ margin-left: 27%;
     top: 20px;
     left: -102px;
 }
+#graficasG{
+    display: inline;
+}
+
+#chart_div{
+    width: 50%; 
+    height: 600px;
+}
+#chart_div2{
+    width: 50%; 
+    height: 600px;
+    left: 50%;
+}
 
 .slidesContainer{
-	border-top: 6px solid green;
+    border-top: 6px solid green;
 }
 
 #slider {
@@ -991,13 +1004,13 @@ margin-left: 27%;
     float: left;
 }
 .slide p{
-	color: #000;
-	position: absolute;
-	left: 0px;
-	bottom: 20px;
-	padding: 12px;
-	background: rgba(255, 255, 255, 0.8);
-	border-left: 5px solid green;
+    color: #000;
+    position: absolute;
+    left: 0px;
+    bottom: 20px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.8);
+    border-left: 5px solid green;
 }
 .prev, .next{
     display: block;

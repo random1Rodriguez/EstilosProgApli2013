@@ -4,9 +4,11 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="controladores.Controladorjuegos"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="css/style.css">
         <%
             Controladorjuegos cj = controladores.Controladorjuegos.getInstancia();
             ControladorUsuarios cu = controladores.ControladorUsuarios.getInstancia();
@@ -51,10 +53,7 @@
                     ]);
 
                     // Seteo propiedades al grafico
-                    var options = {'title': 'Ganancias',
-                        'width': 600,
-                        'height': 600,
-                        'is3D': true};
+                    var options = {'title': 'Ganancias'};
 
                     // Crear instancias y dibuja la tabla, pasando algunas de las opciones.
                     var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
@@ -62,22 +61,21 @@
                 }
                 function drawChart2() {
                     var data2 = google.visualization.arrayToDataTable([
-                        ['Month', 'Ganancias'],
-
+                        ['Month', 'Porcentaje de ganancia por juego'],
             <%
-                             ArrayList<mesGanancia> lstmesGanancia = cu.gananciaPorMes(15).getListaGananciasPorMes();
-                             for (int i = 0; i < lstmesGanancia.size(); i++) {
-                                 mesGanancia mG = (mesGanancia) lstmesGanancia.get(i);
-                                 if (i < lstmesGanancia.size() - 1) {
-                                     out.write("['" + mG.getMes() + "', " + mG.getGanancia() + "],");
-                                 } else {
-                                     out.write("['" + mG.getMes()+ "', " + mG.getGanancia() + "]");
-                                 }
+                ArrayList<mesGanancia> lstmesGanancia = cu.gananciaPorMes(15).getListaGananciasPorMes();
+                for (int i = 0; i < lstmesGanancia.size(); i++) {
+                    mesGanancia mG = (mesGanancia) lstmesGanancia.get(i);
+                    if (i < lstmesGanancia.size() - 1) {
+                        out.write("['" + mG.getMes() + "', " + mG.getGanancia() + "],");
+                    } else {
+                        out.write("['" + mG.getMes() + "', " + mG.getGanancia() + "]");
+                    }
 
 
-                             }
+                }
             %>
-                        
+
                     ]);
 
                     var options2 = {
@@ -92,10 +90,14 @@
         </script>
     </head>
 
-    <body>
+    <body>  
         <!--Div that will hold the pie chart-->
-        <div id="chart_div"></div>
-        <div id="chart2_div" style="width: 900px; height: 500px;"></div>
+        <div  id="graficasG">
+            <div>
+                <div id="chart_div" ></div>
+                <div id="chart2_div"></div>
+            </div>
+        </div>
         <jsp:include page="plantillas/footer.jsp"></jsp:include>
     </body>
 </html>
