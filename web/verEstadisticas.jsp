@@ -10,8 +10,10 @@
     <head>
         <link rel="stylesheet" href="css/style.css">
         <%
-            Controladorjuegos cj = controladores.Controladorjuegos.getInstancia();
-            ControladorUsuarios cu = controladores.ControladorUsuarios.getInstancia();
+            HttpSession sesion = request.getSession(true);
+            if (sesion.getAttribute("usuario").toString() != null) {
+                Controladorjuegos cj = controladores.Controladorjuegos.getInstancia();
+                ControladorUsuarios cu = controladores.ControladorUsuarios.getInstancia();
         %>
         <!--Load the AJAX API-->
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -37,7 +39,7 @@
                     data.addColumn('number', 'Slices');
                     data.addRows([
             <%
-                ArrayList lstGan = cj.gananciaPorJuego(15);
+                ArrayList lstGan = cj.gananciaPorJuego(cu.find(sesion.getAttribute("usuario").toString()).getId());
                 for (int i = 0; i < lstGan.size(); i++) {
                     Juego j = (Juego) lstGan.get(i);
                     if (i < lstGan.size() - 1) {
@@ -63,7 +65,7 @@
                     var data2 = google.visualization.arrayToDataTable([
                         ['Month', 'Porcentaje de ganancia por juego'],
             <%
-                ArrayList<mesGanancia> lstmesGanancia = cu.gananciaPorMes(15).getListaGananciasPorMes();
+                ArrayList<mesGanancia> lstmesGanancia = cu.gananciaPorMes(cu.find(sesion.getAttribute("usuario").toString()).getId()).getListaGananciasPorMes();
                 for (int i = 0; i < lstmesGanancia.size(); i++) {
                     mesGanancia mG = (mesGanancia) lstmesGanancia.get(i);
                     if (i < lstmesGanancia.size() - 1) {
@@ -88,13 +90,16 @@
 
 
         </script>
+        <%
+            }
+        %>
     </head>
 
     <body>  
         <!--Div that will hold the pie chart-->
         <div id="chart_div"></div>
         <div id="chart2_div" style="width: 900px; height: 500px;"></div>
-        
+
         <footer id="footer">
             <div id="txtfooter">
                 Random PlayStore © || Todos los derechos reservados || Programacion de Aplicaciones || 2013 

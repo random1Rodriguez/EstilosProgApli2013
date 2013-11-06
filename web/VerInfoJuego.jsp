@@ -188,7 +188,7 @@
                         controladores.ControladorUsuarios.getInstancia().find(String.valueOf(session.getAttribute("usuario"))).getId(),
                         ju.getId())) {
                     out.write("<li style='margin-left:25px'>");
-                    out.write("<img alt='' src='http://chart.apis.google.com/chart?cht=qr&amp;chs=100x100&amp;chl='descargaJuego?id=" + v.getId_juego() + "'&amp;chld=H|0' />");
+                    out.write("<img alt='' src='http://chart.apis.google.com/chart?cht=qr&amp;chs=300x300&amp;chl=www.facebook.com&amp;chld=H|0' />");
                     out.write("</li>");
                 }
                 out.write("</ul>");//Info Gral Cierre
