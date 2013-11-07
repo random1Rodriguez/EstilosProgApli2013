@@ -27,40 +27,41 @@ public class RegistroAcceso extends HttpServlet {
             throws ServletException, IOException {
         
         String so = "";
-        String nav = "";
         String ip = request.getRemoteAddr();
-        String url = "";
+        String url = request.getParameter("url");
+        String nav = request.getParameter("nav");
         
         
         //obtener sistema operativo
-        if (request.getParameter("SOyNAV").indexOf("Win") != -1){
-            so = "windows";
+        String sisOp = request.getParameter("so").toLowerCase();
+        
+        if (sisOp.indexOf("win") != -1){
+            so = "Windows";
         }
         
-        if (request.getParameter("SOyNAV").indexOf("Mac") != -1){
-            so = "macintosh";
+        if (sisOp.indexOf("mac") != -1){
+            so = "Macintosh";
         }
         
-        if (request.getParameter("SOyNAV").indexOf("X11") != -1){
-            so = "unix";
+        if (sisOp.indexOf("x11") != -1){
+            so = "Unix";
         }
-        if (request.getParameter("SOyNAV").indexOf("Linux") != -1){
-            so = "linux";
+        if (sisOp.indexOf("linux") != -1){
+            so = "Linux";
         }
-        
-        System.out.println(request.getParameter("url"));
         
         Date f = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String fecha = sdf.format(f);
         
-        String sql = "insert into registro_acceso (navegador, so, ip, url, fecha) "
+        try {
+            String sql = "insert into registro_acceso (navegador, so, ip, url, fecha) "
                     + "values('"+nav+"', '"+so+"', '"+ip+"', '"+url+"', '"+fecha+"')";
-//        try {
-//            ManejadorBD.getInstancia().INSERT(sql);
-//        } catch (SQLException ex) {
-//            Logger.getLogger(RegistroAcceso.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+            System.out.println(sql);
+            ManejadorBD.getInstancia().INSERT(sql);
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistroAcceso.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }
