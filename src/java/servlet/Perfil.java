@@ -63,6 +63,9 @@ public class Perfil extends HttpServlet {
                     System.out.println("es desarrollador");
                     //obtengo en un arreglo todos los juegos del desarrollador logueado
                     ArrayList juegos_subidos = cj.listarJuegosPorDesarrollador(u.getId()); 
+                    
+                    //usando web services
+                    //ArrayList juegos_subidos = (ArrayList)Perfil.listarJuegosPorDesarrollador(u.getId());
                     int i = 0;
                     //arreglo vacio para guardar las versiones
                     ArrayList versiones = new ArrayList();
@@ -89,8 +92,11 @@ public class Perfil extends HttpServlet {
                     request.setAttribute("juegos", juegos_subidos_ver_aprobada);
                 }
                 else if (u.getTipo().equals("c")){ //si el usuario es cliente
-                    ArrayList juegos = cj.listarJuegosPorCliente(u.getId());
-
+                    //ArrayList juegos = cj.listarJuegosPorCliente(u.getId());
+                    
+                    //usando web services
+                    ArrayList juegos = (ArrayList)Perfil.listarJuegosPorCliente(u.getId());
+                    
                     request.setAttribute("juegos_comprados", juegos);
                 }
                 
@@ -112,5 +118,17 @@ public class Perfil extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+    }
+
+    private static java.util.List<java.lang.Object> listarJuegosPorCliente(int idUsuario) {
+        clientes.juegos.ServicioJuegos_Service service = new clientes.juegos.ServicioJuegos_Service();
+        clientes.juegos.ServicioJuegos port = service.getServicioJuegosPort();
+        return port.listarJuegosPorCliente(idUsuario);
+    }
+
+    private static java.util.List<java.lang.Object> listarJuegosPorDesarrollador(int idUsuario) {
+        clientes.juegos.ServicioJuegos_Service service = new clientes.juegos.ServicioJuegos_Service();
+        clientes.juegos.ServicioJuegos port = service.getServicioJuegosPort();
+        return port.listarJuegosPorDesarrollador(idUsuario);
     }
 }
