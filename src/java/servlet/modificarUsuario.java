@@ -13,7 +13,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.net.URL;
 import java.net.URLConnection;
 import java.sql.SQLException;
@@ -31,6 +30,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.tomcat.util.http.fileupload.FileItem;
 import org.apache.tomcat.util.http.fileupload.FileItemFactory;
 import org.apache.tomcat.util.http.fileupload.FileUploadException;
+import org.apache.tomcat.util.http.fileupload.RequestContext;
 import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
@@ -66,7 +66,7 @@ public class modificarUsuario extends HttpServlet {
                 /*ServletFileUpload esta clase convierte los input file a FileItem*/
             ServletFileUpload servlet_up = new ServletFileUpload(file_factory);
                 /*sacando los FileItem del ServletFileUpload en una lista */
-            List items = servlet_up.parseRequest(request);
+            List items = servlet_up.parseRequest((RequestContext) request);
             
             //obtengo el nombre del juego
                 String nom;
