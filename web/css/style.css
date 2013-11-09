@@ -1045,7 +1045,7 @@ li .menos{
     height: auto !important;
     min-height: 100%;
     margin-bottom: 0px;
-    clear: both
+    /*clear: both*/
 }
 
 #contenedor:after{
@@ -1093,6 +1093,10 @@ li .menos{
     height: 200px;
     width: 80%;
     margin: 0 auto;
+}
+
+.div-ajuste{
+    clear: both;
 }
 
 /*----------------- ESTILOS MATIAS V----------------------*/
