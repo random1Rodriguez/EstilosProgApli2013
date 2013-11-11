@@ -17,6 +17,9 @@ public class NotificacionNuevaVersion extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        
         
         HttpSession s = request.getSession(true);
         if (s.getAttribute("usuario") != null){

@@ -10,20 +10,40 @@
 <message name="verInfoUsuarioResponse">
 <part name="parameters" element="tns:verInfoUsuarioResponse" />
 </message>
+<message name="altaUsuario">
+<part name="parameters" element="tns:altaUsuario" />
+</message>
+<message name="altaUsuarioResponse">
+<part name="parameters" element="tns:altaUsuarioResponse" />
+</message>
 <message name="listarUsuarios">
 <part name="parameters" element="tns:listarUsuarios" />
 </message>
 <message name="listarUsuariosResponse">
 <part name="parameters" element="tns:listarUsuariosResponse" />
 </message>
+<message name="find">
+<part name="parameters" element="tns:find" />
+</message>
+<message name="findResponse">
+<part name="parameters" element="tns:findResponse" />
+</message>
 <portType name="ServicioUsuarios">
 <operation name="verInfoUsuario">
 <input wsam:Action="http://ws/ServicioUsuarios/verInfoUsuarioRequest" message="tns:verInfoUsuario" />
 <output wsam:Action="http://ws/ServicioUsuarios/verInfoUsuarioResponse" message="tns:verInfoUsuarioResponse" />
 </operation>
+<operation name="altaUsuario">
+<input wsam:Action="http://ws/ServicioUsuarios/altaUsuarioRequest" message="tns:altaUsuario" />
+<output wsam:Action="http://ws/ServicioUsuarios/altaUsuarioResponse" message="tns:altaUsuarioResponse" />
+</operation>
 <operation name="listarUsuarios">
 <input wsam:Action="http://ws/ServicioUsuarios/listarUsuariosRequest" message="tns:listarUsuarios" />
 <output wsam:Action="http://ws/ServicioUsuarios/listarUsuariosResponse" message="tns:listarUsuariosResponse" />
+</operation>
+<operation name="find">
+<input wsam:Action="http://ws/ServicioUsuarios/findRequest" message="tns:find" />
+<output wsam:Action="http://ws/ServicioUsuarios/findResponse" message="tns:findResponse" />
 </operation>
 </portType>
 <binding name="ServicioUsuariosPortBinding" type="tns:ServicioUsuarios">
@@ -37,7 +57,25 @@
 <soap:body use="literal" />
 </output>
 </operation>
+<operation name="altaUsuario">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+</operation>
 <operation name="listarUsuarios">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+</operation>
+<operation name="find">
 <soap:operation soapAction="" />
 <input>
 <soap:body use="literal" />

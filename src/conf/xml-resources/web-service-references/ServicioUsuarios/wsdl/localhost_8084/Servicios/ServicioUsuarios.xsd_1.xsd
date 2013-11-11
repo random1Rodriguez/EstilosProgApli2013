@@ -1,5 +1,13 @@
 <?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2-hudson-740-. --><xs:schema xmlns:tns="http://ws/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://ws/">
 
+<xs:element name="altaUsuario" type="tns:altaUsuario" />
+
+<xs:element name="altaUsuarioResponse" type="tns:altaUsuarioResponse" />
+
+<xs:element name="find" type="tns:find" />
+
+<xs:element name="findResponse" type="tns:findResponse" />
+
 <xs:element name="listarUsuarios" type="tns:listarUsuarios" />
 
 <xs:element name="listarUsuariosResponse" type="tns:listarUsuariosResponse" />
@@ -8,13 +16,13 @@
 
 <xs:element name="verInfoUsuarioResponse" type="tns:verInfoUsuarioResponse" />
 
-<xs:complexType name="verInfoUsuario">
+<xs:complexType name="find">
 <xs:sequence>
-<xs:element name="idUsuario" type="xs:int" />
+<xs:element name="nick" type="xs:string" minOccurs="0" />
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="verInfoUsuarioResponse">
+<xs:complexType name="findResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:usuario" minOccurs="0" />
 </xs:sequence>
@@ -39,6 +47,38 @@
 <xs:sequence>
 <xs:element name="ganancia" type="xs:double" />
 <xs:element name="mes" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="altaUsuario">
+<xs:sequence>
+<xs:element name="nom" type="xs:string" minOccurs="0" />
+<xs:element name="ape" type="xs:string" minOccurs="0" />
+<xs:element name="nick" type="xs:string" minOccurs="0" />
+<xs:element name="email" type="xs:string" minOccurs="0" />
+<xs:element name="fnac" type="xs:string" minOccurs="0" />
+<xs:element name="pass" type="xs:string" minOccurs="0" />
+<xs:element name="img" type="xs:string" minOccurs="0" />
+<xs:element name="tipo" type="xs:string" minOccurs="0" />
+<xs:element name="sitio" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="altaUsuarioResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="verInfoUsuario">
+<xs:sequence>
+<xs:element name="idUsuario" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="verInfoUsuarioResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:usuario" minOccurs="0" />
 </xs:sequence>
 </xs:complexType>
 

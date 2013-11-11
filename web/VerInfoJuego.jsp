@@ -46,7 +46,7 @@
         </style>
 
 
-        <title>Informacion de Juego</title> 
+        <title>Informacion de Juego</title>
 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="js/jquery-2.0.3.js"></script>
