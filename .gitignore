@@ -9,3 +9,4 @@ nb-configuration.xml
 *.xml
 manifest.mf
  *.MF
+!/web/WEB-INF/web.xml
