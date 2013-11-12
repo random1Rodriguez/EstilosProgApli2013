@@ -1,0 +1,198 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2-hudson-740-. --><xs:schema xmlns:tns="http://ws/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://ws/">
+
+<xs:element name="Buscar" type="tns:Buscar" />
+
+<xs:element name="BuscarResponse" type="tns:BuscarResponse" />
+
+<xs:element name="bajaJuego" type="tns:bajaJuego" />
+
+<xs:element name="buscarJuegoPorId" type="tns:buscarJuegoPorId" />
+
+<xs:element name="buscarJuegoPorIdResponse" type="tns:buscarJuegoPorIdResponse" />
+
+<xs:element name="listarJuegos" type="tns:listarJuegos" />
+
+<xs:element name="listarJuegosConCompras" type="tns:listarJuegosConCompras" />
+
+<xs:element name="listarJuegosConComprasResponse" type="tns:listarJuegosConComprasResponse" />
+
+<xs:element name="listarJuegosPorCategoria" type="tns:listarJuegosPorCategoria" />
+
+<xs:element name="listarJuegosPorCategoriaResponse" type="tns:listarJuegosPorCategoriaResponse" />
+
+<xs:element name="listarJuegosPorCliente" type="tns:listarJuegosPorCliente" />
+
+<xs:element name="listarJuegosPorClienteResponse" type="tns:listarJuegosPorClienteResponse" />
+
+<xs:element name="listarJuegosPorDesarrollador" type="tns:listarJuegosPorDesarrollador" />
+
+<xs:element name="listarJuegosPorDesarrolladorResponse" type="tns:listarJuegosPorDesarrolladorResponse" />
+
+<xs:element name="listarJuegosPorDesarrolladorVersionAprobada" type="tns:listarJuegosPorDesarrolladorVersionAprobada" />
+
+<xs:element name="listarJuegosPorDesarrolladorVersionAprobadaResponse" type="tns:listarJuegosPorDesarrolladorVersionAprobadaResponse" />
+
+<xs:element name="listarJuegosResponse" type="tns:listarJuegosResponse" />
+
+<xs:element name="verInfoJuego" type="tns:verInfoJuego" />
+
+<xs:element name="verInfoJuegoResponse" type="tns:verInfoJuegoResponse" />
+
+<xs:complexType name="listarJuegosPorDesarrolladorVersionAprobada">
+<xs:sequence>
+<xs:element name="id_usuario" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="listarJuegosPorDesarrolladorVersionAprobadaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:anyType" minOccurs="0" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="Buscar">
+<xs:sequence>
+<xs:element name="busqueda" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="BuscarResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:anyType" minOccurs="0" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="buscarJuegoPorId">
+<xs:sequence>
+<xs:element name="id_juego" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="buscarJuegoPorIdResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:juego" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="juego">
+<xs:sequence>
+<xs:element name="categorias" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded" />
+<xs:element name="comentarios" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded" />
+<xs:element name="compras" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded" />
+<xs:element name="des" type="tns:desarrollador" minOccurs="0" />
+<xs:element name="descripcion" type="xs:string" minOccurs="0" />
+<xs:element name="ganancias" type="xs:double" />
+<xs:element name="id" type="xs:int" />
+<xs:element name="nombre" type="xs:string" minOccurs="0" />
+<xs:element name="portada" type="xs:string" minOccurs="0" />
+<xs:element name="precio" type="xs:double" />
+<xs:element name="size" type="xs:double" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="desarrollador">
+<xs:complexContent>
+<xs:extension base="tns:usuario">
+<xs:sequence>
+<xs:element name="web" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="usuario">
+<xs:sequence>
+<xs:element name="apellido" type="xs:string" minOccurs="0" />
+<xs:element name="email" type="xs:string" minOccurs="0" />
+<xs:element name="fecha_nac" type="xs:dateTime" minOccurs="0" />
+<xs:element name="id" type="xs:int" />
+<xs:element name="img" type="xs:string" minOccurs="0" />
+<xs:element name="listaGananciasPorMes" type="tns:mesGanancia" nillable="true" minOccurs="0" maxOccurs="unbounded" />
+<xs:element name="nick" type="xs:string" minOccurs="0" />
+<xs:element name="nombre" type="xs:string" minOccurs="0" />
+<xs:element name="pass" type="xs:string" minOccurs="0" />
+<xs:element name="tipo" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="mesGanancia">
+<xs:sequence>
+<xs:element name="ganancia" type="xs:double" />
+<xs:element name="mes" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="listarJuegosPorCliente">
+<xs:sequence>
+<xs:element name="id_usuario" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="listarJuegosPorClienteResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:anyType" minOccurs="0" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="bajaJuego">
+<xs:sequence>
+<xs:element name="id_juego" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="verInfoJuego">
+<xs:sequence>
+<xs:element name="id_juego" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="verInfoJuegoResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:juego" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="listarJuegosPorDesarrollador">
+<xs:sequence>
+<xs:element name="id_usuario" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="listarJuegosPorDesarrolladorResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:anyType" minOccurs="0" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="listarJuegosConCompras">
+<xs:sequence />
+</xs:complexType>
+
+<xs:complexType name="listarJuegosConComprasResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:anyType" minOccurs="0" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="listarJuegosPorCategoria">
+<xs:sequence>
+<xs:element name="id_cat" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="listarJuegosPorCategoriaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:anyType" minOccurs="0" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="listarJuegos">
+<xs:sequence />
+</xs:complexType>
+
+<xs:complexType name="listarJuegosResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:anyType" minOccurs="0" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
