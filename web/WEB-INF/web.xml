@@ -5,14 +5,5 @@
             30
         </session-timeout>
     </session-config>
-    <security-constraint>
-        <web-resource-collection>
-            <web-resource-name>Entire  Application</web-resource-name>
-            <description/>
-            <url-pattern>/index.jsp</url-pattern>
-        </web-resource-collection>
-        <user-data-constraint>
-            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
-        </user-data-constraint>
-    </security-constraint>
+    
 </web-app>
