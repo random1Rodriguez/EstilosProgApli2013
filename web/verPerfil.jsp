@@ -132,13 +132,17 @@
                 ArrayList <Juego>juegos = (ArrayList)request.getAttribute("juegos_comprados");
                 int i = 0;
                 out.write("<ul id='info_compras'>");
-                while (i < juegos.size()){
-                    Juego j = juegos.get(i);
+                Juego j = new Juego();
+                while(i< juegos.size()){
+                    j = juegos.get(i);
                     out.write("<li style='list-style:none'><a href='verInfoJuego?id="+j.getId()+"'>"
-                            + "<div class='imagenJuegoComprado'><img src='"+imagenes_juegos+j.getPortada()+"'></a></div></li>");
+                            + "<div class='imagenJuegoComprado'><img src='"+imagenes_juegos+j.getPortada()+"'><a href='altaReclamo.jsp?id="+j.getId()+"'>Reclamo</a></a></div></li>");
                     i++;
                 }
                 out.write("</ul>");
+                /*if(u.getTipo().equals("d")){
+                    out.write("<li href='consultaReclamos?id="+j.getId()+"'><a>Ver Reclamos</a></li>");
+                }*/
             }
             %>
         </div>
