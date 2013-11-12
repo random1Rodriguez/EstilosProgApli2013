@@ -1,6 +1,7 @@
 
 package servlet;
 
+import cliente.ClienteWS;
 import controladores.ControladorUsuarios;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -47,7 +48,7 @@ public class Registro extends HttpServlet {
 
             /*------------ invocacion al servicio --------------*/
             
-            Registro.altaUsuario(nombre, apellido, nick, email, fnac, pass, "", tipo, sitio);
+            ClienteWS.altaUsuario(nombre, apellido, nick, email, fnac, pass, "", tipo, sitio);
             response.sendRedirect("/index.jsp");
             
             /*-------------------------------------------------*/
@@ -56,11 +57,5 @@ public class Registro extends HttpServlet {
             Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
         }
             
-    }
-
-    private static int altaUsuario(java.lang.String nom, java.lang.String ape, java.lang.String nick, java.lang.String email, java.lang.String fnac, java.lang.String pass, java.lang.String img, java.lang.String tipo, java.lang.String sitio) {
-        clientes.usuarios.ServicioUsuarios_Service service = new clientes.usuarios.ServicioUsuarios_Service();
-        clientes.usuarios.ServicioUsuarios port = service.getServicioUsuariosPort();
-        return port.altaUsuario(nom, ape, nick, email, fnac, pass, img, tipo, sitio);
     }
 }

@@ -61,6 +61,7 @@ public class Login extends HttpServlet {
                 Usuario u = cu.find(user);
                 s.setAttribute("usuario", u.getNick());
                 s.setAttribute("tipo", u.getTipo());
+                s.setAttribute("idU", u.getId());
                 response.sendRedirect("juegosCategoria?id=18");
             }
             else{

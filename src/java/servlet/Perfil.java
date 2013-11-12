@@ -1,6 +1,7 @@
 package servlet;
 
 import baseDatos.ManejadorBD;
+import cliente.ClienteWS;
 import controladores.ControladorUsuarios;
 import controladores.ControladorVersiones;
 import controladores.Controladorjuegos;
@@ -95,7 +96,7 @@ public class Perfil extends HttpServlet {
                     //ArrayList juegos = cj.listarJuegosPorCliente(u.getId());
                     
                     //usando web services
-                    ArrayList juegos = (ArrayList)Perfil.listarJuegosPorCliente(u.getId());
+                    ArrayList juegos = (ArrayList) ClienteWS.listarJuegosPorCliente(u.getId());
                     
                     request.setAttribute("juegos_comprados", juegos);
                 }
@@ -118,17 +119,5 @@ public class Perfil extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-    }
-
-    private static java.util.List<java.lang.Object> listarJuegosPorCliente(int idUsuario) {
-        clientes.juegos.ServicioJuegos_Service service = new clientes.juegos.ServicioJuegos_Service();
-        clientes.juegos.ServicioJuegos port = service.getServicioJuegosPort();
-        return port.listarJuegosPorCliente(idUsuario);
-    }
-
-    private static java.util.List<java.lang.Object> listarJuegosPorDesarrollador(int idUsuario) {
-        clientes.juegos.ServicioJuegos_Service service = new clientes.juegos.ServicioJuegos_Service();
-        clientes.juegos.ServicioJuegos port = service.getServicioJuegosPort();
-        return port.listarJuegosPorDesarrollador(idUsuario);
     }
 }
