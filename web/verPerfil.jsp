@@ -1,5 +1,5 @@
 
-<%@page import="dominio.Juego"%>
+<%@page import="clientes.juegos.Juego"%>
 <%@page import="dominio.Version"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="dominio.Usuario"%>

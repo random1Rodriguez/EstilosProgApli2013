@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2-hudson-740-. --><xs:schema xmlns:tns="http://ws/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://ws/">
+
+<xs:element name="altaCompra" type="tns:altaCompra" />
+
+<xs:element name="comproJuego" type="tns:comproJuego" />
+
+<xs:element name="comproJuegoResponse" type="tns:comproJuegoResponse" />
+
+<xs:element name="verComprasJuego" type="tns:verComprasJuego" />
+
+<xs:element name="verComprasJuegoResponse" type="tns:verComprasJuegoResponse" />
+
+<xs:complexType name="comproJuego">
+<xs:sequence>
+<xs:element name="idUsuario" type="xs:int" />
+<xs:element name="idJuego" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="comproJuegoResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="altaCompra">
+<xs:sequence>
+<xs:element name="nickUsuario" type="xs:string" minOccurs="0" />
+<xs:element name="idJuego" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="verComprasJuego">
+<xs:sequence>
+<xs:element name="idJuego" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="verComprasJuegoResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:anyType" minOccurs="0" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

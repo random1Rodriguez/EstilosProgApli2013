@@ -16,7 +16,7 @@
                 border-radius: 00px 15px 0 15px;
                 border: solid 1px #3071a9;
             }
-            
+
             #btn-comprar{
                 font-size: 1.5em;
             }
@@ -46,13 +46,13 @@
         </style>
 
 
-        <title>Informacion de Juego</title> 
+        <title>Informacion de Juego</title>
 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="js/jquery-2.0.3.js"></script>
         <script>
             $(document).ready(function() {
-                
+
                 var path = document.location.pathname.toString();
                 var nombreApp = path.split("/")[1];
                 var host = document.location.host;
@@ -64,7 +64,7 @@
 
                     var comentario = $(this);
                     //console.log(comentario);
-                    var dir = "http://"+host+"/"+nombreApp +"/"+ comentario.attr("href");
+                    var dir = "http://" + host + "/" + nombreApp + "/" + comentario.attr("href");
                     console.log(dir);
                     //console.log(comentario.attr("href"));
                     var id_com = dir.substring(dir.indexOf("=") + 1, dir.length);
@@ -110,12 +110,12 @@
                         });
                     }
                 });
-                
-                $("#btn-comprar").hover(function(){
+
+                $("#btn-comprar").hover(function() {
                     console.log($(this).html());
                     var precio = $(this).attr("value");
-                    $(this).text("u$s "+precio);
-                }, function(){
+                    $(this).text("u$s " + precio);
+                }, function() {
                     $(this).text("Comprar");
                 });
             });
@@ -124,54 +124,54 @@
     </head>
     <body>
         <jsp:include page="plantillas/header.jsp"></jsp:include>
-        <div id="contenedor">
-        <%
-            String server = "http://progapli2013.comule.com/";
-            String imagenes_perfil = server + "imagenes/perfiles/";
-            String imagenes_juegos = server + "imagenes/juegos/";
-            out.write("<div id='contenedorInformacionJuego'>");
+            <div id="contenedor">
+            <%
+                String server = "http://progapli2013.comule.com/";
+                String imagenes_perfil = server + "imagenes/perfiles/";
+                String imagenes_juegos = server + "imagenes/juegos/";
+                out.write("<div id='contenedorInformacionJuego'>");
 
-            if (request.getAttribute("infoJuego") != null) {
+                if (request.getAttribute("infoJuego") != null) {
 
-                Juego ju = (Juego) request.getAttribute("infoJuego");
-                out.write("<ul id='infoGralJuego'>");//Genera UL InfoGeneral
-                out.write("<div class='imagenJuego'><img src='" + imagenes_juegos + ju.getPortada() + "'></div>");//Carga IMG
-                out.write("<li id='infoJnombre'><b>");//
-                out.write(ju.getNombre());
-                out.write("</b></li>");// InfoNombre
+                    Juego ju = (Juego) request.getAttribute("infoJuego");
+                    out.write("<ul id='infoGralJuego'>");//Genera UL InfoGeneral
+                    out.write("<div class='imagenJuego'><img src='" + imagenes_juegos + ju.getPortada() + "'></div>");//Carga IMG
+                    out.write("<li id='infoJnombre'><b>");//
+                    out.write(ju.getNombre());
+                    out.write("</b></li>");// InfoNombre
 
-                out.write("<li id='infoJdesc'><b> Descpicion: </b>");
-                out.write(ju.getDescripcion());
-                out.write("</li>");
+                    out.write("<li id='infoJdesc'><b> Descpicion: </b>");
+                    out.write(ju.getDescripcion());
+                    out.write("</li>");
 
-                out.write("<li id='infoJdes'><b> Desarrollador: </b>");
-                out.write(ju.getDes().getNick());
-                out.write("</li>");
+                    out.write("<li id='infoJdes'><b> Desarrollador: </b>");
+                    out.write(ju.getDes().getNick());
+                    out.write("</li>");
 
-                out.write("<li id='infoJsize'><b> Tamaño: </b>");
-                out.write(String.valueOf(ju.getSize()) + " Kb");
-                out.write("</li>");
+                    out.write("<li id='infoJsize'><b> Tamaño: </b>");
+                    out.write(String.valueOf(ju.getSize()) + " Kb");
+                    out.write("</li>");
 
 
 
-                Version v = controladores.ControladorVersiones.getInstancia().ultimaVerAprobada(ju.getId());
+                    Version v = controladores.ControladorVersiones.getInstancia().ultimaVerAprobada(ju.getId());
 
-                out.write("<li>");
-                if (session.getAttribute("usuario") != null
-                        && controladores.ControladorCompras.getInstancia().comproJuego(
-                        controladores.ControladorUsuarios.getInstancia().find(String.valueOf(session.getAttribute("usuario"))).getId(),
-                        ju.getId())) {
                     out.write("<li>");
-                    out.write("<b> Download: </b> v <a href='descargaJuego?id=" + v.getId_juego() + "'>" + v.getNro_version() + "</a>");
-                    out.write("</li>");
-                } else {
-                    out.write("<li><b> Version: </b>");
-                    out.write(v.getNro_version());
+                    if (session.getAttribute("usuario") != null
+                            && controladores.ControladorCompras.getInstancia().comproJuego(
+                            controladores.ControladorUsuarios.getInstancia().find(String.valueOf(session.getAttribute("usuario"))).getId(),
+                            ju.getId())) {
+                        out.write("<li>");
+                        out.write("<b> Download: </b> v <a href='descargaJuego?id=" + v.getId_juego() + "'>" + v.getNro_version() + "</a>");
+                        out.write("</li>");
+                    } else {
+                        out.write("<li><b> Version: </b>");
+                        out.write(v.getNro_version());
+
+                        out.write("</li>");
+                    }
 
                     out.write("</li>");
-                }
-
-                out.write("</li>");
 
 
                 ArrayList<Categoria> lstCat = (ArrayList<Categoria>) ju.getCategorias();
@@ -210,14 +210,58 @@
                         }
                         i++;
                     }
-                    out.write("</div>");
-                }
+                    if (session.getAttribute("usuario") != null
+                            && controladores.ControladorCompras.getInstancia().comproJuego(
+                            controladores.ControladorUsuarios.getInstancia().find(String.valueOf(session.getAttribute("usuario"))).getId(),
+                            ju.getId())) {
+                        out.write("<li style='margin-left:25px'>");
+                        out.write("<img alt='' src='http://chart.apis.google.com/chart?cht=qr&amp;chs=100x100&amp;chl='descargaJuego?id=" + v.getId_juego() + "'&amp;chld=H|0' />");
+                        out.write("</li>");
+                    }
+                    out.write("</ul>");//Info Gral Cierre
 
-            } else {
-                out.write("<div id='comentsPH'> <ul id='InfoJComents'> El juego no tiene comentarios</ul></div>");
-            }
-            out.write("</div>");
-        %>
+
+                    out.write("<a id='btn-comprar' class='btn' value='" + ju.getPrecio() + "' href='comprarJuego?id=" + ju.getId() + "'>Comprar</a><br><br>");
+
+                    ArrayList<Comentario> lstCom = (ArrayList<Comentario>) ju.getComentarios();
+                    i = 0;
+                    if (lstCom.size() != 0) {
+
+            %>
+            <b style="color:white;">Comentarios:</b>
+            <div id="comentsPH" style="clear: both; height: 267px;"> 
+                <ul id='InfoJComents'>
+
+                    <%
+                        Comentario com = null;
+                        while (i < lstCom.size()) {
+                            com = lstCom.get(i);
+                            if (com.getId_padre() == 0) {
+                                out.write("<li class='root-coments'>");
+                                out.write("<a class='ajax' href='VerComentariosAjax?id_com=" + com.getId() + "'>" + com.getTexto() + "</a>");
+                            }
+                            i++;
+                        }
+                    %>
+                </ul>
+            </div>
+            <%-- 
+            este div es para que cuando se despiegan los comentarios 
+            el fondo semi transparente se adapte a el tamaño del div
+            que contiene los comentarios
+            --%>
+            <div class="div-ajuste">
+
+            </div>
+            <%
+                    }
+
+                } else {
+                    out.write("<div id='comentsPH'> <ul id='InfoJComents'> El juego no tiene comentarios</ul></div>");
+                }
+                out.write("</div>");
+
+            %>
         </div>
         <footer id="footer">
             <div id="txtfooter">
