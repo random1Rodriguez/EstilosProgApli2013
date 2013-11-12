@@ -9,8 +9,7 @@
         <web-resource-collection>
             <web-resource-name>Entire  Application</web-resource-name>
             <description/>
-            <url-pattern>login</url-pattern>
-            <url-pattern>login.jsp</url-pattern>
+            <url-pattern>/index.jsp</url-pattern>
         </web-resource-collection>
         <user-data-constraint>
             <transport-guarantee>CONFIDENTIAL</transport-guarantee>
