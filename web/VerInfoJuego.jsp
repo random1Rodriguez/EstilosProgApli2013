@@ -64,6 +64,7 @@
 
                     var comentario = $(this);
                     //console.log(comentario);
+                    
                     var dir = "http://" + host + "/" + nombreApp + "/" + comentario.attr("href");
                     console.log(dir);
                     //console.log(comentario.attr("href"));
@@ -188,7 +189,9 @@
                         controladores.ControladorUsuarios.getInstancia().find(String.valueOf(session.getAttribute("usuario"))).getId(),
                         ju.getId())) {
                     out.write("<li style='margin-left:25px'>");
-                    out.write("<img alt='' src='http://chart.apis.google.com/chart?cht=qr&amp;chs=300x300&amp;chl=www.facebook.com&amp;chld=H|0' />");
+                    out.write("<img alt='' src='http://chart.apis.google.com/chart?cht=qr&amp;chs=300x300&amp;chl=" + 
+                                request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() +
+                                "&amp;chld=H|0' />");
                     out.write("</li>");
                 }
                 out.write("</ul>");//Info Gral Cierre
