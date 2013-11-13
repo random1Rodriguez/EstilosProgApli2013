@@ -44,6 +44,9 @@
                     <span>
                         <a href="juegosPublicados" class="btn">Agregar Version de Juego</a>
                 </span>
+                <span>
+                    <a href="ConsultaReclamo?idUsu=<%=session.getAttribute("idU").toString()%>" class="btn">Ver Reclamos</a>
+                </span>
                 <%
             }
                 %>
@@ -120,6 +123,13 @@
                 out.write("</div>");
             }
         %>
+        
+        <div id="desarrollo">
+            <%
+            if(request.getAttribute("juegos") != null && u.getTipo().equals("d"))
+            %>
+        </div>
+        
         <div id="compras">
             
             <% 
@@ -140,9 +150,6 @@
                     i++;
                 }
                 out.write("</ul>");
-                /*if(u.getTipo().equals("d")){
-                    out.write("<li href='consultaReclamos?id="+j.getId()+"'><a>Ver Reclamos</a></li>");
-                }*/
             }
             %>
         </div>

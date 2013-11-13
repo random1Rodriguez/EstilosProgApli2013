@@ -92,7 +92,7 @@ public class altaReclamo extends HttpServlet {
             } catch (SQLException ex) {
                 Logger.getLogger(altaReclamo.class.getName()).log(Level.SEVERE, null, ex);
             }
-
+            response.sendRedirect("index.jsp");
 
 
             
