@@ -23,7 +23,7 @@
             <%-- SLIDER --%>
             <div id="sliderContainer"> 
                 <a href="#siguiente" class="next" title="Siguiente"></a> 
-                <a href="#anterior" class="prev" title="Anterior"></a> 
+                <a href="#anterior" class="prev" title="Anterior"></a>
                 
                 <div id="slider"> <div class="slidesContainer" style="width: 2700px;"> 
                         <div class="slide">

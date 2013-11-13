@@ -19,4 +19,11 @@ public class ClienteWS {
         clientes.usuarios.ServicioUsuarios port = service.getServicioUsuariosPort();
         return port.altaUsuario(nom, ape, nick, email, fnac, pass, img, tipo, sitio);
     }
+
+    private static java.util.List<clientes.categorias.Categoria> listarCategorias() {
+        clientes.categorias.ServicioCategorias_Service service = new clientes.categorias.ServicioCategorias_Service();
+        clientes.categorias.ServicioCategorias port = service.getServicioCategoriasPort();
+        return port.listarCategorias();
+    }
+    
 }

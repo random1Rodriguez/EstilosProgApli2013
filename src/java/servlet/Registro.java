@@ -3,8 +3,13 @@ package servlet;
 
 import cliente.ClienteWS;
 import controladores.ControladorUsuarios;
+import dominio.Desarrollador;
+import dominio.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -43,18 +48,52 @@ public class Registro extends HttpServlet {
         String tipo = request.getParameter("tipo");
         String fnac = request.getParameter("fnac");
         String sitio = request.getParameter("sitio");
+        String img = "";
         
+        Calendar c = new GregorianCalendar();
+        String [] datos = fnac.split("-");
+        int year = Integer.valueOf(datos[0]);
+        int mes = Integer.valueOf(datos[1]);
+        int dia = Integer.valueOf(datos[2]);
+        c.set(year, mes-1, dia);
+        Date f = c.getTime();
+        
+        System.out.println(nick+email+pass+nombre+apellido+fnac+tipo);
+        Usuario u = new Usuario();
+        
+        if (tipo.equals("d")){
+            Desarrollador d = new Desarrollador();
+            d.setWeb(request.getParameter("sitio"));
+            u = d;
+        }
+        
+        u.setNombre(nombre);
+        u.setApellido(apellido);
+        u.setEmail(email);
+        u.setNick(nick);
+        u.setPass(pass);
+        u.setTipo(tipo);
+        u.setFecha_nac(f);
         try {        
+            cu.altaUsuario(u);
+            System.out.println("Registro exitoso");
+            response.sendRedirect("index.jsp");
+//            EnvioEmail ee = new EnvioEmail();
+//            ee.elegirServidor("gmail");
+//            String mensaje = u.getNick()+" Bienvenido a ProgApliPlay Game Market";
+//            ee.enviarEmail(u.getEmail(), "Bienvenido", mensaje);
+        
+        //try {        
 
             /*------------ invocacion al servicio --------------*/
             
-            ClienteWS.altaUsuario(nombre, apellido, nick, email, fnac, pass, "", tipo, sitio);
-            response.sendRedirect("/index.jsp");
+            //ClienteWS.altaUsuario(nombre, apellido, nick, email, fnac, pass, img, tipo, sitio);
             
             /*-------------------------------------------------*/
             
         } catch (Exception ex) {
             Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+            response.sendRedirect("index.jsp");
         }
             
     }
