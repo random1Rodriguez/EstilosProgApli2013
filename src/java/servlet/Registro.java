@@ -43,18 +43,19 @@ public class Registro extends HttpServlet {
         String tipo = request.getParameter("tipo");
         String fnac = request.getParameter("fnac");
         String sitio = request.getParameter("sitio");
+        String img = "";
         
         try {        
 
             /*------------ invocacion al servicio --------------*/
             
-            ClienteWS.altaUsuario(nombre, apellido, nick, email, fnac, pass, "", tipo, sitio);
-            response.sendRedirect("/index.jsp");
+            ClienteWS.altaUsuario(nombre, apellido, nick, email, fnac, pass, img, tipo, sitio);
             
             /*-------------------------------------------------*/
             
         } catch (Exception ex) {
             Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+            //response.sendRedirect("index.jsp");
         }
             
     }

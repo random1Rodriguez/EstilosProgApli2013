@@ -64,7 +64,7 @@
 
                     var comentario = $(this);
                     //console.log(comentario);
-                    
+
                     var dir = "http://" + host + "/" + nombreApp + "/" + comentario.attr("href");
                     console.log(dir);
                     //console.log(comentario.attr("href"));
@@ -153,15 +153,13 @@
                     out.write(String.valueOf(ju.getSize()) + " Kb");
                     out.write("</li>");
 
-
-
                     Version v = controladores.ControladorVersiones.getInstancia().ultimaVerAprobada(ju.getId());
 
                     out.write("<li>");
                     if (session.getAttribute("usuario") != null
                             && controladores.ControladorCompras.getInstancia().comproJuego(
-                            controladores.ControladorUsuarios.getInstancia().find(String.valueOf(session.getAttribute("usuario"))).getId(),
-                            ju.getId())) {
+                                    controladores.ControladorUsuarios.getInstancia().find(String.valueOf(session.getAttribute("usuario"))).getId(),
+                                    ju.getId())) {
                         out.write("<li>");
                         out.write("<b> Download: </b> v <a href='descargaJuego?id=" + v.getId_juego() + "'>" + v.getNro_version() + "</a>");
                         out.write("</li>");
@@ -174,69 +172,43 @@
 
                     out.write("</li>");
 
-
-                ArrayList<Categoria> lstCat = (ArrayList<Categoria>) ju.getCategorias();
-                int i = 0;
-                out.write("<b> Categorias: </b>");
-                while (i < lstCat.size()) {
-                    out.write("<li style='margin-left:25px'>");
-                    out.write(lstCat.get(i).getNombre());
-                    out.write("</li>");
-                    i++;
-                }
-                if (session.getAttribute("usuario") != null
-                        && controladores.ControladorCompras.getInstancia().comproJuego(
-                        controladores.ControladorUsuarios.getInstancia().find(String.valueOf(session.getAttribute("usuario"))).getId(),
-                        ju.getId())) {
-                    out.write("<li style='margin-left:25px'>");
-                    out.write("<img alt='' src='http://chart.apis.google.com/chart?cht=qr&amp;chs=300x300&amp;chl=" + 
-                                request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() +
-                                "&amp;chld=H|0' />");
-                    out.write("</li>");
-                }
-                out.write("</ul>");//Info Gral Cierre
-
-
-                out.write("<a id='btn-comprar' class='btn' value='"+ju.getPrecio()+"' href='comprarJuego?id=" + ju.getId() + "'>Comprar</a><br><br>");
-
-                ArrayList<Comentario> lstCom = (ArrayList<Comentario>) ju.getComentarios();
-                i = 0;
-                if (lstCom.size() != 0) {
-                    out.write("<b style='color:white;'>Comentarios:</b> ");
-                    out.write("<div id='comentsPH' style='clear: both; height: 267px;'> <ul id='InfoJComents'>");
-                    Comentario com = null;
-                    while (i < lstCom.size()) {
-                        com = lstCom.get(i);
-                        if (com.getId_padre() == 0) {
-                            out.write("<li class='root-coments'>");
-                            out.write("<a class='ajax' href='VerComentariosAjax?id_com=" + com.getId() + "'>" + com.getTexto() + "</a>");
-                        }
+                    ArrayList<Categoria> lstCat = (ArrayList<Categoria>) ju.getCategorias();
+                    int i = 0;
+                    out.write("<b> Categorias: </b>");
+                    while (i < lstCat.size()) {
+                        out.write("<li style='margin-left:25px'>");
+                        out.write(lstCat.get(i).getNombre());
+                        out.write("</li>");
                         i++;
                     }
                     if (session.getAttribute("usuario") != null
                             && controladores.ControladorCompras.getInstancia().comproJuego(
-                            controladores.ControladorUsuarios.getInstancia().find(String.valueOf(session.getAttribute("usuario"))).getId(),
-                            ju.getId())) {
-                        out.write("<li style='margin-left:25px'>");
-                        out.write("<img alt='' src='http://chart.apis.google.com/chart?cht=qr&amp;chs=100x100&amp;chl='descargaJuego?id=" + v.getId_juego() + "'&amp;chld=H|0' />");
-                        out.write("</li>");
+                                    controladores.ControladorUsuarios.getInstancia().find(String.valueOf(session.getAttribute("usuario"))).getId(),
+                                    ju.getId())) {
+                     
                     }
+                    out.write("<li style='margin-left:25px'>");
+                    
+                    String ruta = request.getScheme() + "://MATIAS-HP:" + request.getServerPort() + request.getContextPath();
+                    ruta = ruta + "/verPerfilDesarrollador.jsp?id=" + ju.getDes().getId();
+                    out.write("<img alt='' src='http://chart.apis.google.com/chart?cht=qr&amp;chs=200x200&amp;chl=" + ruta + ";&amp;chld=H|0' />");
+                    out.write("</li>");
                     out.write("</ul>");//Info Gral Cierre
-
 
                     out.write("<a id='btn-comprar' class='btn' value='" + ju.getPrecio() + "' href='comprarJuego?id=" + ju.getId() + "'>Comprar</a><br><br>");
 
                     ArrayList<Comentario> lstCom = (ArrayList<Comentario>) ju.getComentarios();
                     i = 0;
+
                     if (lstCom.size() != 0) {
+
 
             %>
             <b style="color:white;">Comentarios:</b>
             <div id="comentsPH" style="clear: both; height: 267px;"> 
                 <ul id='InfoJComents'>
 
-                    <%
-                        Comentario com = null;
+                    <%                        Comentario com = null;
                         while (i < lstCom.size()) {
                             com = lstCom.get(i);
                             if (com.getId_padre() == 0) {
@@ -263,6 +235,7 @@
                     out.write("<div id='comentsPH'> <ul id='InfoJComents'> El juego no tiene comentarios</ul></div>");
                 }
                 out.write("</div>");
+
 
             %>
         </div>
