@@ -76,6 +76,7 @@
         <title>Informacion de Juego</title>
 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <jsp:include page="plantillas/header.jsp"></jsp:include>
         <script src="js/jquery-2.0.3.js"></script>
         <script>
             $(document).ready(function() {
@@ -150,7 +151,6 @@
 
     </head>
     <body>
-        <jsp:include page="plantillas/header.jsp"></jsp:include>
             <div id="contenedor">
             <%
                 String server = "http://progapli2013.comule.com/";

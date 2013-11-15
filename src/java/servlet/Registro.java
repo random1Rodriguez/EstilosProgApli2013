@@ -1,4 +1,3 @@
-
 package servlet;
 
 import cliente.ClienteWS;
@@ -20,81 +19,69 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "Registro", urlPatterns = {"/registro"})
 public class Registro extends HttpServlet {
-    
+
     private ControladorUsuarios cu = ControladorUsuarios.getInstancia();
-
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
         PrintWriter out = response.getWriter();
-        
-        String nick = request.getParameter("nick");
-        String email = request.getParameter("email");
-        String pass = request.getParameter("pass");
-        String nombre = request.getParameter("nom");
-        String apellido = request.getParameter("ape");
-        String tipo = request.getParameter("tipo");
-        String fnac = request.getParameter("fnac");
-        String sitio = request.getParameter("sitio");
-        String img = "";
-        
-        Calendar c = new GregorianCalendar();
-        String [] datos = fnac.split("-");
-        int year = Integer.valueOf(datos[0]);
-        int mes = Integer.valueOf(datos[1]);
-        int dia = Integer.valueOf(datos[2]);
-        c.set(year, mes-1, dia);
-        Date f = c.getTime();
-        
-        System.out.println(nick+email+pass+nombre+apellido+fnac+tipo);
-        Usuario u = new Usuario();
-        
-        if (tipo.equals("d")){
-            Desarrollador d = new Desarrollador();
-            d.setWeb(request.getParameter("sitio"));
-            u = d;
-        }
-        
-        u.setNombre(nombre);
-        u.setApellido(apellido);
-        u.setEmail(email);
-        u.setNick(nick);
-        u.setPass(pass);
-        u.setTipo(tipo);
-        u.setFecha_nac(f);
-        try {        
-            cu.altaUsuario(u);
-            System.out.println("Registro exitoso");
-            response.sendRedirect("index.jsp");
-//            EnvioEmail ee = new EnvioEmail();
-//            ee.elegirServidor("gmail");
-//            String mensaje = u.getNick()+" Bienvenido a ProgApliPlay Game Market";
-//            ee.enviarEmail(u.getEmail(), "Bienvenido", mensaje);
-        
-        //try {        
 
-            /*------------ invocacion al servicio --------------*/
+        try {
+            String nick = request.getParameter("nick");
+            String email = request.getParameter("email");
+            String pass = request.getParameter("pass");
+            String nombre = request.getParameter("nom");
+            String apellido = request.getParameter("ape");
+            String tipo = request.getParameter("tipo");
+            String fnac = request.getParameter("fnac");
+            String sitio = request.getParameter("sitio");
+
+            boolean correcto = false;
+
+            if (!nick.equals("") && !email.equals("") && !pass.equals("")) {
+                if (tipo.equals("c") || tipo.equals("d")) {
+                    correcto = true;
+                    Usuario u = new Usuario();
+
+                    if (!fnac.equals("")) {
+                        Calendar c = new GregorianCalendar();
+                        String[] datos = fnac.split("-");
+                        int year = Integer.valueOf(datos[0]);
+                        int mes = Integer.valueOf(datos[1]);
+                        int dia = Integer.valueOf(datos[2]);
+                        c.set(year, mes - 1, dia);
+                        Date f = c.getTime();
+                        u.setFecha_nac(f);
+                    }
+
+                    if (tipo.equals("d")) {
+                        Desarrollador d = new Desarrollador();
+                        d.setWeb(sitio);
+                        u = d;
+                    }
+
+                    u.setNombre(nombre);
+                    u.setApellido(apellido);
+                    u.setEmail(email);
+                    u.setNick(nick);
+                    u.setPass(pass);
+                    u.setTipo(tipo);
+
+                    cu.altaUsuario(u);
+                    System.out.println("Registro exitoso");
+                    response.sendRedirect("index.jsp");
+                }
+
+            }
             
-            //ClienteWS.altaUsuario(nombre, apellido, nick, email, fnac, pass, img, tipo, sitio);
-            
-            /*-------------------------------------------------*/
-            
+            if (!correcto){
+                request.setAttribute("error", "La informacion no es valida");
+                request.getRequestDispatcher("registro.jsp").forward(request, response);
+            }
         } catch (Exception ex) {
             Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("registro.jsp");
         }
-            
     }
 }

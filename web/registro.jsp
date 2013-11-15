@@ -4,7 +4,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <script src="js/aplicacion.js"></script>
+        <jsp:include page="plantillas/header.jsp"></jsp:include>
         <title>Registro de Usuario</title>
 
         <style>
@@ -103,59 +103,58 @@
         </style>
     </head>
     <body>
-        <jsp:include page="plantillas/header.jsp"></jsp:include>
 
-            <div id="contenedor-registro">
-                <form id="reg" method="post" action="registro">
-                    <div id="requeridos">
-                        <label class="linea">
-                            <input id="nick" name="nick" required autofocus placeholder="Usuario" autocomplete="false">
-                            <span id="validacion_nick"></span>
-                        </label>
+        <div id="contenedor-registro">
+            <form id="reg" method="post" action="registro">
+                <div id="requeridos">
+                    <label class="linea">
+                        <input id="nick" name="nick" required autofocus placeholder="Usuario" autocomplete="false">
+                        <span id="validacion_nick"></span>
+                    </label>
 
-                        <label class="linea">
-                            <input type="text" id="email" name="email" placeholder="Email" required autocomplete="false">
-                            <span id="validacion_email"></span>
-                        </label>
+                    <label class="linea">
+                        <input type="text" id="email" name="email" placeholder="Email" required autocomplete="false">
+                        <span id="validacion_email"></span>
+                    </label>
 
-                        <label class="linea">
-                            <input type="password" id="pass" name="pass" required placeholder="Contraseña">
-                        </label>
+                    <label class="linea">
+                        <input type="password" id="pass" name="pass" required placeholder="Contraseña">
+                    </label>
 
-                        <label class="linea">
-                            <input type="password" id="conf_pass" name="conf_pass" required placeholder="Confirmar Contraseña">
-                            <span id="validacion_pass" ></span>
-                        </label>
-                    </div>
+                    <label class="linea">
+                        <input type="password" id="conf_pass" name="conf_pass" required placeholder="Confirmar Contraseña">
+                        <span id="validacion_pass" ></span>
+                    </label>
+                </div>
 
-                    <div id="datos_perfil">
-                        <label class="linea">
-                            <input id="nombre" name="nom" value="" placeholder="Nombre" autocomplete="false">
-                        </label>
+                <div id="datos_perfil">
+                    <label class="linea">
+                        <input id="nombre" name="nom" value="" placeholder="Nombre" autocomplete="false">
+                    </label>
 
-                        <label class="linea">
-                            <input id="apellido" name="ape" value="" placeholder="Apellido" autocomplete="false">
-                        </label>
+                    <label class="linea">
+                        <input id="apellido" name="ape" value="" placeholder="Apellido" autocomplete="false">
+                    </label>
 
-                        <label class="linea">
-                            <input type="date" id="fnac" name="fnac" value="" autocomplete="false">
-                        </label>
+                    <label class="linea">
+                        <input type="date" id="fnac" name="fnac" value="" autocomplete="false">
+                    </label>
 
-                        <label class="linea">
-                            <select name="tipo" id="tipo">
-                                <option value="vacio">Tipo de Perfil</option>
-                                <option value="c">Cliente</option>
-                                <option value="d">Desarrollador</option>
-                            </select>
-                        </label>
-                        <label class="linea" id="sitio">
-                            <input name="sitio" value='' placeholder="Sitio Web">
-                        </label>
-                    </div>
-                    <input id="boton" type="submit" value="Registro">
-                </form>
-            </div>
-        
+                    <label class="linea">
+                        <select name="tipo" id="tipo">
+                            <option value="vacio">Tipo de Perfil</option>
+                            <option value="c">Cliente</option>
+                            <option value="d">Desarrollador</option>
+                        </select>
+                    </label>
+                    <label class="linea" id="sitio">
+                        <input name="sitio" value='' placeholder="Sitio Web">
+                    </label>
+                </div>
+                <input id="boton" type="submit" value="Registro">
+            </form>
+        </div>
+
         <footer id="footer">
             <div id="txtfooter">
                 Random PlayStore © || Todos los derechos reservados || Programacion de Aplicaciones || 2013 
