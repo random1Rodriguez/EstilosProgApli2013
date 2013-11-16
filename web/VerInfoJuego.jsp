@@ -65,7 +65,7 @@
                     var comentario = $(this);
                     //console.log(comentario);
 
-                    var dir = "http://" + host + "/" + nombreApp + "/" + comentario.attr("href");
+                    var dir = location.protocol + "//" + host + "/" + nombreApp + "/" + comentario.attr("href");
                     console.log(dir);
                     //console.log(comentario.attr("href"));
                     var id_com = dir.substring(dir.indexOf("=") + 1, dir.length);
@@ -189,9 +189,9 @@
                     }
                     out.write("<li style='margin-left:25px'>");
                     
-                    String ruta = request.getScheme() + "://MATIAS-HP:" + request.getServerPort() + request.getContextPath();
+                    String ruta = request.getScheme() + "://192.168.3.15:" + request.getServerPort() + request.getContextPath();
                     ruta = ruta + "/verPerfilDesarrollador.jsp?id=" + ju.getDes().getId();
-                    out.write("<img alt='' src='http://chart.apis.google.com/chart?cht=qr&amp;chs=200x200&amp;chl=" + ruta + ";&amp;chld=H|0' />");
+                    out.write("<img alt='' src='http://chart.apis.google.com/chart?cht=qr&amp;chs=200x200&amp;chl=" + ruta + "&amp;chld=H|0' />");
                     out.write("</li>");
                     out.write("</ul>");//Info Gral Cierre
 
