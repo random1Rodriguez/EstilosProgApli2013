@@ -127,7 +127,7 @@
             var nombreApp = path.split("/")[1];
             var host = document.location.host;
 
-            var dir = "http://" + host + "/" + nombreApp + "/";
+            var dir = location.protocol + "//" + host + "/" + nombreApp + "/";
             var so = navigator.appVersion;
             var url = document.URL;
             var datos = {"so": so, "url": url, "nav": nav};
