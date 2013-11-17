@@ -9,6 +9,33 @@
 <html>
     <head>
         <style>
+            .coments_resp{
+                border: solid 1px;
+                border-color: rgb(207, 207, 207);
+                border-radius: 0 5px;
+                padding: 7px;
+                background-color: #E7EBF7;
+            }       
+            
+            .coments_resp li{
+                background-color: #e6e6e6;
+            }        
+            
+            .coments_resp li li{
+               background-color: #E7EBF7;
+            }
+            
+            .coments_resp li li li{
+               background-color: #e6e6e6;
+            }    
+            
+            .resp_c{
+                border: solid 1px;
+                border-color: rgb(207, 207, 207);
+                border-radius: 0 5px;
+                padding: 7px;
+            }            
+
             .imagenJuego img {
                 margin: 0 33%;
                 width: 34%;
@@ -49,6 +76,7 @@
         <title>Informacion de Juego</title>
 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <jsp:include page="plantillas/header.jsp"></jsp:include>
         <script src="js/jquery-2.0.3.js"></script>
         <script>
             $(document).ready(function() {
@@ -102,7 +130,7 @@
                                     //console.log(data[index].id);
                                     //console.log(data[index].texto);
 
-                                    $("#resp" + id_com).find("ul").append("<li class='mas'><a class='ajax' href='VerComentariosAjax?id_com=" + data[index].id + "'>" + data[index].texto + "</a></li>");
+                                    $("#resp" + id_com).find("ul").append("<li class='mas coments_resp'><a class='ajax' href='VerComentariosAjax?id_com=" + data[index].id + "'>" + data[index].texto + "</a></li>");
                                 });
                             },
                             error: function() {
@@ -124,7 +152,6 @@
 
     </head>
     <body>
-        <jsp:include page="plantillas/header.jsp"></jsp:include>
             <div id="contenedor">
             <%
                 String server = "http://progapli2013.comule.com/";
@@ -212,7 +239,7 @@
                         while (i < lstCom.size()) {
                             com = lstCom.get(i);
                             if (com.getId_padre() == 0) {
-                                out.write("<li class='root-coments'>");
+                                out.write("<li class='root-coments coments_resp'>");
                                 out.write("<a class='ajax' href='VerComentariosAjax?id_com=" + com.getId() + "'>" + com.getTexto() + "</a>");
                             }
                             i++;

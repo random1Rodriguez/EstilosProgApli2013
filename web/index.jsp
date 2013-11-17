@@ -18,44 +18,44 @@
     </head>
     <body>
         <jsp:include page="plantillas/header.jsp"></jsp:include>
-            <div id="contenedor">
-                <div id="fondotransparente">
-                <%-- SLIDER --%>
-                <div id="sliderContainer"> 
-                    <a href="#siguiente" class="next" title="Siguiente"></a> 
-                    <a href="#anterior" class="prev" title="Anterior"></a> 
-
-                    <div id="slider"> <div class="slidesContainer" style="width: 2700px;"> 
-                            <div class="slide">
-                                <img src="http://progapli2013.comule.com/slider/Juegos1.jpg" alt="Imagen 01">
-                            </div> 
-                            <div class="slide">
-                                <img src="http://progapli2013.comule.com/slider/Juegos2.jpg" alt="Imagen 02">
-                            </div> 
-                            <div class="slide">
-                                <img src="http://progapli2013.comule.com/slider/Juegos3.jpg" alt="Imagen 01">
-                            </div>
-                            <div class="slide">
-                                <img src="http://progapli2013.comule.com/slider/Juegos4.jpg" alt="Imagen 01">
-                            </div> 
-                        </div> <!-- /slidesContainer --> 
-                    </div> <!-- /slider --> 
-                </div>
-
-                <%-- SLIDER --%>
-
-                <%
-                    // si el atributo listaJuegos es null quiere decir que no 
-                    // eligio ninguna categoria para mostrar, entonces muestra los mas
-                    // comprados y los que tienen mejor puntuacion
-                    if (request.getAttribute("listaJuegos") == null) {
-                %>
-                <%-- MAS COMPRADOS --%>
-                <div id="mas-comprados" class="contenedor-destacados">
-                    <div class="titulo-grande">
-                        <span>LOS MAS COMPRADOS</span>
-                    </div>
-                    <div>
+        <div id="contenedor">
+            <div id="fondotransparente">
+            <%-- SLIDER --%>
+            <div id="sliderContainer"> 
+                <a href="#siguiente" class="next" title="Siguiente"></a> 
+                <a href="#anterior" class="prev" title="Anterior"></a>
+                
+                <div id="slider"> <div class="slidesContainer" style="width: 2700px;"> 
+                        <div class="slide">
+                            <img src="http://progapli2013.comule.com/slider/Juegos1.jpg" alt="Imagen 01">
+                        </div> 
+                        <div class="slide">
+                            <img src="http://progapli2013.comule.com/slider/Juegos2.jpg" alt="Imagen 02">
+                        </div> 
+                        <div class="slide">
+                            <img src="http://progapli2013.comule.com/slider/Juegos3.jpg" alt="Imagen 01">
+                        </div>
+                        <div class="slide">
+                            <img src="http://progapli2013.comule.com/slider/Juegos4.jpg" alt="Imagen 01">
+                        </div> 
+                    </div> <!-- /slidesContainer --> 
+                </div> <!-- /slider --> 
+            </div>
+                            
+            <%-- SLIDER --%>
+            
+            <%
+                // si el atributo listaJuegos es null quiere decir que no 
+                // eligio ninguna categoria para mostrar, entonces muestra los mas
+                // comprados y los que tienen mejor puntuacion
+                if (request.getAttribute("listaJuegos")== null){
+            %>
+                    <%-- MAS COMPRADOS --%>
+                    <div id="mas-comprados" class="contenedor-destacados">
+                        <div class="titulo-grande">
+                            <span>LOS MAS COMPRADOS</span>
+                        </div>
+                        <div>
                         <%
                             Controladorjuegos cj = Controladorjuegos.getInstancia();
                             String ruta = "http://progapli2013.comule.com/imagenes/juegos/";
