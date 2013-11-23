@@ -13,12 +13,9 @@
     </head>
     <body>
 
-                    <span>
-                        <a href="juegosPublicados" class="btn">Agregar Version de Juego</a>
-                </span>
-                <span>
-                    <a href="ConsultaReclamo?idUsu=<%=session.getAttribute("idU").toString()%>" class="btn">Ver Reclamos</a>
-                </span>
+        <jsp:include page="plantillas/header.jsp"></jsp:include>
+            <div id="contenedor">
+                <div id="contenedorinputs">
                 <%
                     String server = "http://progapli2013.comule.com/";
                     String imagenes_perfil = server + "imagenes/perfiles/";
@@ -45,25 +42,18 @@
                 <span>
                     <a href="juegosPublicados" class="btn">Agregar Version de Juego</a>
                 </span>
-                
-                out.write("</ul>");
-                out.write("</div>");
-            }
-        %>
-        
-        <div id="desarrollo">
-            <%
-            if(request.getAttribute("juegos") != null && u.getTipo().equals("d"))
-            %>
-        </div>
-        
-        <div id="compras">
-            
-            <% 
-            if (request.getAttribute("juegos_comprados") != null && u.getTipo().equals("c")) {
+
+                <span>
+                    <a href="ConsultaReclamo?idUsu=<%=session.getAttribute("idU").toString()%>" class="btn">Ver Reclamos</a>
+                </span>
+
+                <span>
+                    <a href="verEstadisticas.jsp" class="btn">Ver estadisticas</a>
+                </span>
+                <%                    }
                 %>
 
-                <div id="imagen">
+                <div>
                     <%
                         if (u.getImg().equals("")) {
                             out.write("<div class='imagen'><img src='img/perfil_defecto.jpg'></div>");
