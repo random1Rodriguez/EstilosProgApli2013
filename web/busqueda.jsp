@@ -84,10 +84,18 @@
                 <div id="fondotransparente"> <%--comienza fondo transparente --%>
                 <div  id="contenedorJuegos"> <%-- comienza contenedor juegos --%>
                     <%
+                        
                         String ruta = "http://progapli2013.comule.com/imagenes/juegos/";
                         Controladorjuegos cj = Controladorjuegos.getInstancia();
-                        System.out.println("busqueda: " + request.getParameter("busqueda"));
-                        ArrayList juegos = cj.buscar(request.getParameter("busqueda"));
+                        //System.out.println("busqueda: " + request.getParameter("busqueda"));
+                        //ArrayList juegos = cj.buscar(request.getParameter("busqueda"));
+                        ArrayList juegos = null;
+                        if (request.getAttribute("flag") == null){
+                            juegos = cj.buscar(request.getParameter("busqueda"));
+                        }
+                        else{
+                            juegos = (ArrayList) request.getAttribute("juegos");
+                        }
 
                         if (juegos != null) {
                             System.out.println("juego not null");
@@ -99,18 +107,25 @@
 
                     <div id="resultado-busqueda">
                         <div id="busqueda-filtros">
-                            <select id="ordenar">
-                                <option>Ordenar por...</option>
-                                <option>Alfabeticamente</option>
-                                <option>Por Ventas</option>
-                            </select>
-
-                            <select>
-                                <option>Precio</option>
-                                <option>$0 a $3</option>
-                                <option>$3 a $10</option>
-                                <option>mas de $10</option>
-                            </select>
+                            
+                            <div id="orden">
+                                <span>Ordenar Por:</span>
+                                <a href="BusquedaConFiltros?orden=alf">Alfabeticamente</a>
+                                <a href="BusquedaConFiltros?orden=ventas">Mas Ventas</a>
+                            </div>
+                            <div>
+                                <span>Rango de Precios</span>
+                                <a href="BusquedaConFiltros?busqueda=<%=request.getParameter("busqueda")%>&inicio=0&fin=3">$0 a $3</a>
+                                <a href="BusquedaConFiltros?busqueda=<%=request.getParameter("busqueda")%>&inicio=3&fin=10">$3 a $10</a>
+                                <a href="BusquedaConFiltros?busqueda=<%=request.getParameter("busqueda")%>&inicio=10">mas de $10</a>
+                                
+                                <form id="form-precio" method="GET" action="BusquedaConFiltros">
+                                    <input name="inicio" placeholder="Min">
+                                    <input name="fin" placeholder="Max">
+                                    <input name="busqueda" hidden="true" value="<%=request.getParameter("busqueda")%>">
+                                    <input type="submit" value="Filtrar">
+                                </form>
+                            </div>
                         </div>
                         <div id="cantidad-resultados">
                             <span>Resultados para: <span><%= request.getParameter("busqueda")%> </span>(<%= cant%> Resultados)</span>

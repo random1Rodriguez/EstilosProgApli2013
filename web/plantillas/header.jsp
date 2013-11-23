@@ -132,7 +132,7 @@
             var url = document.URL;
             var datos = {"so": so, "url": url, "nav": nav};
 
-            console.log(datos);
+            //console.log(datos);
 
             $.ajax({
                 url: dir + "RegistroAcceso",
@@ -149,6 +149,7 @@
             $.ajax({
                 url: dir + "NotificacionNuevaVersion",
                 type: "GET",
+                dataType: "json",
                 success: function(data) {
                     console.log(data);
                 },
@@ -238,6 +239,13 @@
 
                         if (ManejadorBD.getInstancia().estaDesconectado())
                             ManejadorBD.getInstancia().conectar();
+                        
+                        if (request.getAttribute("nuevas_versiones") != null){
+                            System.out.println("hay nuevas versiones");
+                        }
+                        else{
+                            System.out.println("no hay nuevas versiones");
+                        }
 
                     %>
                     <nav>

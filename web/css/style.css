@@ -13,7 +13,7 @@ body{
     background-image: url(../img/ladoder.png);
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background-position: 76% 100%;
+    background-position: 76% 0%;
 }
 
 .btnAltaV{
@@ -318,42 +318,6 @@ li .menos{
     border: solid 0.5px;
 }
 
-#txtfooter{
-    color: white;
-    position: relative;
-    top: 268px;
-    text-align: center;
-}
-
-/*************************** SLIDER  *********************************/
-
-
-/********************  Menu Superior HEADER  **********************/
-
-#encabezado{
-    background-image: linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
-    background-image: -o-linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
-    background-image: -moz-linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
-    background-image: -webkit-linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
-    background-image: -ms-linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
-
-    background-image: -webkit-gradient(
-        linear,
-        left bottom,
-        left top,
-        color-stop(0.15, rgb(41,41,41)),
-        color-stop(0.58, rgb(122,122,122))
-        );
-    height: 48px;
-    position: fixed;
-    top: 0px;
-    width: 100%;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 1;
-}
-
-/*------------ imagenes en perfil --------------*/
-
 .imagen img{
     max-width: 20%;
     min-width: 10%;
@@ -552,23 +516,6 @@ li .menos{
     border: solid 0.5px;
 }
 
-#footer{
-    position: relative;
-    bottom: 0;
-    background-image: url(../img/imgfooter.png);
-    height: 301px;
-    margin-top: 0;
-    width: 100%;
-    clear: both;
-}
-
-#txtfooter{
-    color: white;
-    position: relative;
-    top: 268px;
-    text-align: center;
-}
-
 #contenedorJuegos {
     width: 100%;
     margin: auto 6%;
@@ -642,28 +589,6 @@ li .menos{
 
 
 /********************  Menu Superior HEADER  **********************/
-
-#encabezado{
-    background-image: linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
-    background-image: -o-linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
-    background-image: -moz-linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
-    background-image: -webkit-linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
-    background-image: -ms-linear-gradient(bottom, rgb(41,41,41) 15%, rgb(122,122,122) 58%);
-
-    background-image: -webkit-gradient(
-        linear,
-        left bottom,
-        left top,
-        color-stop(0.15, rgb(41,41,41)),
-        color-stop(0.58, rgb(122,122,122))
-        );
-    height: 48px;
-    position: fixed;
-    top: 0px;
-    width: 100%;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 1;
-}
 
 #logo {
     background: url(../img/logo.png) no-repeat;
@@ -1011,21 +936,6 @@ li .menos{
 
 #contenedor:after{
     height: 300px;
-}
-
-#footer{
-    height: 300px;
-    background-image: url(../img/imgfooter.png);
-    width: 100%;
-    position: relative;
-    clear: both;
-}
-
-#txtfooter{
-    color: white;
-    position: relative;
-    top: 268px;
-    text-align: center;
 }
 
 .titulo-grande{
