@@ -48,7 +48,7 @@ public class NotificacionNuevaVersion extends HttpServlet {
                     String portada = "\""+j.getPortada()+"\"";
                     String precio = "\""+j.getPrecio()+"\"";
                     String des = "\""+j.getDes().getNick()+"\"";
-                    //String json = "{\"id\":"+id+", \"texto\":"+texto+"}";
+                    
                     out.write("{");
                     out.write("\"id\":"+id);
                     out.write(",\"nombre\":"+nombre);

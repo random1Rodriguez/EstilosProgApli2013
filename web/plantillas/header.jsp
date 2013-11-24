@@ -36,13 +36,13 @@
             -o-user-select: none;
             user-select: none;
         }
-        
+
         .btn:focus {
             outline: thin dotted #333;
             outline: 5px auto -webkit-focus-ring-color;
             outline-offset: -2px;
         }
-        
+
         .btn:hover,
         .btn:focus {
             color: #333333;
@@ -122,7 +122,7 @@
         $(document).ready(function() {
 
             comprobarnavegador();
-            console.log(nav);
+            //console.log(nav);
             var path = document.location.pathname.toString();
             var nombreApp = path.split("/")[1];
             var host = document.location.host;
@@ -152,6 +152,23 @@
                 dataType: "json",
                 success: function(data) {
                     console.log(data);
+                    if(data.length === 0){
+                        console.log("no hay versiones");
+                    }
+                    else{
+                        console.log("hay versiones");
+                        $.each(data, function(index){
+                            var imagen = "http://progapli2013.comule.com/imagenes/juegos/"+data[index].imagen;
+                            var div_imagen = "<div class='img_noti'><img src='"+imagen+"'></div>";
+                            var div_mensaje = "<div class='msj_noti'><span>Hay una nueva version de "+data[index].nombre+"</span></div>";
+                            var id = data[index].id;
+                            var enlace = "<a href='descargaJuego?id="+id+"'>Descargar</a>";
+                            var div_noti = "<div class='nofificacion'>"+div_mensaje+div_imagen+enlace+"</div>";
+                            
+                            var elemento = "<li>"+div_noti+"</li>";
+                            $("#nuevas_versiones").append(elemento);
+                        });
+                    }
                 },
                 error: function() {
                     console.log("error notificacion");
@@ -237,16 +254,9 @@
                         ManejadorBD.getInstancia().setUsuario("root");
                         ManejadorBD.getInstancia().setPassword("root");
 
-                        if (ManejadorBD.getInstancia().estaDesconectado())
+                        if (ManejadorBD.getInstancia().estaDesconectado()) {
                             ManejadorBD.getInstancia().conectar();
-                        
-                        if (request.getAttribute("nuevas_versiones") != null){
-                            System.out.println("hay nuevas versiones");
                         }
-                        else{
-                            System.out.println("no hay nuevas versiones");
-                        }
-
                     %>
                     <nav>
                         <ul id="menu_categorias">
@@ -255,21 +265,21 @@
                                 try {
                                     clientes.categorias.ServicioCategorias_Service service = new clientes.categorias.ServicioCategorias_Service();
                                     clientes.categorias.ServicioCategorias port = service.getServicioCategoriasPort();
-                                    List categorias =  port.listarCategorias();
+                                    List categorias = port.listarCategorias();
 
                                     if (categorias != null) {
-                                        System.out.println("cat: "+categorias);
+                                        System.out.println("cat: " + categorias);
                                         int i = 0;
 
                                         while (i < categorias.size()) {
                                             Categoria cat;
-                                            cat = (Categoria)categorias.get(i);
+                                            cat = (Categoria) categorias.get(i);
                                             out.println("<li><a href='juegosCategoria?id=" + cat.getId() + "'>" + cat.getNombre() + "</a></li>");
                                             i++;
                                         }
                                     }
                                 } catch (Exception ex) {
-                                    System.err.println("ERROR: "+ex.getMessage());
+                                    System.err.println("ERROR: " + ex.getMessage());
                                 }
                             %>
                         </ul>
@@ -343,7 +353,11 @@
             </div>
 
         </header>
-
+        <div id="notficaciones" hidden="true">
+            <ul id="nuevas_versiones">
+                
+            </ul>
+        </div>
     </body>
 
 </html>

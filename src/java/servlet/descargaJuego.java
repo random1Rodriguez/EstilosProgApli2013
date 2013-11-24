@@ -1,6 +1,7 @@
 
 package servlet;
 
+import controladores.Controladorjuegos;
 import dominio.Usuario;
 import dominio.Version;
 import java.io.IOException;
@@ -21,6 +22,7 @@ import javax.servlet.http.HttpSession;
 public class descargaJuego extends HttpServlet {
 controladores.ControladorUsuarios cu = controladores.ControladorUsuarios.getInstancia();
 controladores.ControladorCompras cc = controladores.ControladorCompras.getInstancia();
+    Controladorjuegos cj = Controladorjuegos.getInstancia();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -47,6 +49,8 @@ controladores.ControladorCompras cc = controladores.ControladorCompras.getInstan
                         break;
                     out.write(buffer,0,nBytes);
                 }
+                
+                cj.cambiarTieneUltimaVersion(v.getJuego().getId(), 1);
 
                 in.close();
                 out.flush();
@@ -64,15 +68,4 @@ controladores.ControladorCompras cc = controladores.ControladorCompras.getInstan
         }
     
      }
-
-     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-             {
-        
-     }
-
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }
 }
