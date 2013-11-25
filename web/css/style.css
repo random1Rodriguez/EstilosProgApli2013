@@ -973,24 +973,36 @@ li .menos{
 /*estilos notificaciones*/
 
 #notificaciones{
-    border: solid #0FC;
     width: 25%;
     border-radius: 5px;
-    background-color: #FDFDFD;
     height: 200px;
     z-index: 100;
     position: absolute;
     top: 57px;
-    right: 0%;
+    right: 1%;
     display: none;
+}
+
+.nofificacion .cerrar_noti{
+    width: 5%;
+    position: relative;
+    top: -6px;
+    left: 3%;
+    float: right;
+    cursor: pointer;
 }
 
 #nuevas_versiones{
     list-style: none;
+    padding-left: 0px;
 }
 
 .item{
-    width: 95%;
+    background-color: white;
+    height: 60px;
+    border-radius: 10px;
+    padding: 2%;
+    margin-bottom: 5%;
 }
 
 /*----------------- ESTILOS MATIAS V----------------------*/

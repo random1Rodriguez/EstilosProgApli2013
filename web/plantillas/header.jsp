@@ -121,6 +121,13 @@
         var nav = "";
         $(document).ready(function() {
             
+            $(".cerrar_noti").on("click", ".cerrar_noti", function(event){
+                //event.preventDefault();
+                console.log("click");
+                console.log(event.target); 
+            });
+            
+            
             var div_notificaciones = "<div id='notificaciones'><ul id='nuevas_versiones'></ul></div>";
             $("#contenedor").prepend(div_notificaciones);
             comprobarnavegador();
@@ -164,13 +171,14 @@
                             //var div_imagen = "<div class='img_noti'><img src='"+imagen+"'></div>";
                             var div_mensaje = "<div class='msj_noti'><span>Hay una nueva version de "+data[index].nombre+"</span></div>";
                             var enlace = "<a href='descargaJuego?id="+data[index].id+"'>Descargar</a>";
-                            var notificacion = "<div class='nofificacion'>"+div_mensaje+enlace+"</div>";
+                            var cerrar = "<div class='cerrar_noti'>X</div>";
+                            var notificacion = "<div class='nofificacion'>"+cerrar+div_mensaje+enlace+"</div>";
                             
                             var elemento = "<li class='item'>"+notificacion+"</li>";
                             
                             $("#nuevas_versiones").append(elemento);
                         });
-                        $("#notificaciones").slideDown(500);
+                        $("#notificaciones").slideDown(800);
                     }
                 },
                 error: function() {
