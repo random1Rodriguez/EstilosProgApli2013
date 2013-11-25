@@ -10,11 +10,32 @@
 <message name="BuscarResponse">
 <part name="parameters" element="tns:BuscarResponse" />
 </message>
+<message name="bajaJuego">
+<part name="parameters" element="tns:bajaJuego" />
+</message>
+<message name="listarJuegos">
+<part name="parameters" element="tns:listarJuegos" />
+</message>
+<message name="listarJuegosResponse">
+<part name="parameters" element="tns:listarJuegosResponse" />
+</message>
+<message name="verInfoJuego">
+<part name="parameters" element="tns:verInfoJuego" />
+</message>
+<message name="verInfoJuegoResponse">
+<part name="parameters" element="tns:verInfoJuegoResponse" />
+</message>
 <message name="listarJuegosPorDesarrolladorVersionAprobada">
 <part name="parameters" element="tns:listarJuegosPorDesarrolladorVersionAprobada" />
 </message>
 <message name="listarJuegosPorDesarrolladorVersionAprobadaResponse">
 <part name="parameters" element="tns:listarJuegosPorDesarrolladorVersionAprobadaResponse" />
+</message>
+<message name="buscarJuegoPorId">
+<part name="parameters" element="tns:buscarJuegoPorId" />
+</message>
+<message name="buscarJuegoPorIdResponse">
+<part name="parameters" element="tns:buscarJuegoPorIdResponse" />
 </message>
 <message name="listarJuegosPorCategoria">
 <part name="parameters" element="tns:listarJuegosPorCategoria" />
@@ -40,35 +61,29 @@
 <message name="listarJuegosPorDesarrolladorResponse">
 <part name="parameters" element="tns:listarJuegosPorDesarrolladorResponse" />
 </message>
-<message name="verInfoJuego">
-<part name="parameters" element="tns:verInfoJuego" />
-</message>
-<message name="verInfoJuegoResponse">
-<part name="parameters" element="tns:verInfoJuegoResponse" />
-</message>
-<message name="listarJuegos">
-<part name="parameters" element="tns:listarJuegos" />
-</message>
-<message name="listarJuegosResponse">
-<part name="parameters" element="tns:listarJuegosResponse" />
-</message>
-<message name="bajaJuego">
-<part name="parameters" element="tns:bajaJuego" />
-</message>
-<message name="buscarJuegoPorId">
-<part name="parameters" element="tns:buscarJuegoPorId" />
-</message>
-<message name="buscarJuegoPorIdResponse">
-<part name="parameters" element="tns:buscarJuegoPorIdResponse" />
-</message>
 <portType name="ServicioJuegos">
 <operation name="Buscar">
 <input wsam:Action="http://ws/ServicioJuegos/BuscarRequest" message="tns:Buscar" />
 <output wsam:Action="http://ws/ServicioJuegos/BuscarResponse" message="tns:BuscarResponse" />
 </operation>
+<operation name="bajaJuego">
+<input wsam:Action="http://ws/ServicioJuegos/bajaJuego" message="tns:bajaJuego" />
+</operation>
+<operation name="listarJuegos">
+<input wsam:Action="http://ws/ServicioJuegos/listarJuegosRequest" message="tns:listarJuegos" />
+<output wsam:Action="http://ws/ServicioJuegos/listarJuegosResponse" message="tns:listarJuegosResponse" />
+</operation>
+<operation name="verInfoJuego">
+<input wsam:Action="http://ws/ServicioJuegos/verInfoJuegoRequest" message="tns:verInfoJuego" />
+<output wsam:Action="http://ws/ServicioJuegos/verInfoJuegoResponse" message="tns:verInfoJuegoResponse" />
+</operation>
 <operation name="listarJuegosPorDesarrolladorVersionAprobada">
 <input wsam:Action="http://ws/ServicioJuegos/listarJuegosPorDesarrolladorVersionAprobadaRequest" message="tns:listarJuegosPorDesarrolladorVersionAprobada" />
 <output wsam:Action="http://ws/ServicioJuegos/listarJuegosPorDesarrolladorVersionAprobadaResponse" message="tns:listarJuegosPorDesarrolladorVersionAprobadaResponse" />
+</operation>
+<operation name="buscarJuegoPorId">
+<input wsam:Action="http://ws/ServicioJuegos/buscarJuegoPorIdRequest" message="tns:buscarJuegoPorId" />
+<output wsam:Action="http://ws/ServicioJuegos/buscarJuegoPorIdResponse" message="tns:buscarJuegoPorIdResponse" />
 </operation>
 <operation name="listarJuegosPorCategoria">
 <input wsam:Action="http://ws/ServicioJuegos/listarJuegosPorCategoriaRequest" message="tns:listarJuegosPorCategoria" />
@@ -86,21 +101,6 @@
 <input wsam:Action="http://ws/ServicioJuegos/listarJuegosPorDesarrolladorRequest" message="tns:listarJuegosPorDesarrollador" />
 <output wsam:Action="http://ws/ServicioJuegos/listarJuegosPorDesarrolladorResponse" message="tns:listarJuegosPorDesarrolladorResponse" />
 </operation>
-<operation name="verInfoJuego">
-<input wsam:Action="http://ws/ServicioJuegos/verInfoJuegoRequest" message="tns:verInfoJuego" />
-<output wsam:Action="http://ws/ServicioJuegos/verInfoJuegoResponse" message="tns:verInfoJuegoResponse" />
-</operation>
-<operation name="listarJuegos">
-<input wsam:Action="http://ws/ServicioJuegos/listarJuegosRequest" message="tns:listarJuegos" />
-<output wsam:Action="http://ws/ServicioJuegos/listarJuegosResponse" message="tns:listarJuegosResponse" />
-</operation>
-<operation name="bajaJuego">
-<input wsam:Action="http://ws/ServicioJuegos/bajaJuego" message="tns:bajaJuego" />
-</operation>
-<operation name="buscarJuegoPorId">
-<input wsam:Action="http://ws/ServicioJuegos/buscarJuegoPorIdRequest" message="tns:buscarJuegoPorId" />
-<output wsam:Action="http://ws/ServicioJuegos/buscarJuegoPorIdResponse" message="tns:buscarJuegoPorIdResponse" />
-</operation>
 </portType>
 <binding name="ServicioJuegosPortBinding" type="tns:ServicioJuegos">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
@@ -113,7 +113,40 @@
 <soap:body use="literal" />
 </output>
 </operation>
+<operation name="bajaJuego">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" />
+</input>
+</operation>
+<operation name="listarJuegos">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+</operation>
+<operation name="verInfoJuego">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+</operation>
 <operation name="listarJuegosPorDesarrolladorVersionAprobada">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+</operation>
+<operation name="buscarJuegoPorId">
 <soap:operation soapAction="" />
 <input>
 <soap:body use="literal" />
@@ -150,39 +183,6 @@
 </output>
 </operation>
 <operation name="listarJuegosPorDesarrollador">
-<soap:operation soapAction="" />
-<input>
-<soap:body use="literal" />
-</input>
-<output>
-<soap:body use="literal" />
-</output>
-</operation>
-<operation name="verInfoJuego">
-<soap:operation soapAction="" />
-<input>
-<soap:body use="literal" />
-</input>
-<output>
-<soap:body use="literal" />
-</output>
-</operation>
-<operation name="listarJuegos">
-<soap:operation soapAction="" />
-<input>
-<soap:body use="literal" />
-</input>
-<output>
-<soap:body use="literal" />
-</output>
-</operation>
-<operation name="bajaJuego">
-<soap:operation soapAction="" />
-<input>
-<soap:body use="literal" />
-</input>
-</operation>
-<operation name="buscarJuegoPorId">
 <soap:operation soapAction="" />
 <input>
 <soap:body use="literal" />
