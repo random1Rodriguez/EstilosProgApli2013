@@ -9,6 +9,19 @@
 <html>
     <head>
         <style>
+            #addcomentario{
+                width: 41%;
+                background: rgb(248, 248, 248);
+                border-radius: 0px 10px;
+                border: solid 1px gray;
+                padding: 1%;
+                margin: 1%;
+                top: 0px;
+                float: left;
+                height: 276px;
+                position: relative;
+            }
+
             .coments_resp{
                 border: solid 1px;
                 border-color: rgb(207, 207, 207);
@@ -16,19 +29,19 @@
                 padding: 7px;
                 background-color: #E7EBF7;
             }       
-            
+
             .coments_resp li{
                 background-color: #e6e6e6;
             }        
-            
+
             .coments_resp li li{
-               background-color: #E7EBF7;
+                background-color: #E7EBF7;
             }
-            
+
             .coments_resp li li li{
-               background-color: #e6e6e6;
+                background-color: #e6e6e6;
             }    
-            
+
             .resp_c{
                 border: solid 1px;
                 border-color: rgb(207, 207, 207);
@@ -70,6 +83,16 @@
                 margin: 5%;
             }
 
+
+            /*Rating Sys*/
+            #rateStatus{float:left; clear:both; width:100%; height:20px;}
+            #rateMe{float:left; clear:both; width:100%; height:auto; padding:0px; margin:0px;}
+            #rateMe li{float:left;list-style:none;}
+            #rateMe li a:hover,
+            #rateMe .on{background:url(img/star_on.gif) no-repeat;}
+            #rateMe a{float:left;background:url(img/star_off.gif) no-repeat;width:12px; height:12px;}
+            #ratingSaved{display:none;}
+            .saved{color:red; }
         </style>
 
 
@@ -77,81 +100,84 @@
 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <jsp:include page="plantillas/header.jsp"></jsp:include>
-        <script src="js/jquery-2.0.3.js"></script>
-        <script>
-            $(document).ready(function() {
+            <script type="text/javascript" language="javascript" src="js/ratingsys.js"></script>
+            <script src="js/jquery-2.0.3.js"></script>
+            <script>
+                $(document).ready(function() {
 
-                var path = document.location.pathname.toString();
-                var nombreApp = path.split("/")[1];
-                var host = document.location.host;
+                    var path = document.location.pathname.toString();
+                    var nombreApp = path.split("/")[1];
+                    var host = document.location.host;
 
-                $(".root-coments").css("list-style-image", "url('img/mas.png')");
+                    $(".root-coments").css("list-style-image", "url('img/mas.png')");
 
-                $("#InfoJComents").on("click", ".ajax", function(event) {
-                    event.preventDefault();
+                    $("#InfoJComents").on("click", ".ajax", function(event) {
+                        event.preventDefault();
 
-                    var comentario = $(this);
-                    //console.log(comentario);
+                        var comentario = $(this);
+                        //console.log(comentario);
 
-                    var dir = location.protocol + "//" + host + "/" + nombreApp + "/" + comentario.attr("href");
-                    console.log(dir);
-                    //console.log(comentario.attr("href"));
-                    var id_com = dir.substring(dir.indexOf("=") + 1, dir.length);
-                    //console.log(id_com);
+                        var dir = location.protocol + "//" + host + "/" + nombreApp + "/" + comentario.attr("href");
+                        console.log(dir);
+                        //console.log(comentario.attr("href"));
+                        var id_com = dir.substring(dir.indexOf("=") + 1, dir.length);
+                        //console.log(id_com);
 
-                    if (comentario.hasClass("desplegado")) {
-                        $(this).parent().children().last().remove();
-                        $(this).removeClass("desplegado");
-                        $(this).parent().removeClass("menos");
-                        $(this).parent().addClass("mas");
+                        if (comentario.hasClass("desplegado")) {
+                            $(this).parent().children().last().remove();
+                            $(this).removeClass("desplegado");
+                            $(this).parent().removeClass("menos");
+                            $(this).parent().addClass("mas");
 
-                        if ($(this).parent().hasClass("root-coments")) {
-                            $(this).parent().css("list-style-image", "url('img/mas.png')");
-                        }
-
-                    }
-                    else {
-
-                        if ($(this).parent().hasClass("root-coments")) {
-                            $(this).parent().css("list-style-image", "url('img/menos.png')");
-                        }
-
-                        $(this).parent().removeClass("mas");
-                        $(this).parent().addClass("menos");
-                        $.ajax({
-                            url: dir,
-                            dataType: "json",
-                            success: function(data) {
-                                console.log(data);
-                                var div = "<div id='resp" + id_com + "'><ul></ul></div>";
-                                comentario.after(div);
-                                comentario.addClass("desplegado");
-                                $.each(data, function(index) {
-                                    //console.log(data[index].id);
-                                    //console.log(data[index].texto);
-
-                                    $("#resp" + id_com).find("ul").append("<li class='mas coments_resp'><a class='ajax' href='VerComentariosAjax?id_com=" + data[index].id + "'>" + data[index].texto + "</a></li>");
-                                });
-                            },
-                            error: function() {
-                                alert("error");
+                            if ($(this).parent().hasClass("root-coments")) {
+                                $(this).parent().css("list-style-image", "url('img/mas.png')");
                             }
-                        });
-                    }
-                });
 
-                $("#btn-comprar").hover(function() {
-                    console.log($(this).html());
-                    var precio = $(this).attr("value");
-                    $(this).text("u$s " + precio);
-                }, function() {
-                    $(this).text("Comprar");
-                });
-            });
-        </script>
+                        }
+                        else {
 
-    </head>
-    <body>
+                            if ($(this).parent().hasClass("root-coments")) {
+                                $(this).parent().css("list-style-image", "url('img/menos.png')");
+                            }
+
+                            $(this).parent().removeClass("mas");
+                            $(this).parent().addClass("menos");
+                            $.ajax({
+                                url: dir,
+                                dataType: "json",
+                                success: function(data) {
+                                    console.log(data);
+                                    var div = "<div id='resp" + id_com + "'><ul></ul></div>";
+                                    comentario.after(div);
+                                    comentario.addClass("desplegado");
+                                    $.each(data, function(index) {
+                                        //console.log(data[index].id);
+                                        //console.log(data[index].texto);
+
+                                        $("#resp" + id_com).find("ul").append("<li class='mas coments_resp'><a class='ajax' href='VerComentariosAjax?id_com=" + data[index].id + "'>" + data[index].texto + "</a></li>");
+                                    });
+                                },
+                                error: function() {
+                                    alert("error");
+                                }
+                            });
+                        }
+                    });
+
+                    $("#btn-comprar").hover(function() {
+                        console.log($(this).html());
+                        var precio = $(this).attr("value");
+                        $(this).text("u$s " + precio);
+                    }, function() {
+                        $(this).text("Comprar");
+                    });
+                    
+                    $("");
+                });
+            </script>
+
+        </head>
+        <body>
             <div id="contenedor">
             <%
                 String server = "http://progapli2013.comule.com/";
@@ -185,8 +211,8 @@
                     out.write("<li>");
                     if (session.getAttribute("usuario") != null
                             && controladores.ControladorCompras.getInstancia().comproJuego(
-                                    controladores.ControladorUsuarios.getInstancia().find(String.valueOf(session.getAttribute("usuario"))).getId(),
-                                    ju.getId())) {
+                            controladores.ControladorUsuarios.getInstancia().find(String.valueOf(session.getAttribute("usuario"))).getId(),
+                            ju.getId())) {
                         out.write("<li>");
                         out.write("<b> Download: </b> v <a href='descargaJuego?id=" + v.getId_juego() + "'>" + v.getNro_version() + "</a>");
                         out.write("</li>");
@@ -210,12 +236,11 @@
                     }
                     if (session.getAttribute("usuario") != null
                             && controladores.ControladorCompras.getInstancia().comproJuego(
-                                    controladores.ControladorUsuarios.getInstancia().find(String.valueOf(session.getAttribute("usuario"))).getId(),
-                                    ju.getId())) {
-                     
+                            controladores.ControladorUsuarios.getInstancia().find(String.valueOf(session.getAttribute("usuario"))).getId(),
+                            ju.getId())) {
                     }
                     out.write("<li style='margin-left:25px'>");
-                    
+
                     String ruta = request.getScheme() + "://192.168.3.15:" + request.getServerPort() + request.getContextPath();
                     ruta = ruta + "/verPerfilDesarrollador.jsp?id=" + ju.getDes().getId();
                     out.write("<img alt='' src='http://chart.apis.google.com/chart?cht=qr&amp;chs=200x200&amp;chl=" + ruta + "&amp;chld=H|0' />");
@@ -226,13 +251,46 @@
 
                     ArrayList<Comentario> lstCom = (ArrayList<Comentario>) ju.getComentarios();
                     i = 0;
+              %>
+              <div id="addcomentario">
+                    <input name="idU" type="hidden" value="<%= session.getAttribute("idU")%>">
+                    <input name="idJ" type="hidden" value="<%= request.getParameter("id")%>">
+                    <%
+                        String idCP = request.getParameter("idCP");
+                        if (request.getParameter("idCP") != null) {
+                            out.write("<input name='idCP' type='hidden' value='" + idCP + "'>");
+                        } else {
+                            out.write("<input name='idCP' type='hidden' value='" + idCP + "'>");
+                        }
+                    %>
 
+
+                    <form name="frm" action="altaReclamo" method="POST">
+                        <b> Ingresa tu comentario:</b><br><br>
+                        <textarea id="desc" name="desc" placeholder="Descripcion" style="width: 400px; height: 150px;"></textarea><br>
+                        <span id="rateStatus">Votar</span>
+                        <span id="ratingSaved">Voto Guardado</span>
+                        <div id="rateMe" title="Votar">
+                            <a onclick="rateIt(this)" id="_1" title="Muy Malo" onmouseover="rating(this)" onmouseout="off(this)"></a>
+                            <a onclick="rateIt(this)" id="_2" title="Malo" onmouseover="rating(this)" onmouseout="off(this)"></a>
+                            <a onclick="rateIt(this)" id="_3" title="Bueno" onmouseover="rating(this)" onmouseout="off(this)"></a>
+                            <a onclick="rateIt(this)" id="_4" title="Muy Bueno" onmouseover="rating(this)" onmouseout="off(this)"></a>
+                            <a onclick="rateIt(this)" id="_5" title="Excelente" onmouseover="rating(this)" onmouseout="off(this)"></a>
+                        </div>
+                        <button type="submit" value="comentar" class="btn" style="margin-top: 5px;"> Comentar </button>
+                    </form>
+                </div>
+              
+              <%
+                    
+                    System.out.println("Cantidad comentarios =" + lstCom.size());
                     if (lstCom.size() != 0) {
 
 
             %>
             <b style="color:white;">Comentarios:</b>
             <div id="comentsPH" style="clear: both; height: 267px;"> 
+                
                 <ul id='InfoJComents'>
 
                     <%                        Comentario com = null;
@@ -240,7 +298,7 @@
                             com = lstCom.get(i);
                             if (com.getId_padre() == 0) {
                                 out.write("<li class='root-coments coments_resp'>");
-                                out.write("<a class='ajax' href='VerComentariosAjax?id_com=" + com.getId() + "'>" + com.getTexto() + "</a>");
+                                out.write("<a class='ajax' href='VerComentariosAjax?id_com=" + com.getId() + "'>" + com.getTexto() + "</a> <a href='#desc?idCP=" + com.getId() + "'> Responder </a>");
                             }
                             i++;
                         }
@@ -252,19 +310,23 @@
             el fondo semi transparente se adapte a el tamaño del div
             que contiene los comentarios
             --%>
-            <div class="div-ajuste">
 
-            </div>
+
+
             <%
+                    } else {
+                        out.write("<div id='comentsPH'> <ul id='InfoJComents'> El juego no tiene comentarios</ul></div>");
                     }
-
-                } else {
-                    out.write("<div id='comentsPH'> <ul id='InfoJComents'> El juego no tiene comentarios</ul></div>");
                 }
                 out.write("</div>");
 
 
             %>
+            <div class="div-ajuste">
+
+            </div>
+
+
         </div>
         <footer id="footer">
             <div id="txtfooter">

@@ -9,6 +9,33 @@
 <html>
     <head>
         <link rel="stylesheet" href="css/style.css">
+        <style>
+            #contenedorInformacionEstadisticas{
+                background: rgba(0, 0, 0, 0.3);
+                border-radius: 15px 0 15px;
+                width: 80%;
+                padding: 2%;
+                margin: 5%;
+            }
+
+            #grafica_lineal{
+                background: white;
+                border-radius: 0 10px;
+                padding: 5px;
+                margin: 15px;
+                text-align: center;
+            }
+
+            #grafica_torta{
+                background: white;
+                border-radius: 0 10px;
+                padding: 5px;
+                margin: 15px;
+                text-align: center;
+            }
+
+
+        </style>
         <%
             HttpSession sesion = request.getSession(true);
             if (sesion.getAttribute("usuario").toString() != null) {
@@ -55,7 +82,7 @@
                     ]);
 
                     // Seteo propiedades al grafico
-                    var options = {'title': 'Ganancias'};
+                    var options = {'title': 'Ganancias', width: 800, height: 500, is3D: true};
 
                     // Crear instancias y dibuja la tabla, pasando algunas de las opciones.
                     var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
@@ -97,9 +124,17 @@
 
     <body>  
         <!--Div that will hold the pie chart-->
-        <div id="chart_div"></div>
-        <div id="chart2_div" style="width: 900px; height: 500px;"></div>
+        <div id="contenedor">
+            <div id="contenedorInformacionEstadisticas">
+                <div id="grafica_torta">
+                    <div id="chart_div" style="margin: 0 27%"></div>
+                </div>
 
+                <div id="grafica_lineal">
+                    <div id="chart2_div"></div>
+                </div>
+            </div>
+        </div>
         <footer id="footer">
             <div id="txtfooter">
                 Random PlayStore © || Todos los derechos reservados || Programacion de Aplicaciones || 2013 
