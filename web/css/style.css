@@ -970,5 +970,28 @@ li .menos{
     clear: both;
 }
 
+/*estilos notificaciones*/
+
+#notificaciones{
+    border: solid #0FC;
+    width: 25%;
+    border-radius: 5px;
+    background-color: #FDFDFD;
+    height: 200px;
+    z-index: 100;
+    position: absolute;
+    top: 57px;
+    right: 0%;
+    display: none;
+}
+
+#nuevas_versiones{
+    list-style: none;
+}
+
+.item{
+    width: 95%;
+}
+
 /*----------------- ESTILOS MATIAS V----------------------*/
 
