@@ -64,8 +64,8 @@ public class comprarJuego extends HttpServlet {
                 Juego actualJ = cj.buscarJuegoPorID(idj);//busco el juego y lo guardo en actualJ de tipo juego
                 Compra comp = new Compra(actualJ,usuario,fecha);//creo una nueva compra
                 cc.altaCompra(comp);
-                //out.write("Compra Exitosa, Gracias por preferirnos, vuelva prontos...");
-                request.getRequestDispatcher("/Perfil").forward(request, response);
+                response.sendRedirect("descargaJuego?id="+idj);
+                //request.getRequestDispatcher("/Perfil").forward(request, response);
             }
         }
         catch(SQLException ex){
