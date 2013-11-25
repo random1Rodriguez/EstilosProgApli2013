@@ -36,13 +36,13 @@
             -o-user-select: none;
             user-select: none;
         }
-        
+
         .btn:focus {
             outline: thin dotted #333;
             outline: 5px auto -webkit-focus-ring-color;
             outline-offset: -2px;
         }
-        
+
         .btn:hover,
         .btn:focus {
             color: #333333;
@@ -114,15 +114,24 @@
             width: 68% !important;
             top: -20px !important;
         }
-
+        
     </style>
 
     <script>
         var nav = "";
         $(document).ready(function() {
-
+            
+            $(".cerrar_noti").on("click", ".cerrar_noti", function(event){
+                //event.preventDefault();
+                console.log("click");
+                console.log(event.target); 
+            });
+            
+            
+            var div_notificaciones = "<div id='notificaciones'><ul id='nuevas_versiones'></ul></div>";
+            $("#contenedor").prepend(div_notificaciones);
             comprobarnavegador();
-            console.log(nav);
+            //console.log(nav);
             var path = document.location.pathname.toString();
             var nombreApp = path.split("/")[1];
             var host = document.location.host;
@@ -132,7 +141,7 @@
             var url = document.URL;
             var datos = {"so": so, "url": url, "nav": nav};
 
-            console.log(datos);
+            //console.log(datos);
 
             $.ajax({
                 url: dir + "RegistroAcceso",
@@ -149,8 +158,28 @@
             $.ajax({
                 url: dir + "NotificacionNuevaVersion",
                 type: "GET",
+                dataType: "json",
                 success: function(data) {
                     console.log(data);
+                    if(data.length === 0){
+                        console.log("no hay versiones");
+                    }
+                    else{
+                        console.log("hay versiones");
+                        $.each(data, function(index){
+                            //var imagen = "http://progapli2013.comule.com/imagenes/juegos/"+data[index].imagen;
+                            //var div_imagen = "<div class='img_noti'><img src='"+imagen+"'></div>";
+                            var div_mensaje = "<div class='msj_noti'><span>Hay una nueva version de "+data[index].nombre+"</span></div>";
+                            var enlace = "<a href='descargaJuego?id="+data[index].id+"'>Descargar</a>";
+                            var cerrar = "<div class='cerrar_noti'>X</div>";
+                            var notificacion = "<div class='nofificacion'>"+cerrar+div_mensaje+enlace+"</div>";
+                            
+                            var elemento = "<li class='item'>"+notificacion+"</li>";
+                            
+                            $("#nuevas_versiones").append(elemento);
+                        });
+                        $("#notificaciones").slideDown(800);
+                    }
                 },
                 error: function() {
                     console.log("error notificacion");
@@ -236,9 +265,9 @@
                         ManejadorBD.getInstancia().setUsuario("root");
                         ManejadorBD.getInstancia().setPassword("root");
 
-                        if (ManejadorBD.getInstancia().estaDesconectado())
+                        if (ManejadorBD.getInstancia().estaDesconectado()) {
                             ManejadorBD.getInstancia().conectar();
-
+                        }
                     %>
                     <nav>
                         <ul id="menu_categorias">
@@ -247,21 +276,21 @@
                                 try {
                                     clientes.categorias.ServicioCategorias_Service service = new clientes.categorias.ServicioCategorias_Service();
                                     clientes.categorias.ServicioCategorias port = service.getServicioCategoriasPort();
-                                    List categorias =  port.listarCategorias();
+                                    List categorias = port.listarCategorias();
 
                                     if (categorias != null) {
-                                        System.out.println("cat: "+categorias);
+                                        System.out.println("cat: " + categorias);
                                         int i = 0;
 
                                         while (i < categorias.size()) {
                                             Categoria cat;
-                                            cat = (Categoria)categorias.get(i);
+                                            cat = (Categoria) categorias.get(i);
                                             out.println("<li><a href='juegosCategoria?id=" + cat.getId() + "'>" + cat.getNombre() + "</a></li>");
                                             i++;
                                         }
                                     }
                                 } catch (Exception ex) {
-                                    System.err.println("ERROR: "+ex.getMessage());
+                                    System.err.println("ERROR: " + ex.getMessage());
                                 }
                             %>
                         </ul>
@@ -335,7 +364,6 @@
             </div>
 
         </header>
-
     </body>
 
 </html>
