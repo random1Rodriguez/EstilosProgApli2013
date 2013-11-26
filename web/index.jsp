@@ -59,7 +59,7 @@
                 <%-- MAS COMPRADOS --%>
                 <div id="mas-comprados" class="contenedor-destacados">
                     <div class="titulo-grande">
-                        <span>LOS MAS COMPRADOS</span>
+                        <span>Mas Comprados</span>
                     </div>
                     <div>
                         <%
@@ -103,7 +103,7 @@
                 <%-- MEJOR PUNTUADOS --%>
                 <div id="mejor-puntuados" class="contenedor-destacados">
                     <div class="titulo-grande">
-                        <span>LOS MEJORES PUNTUADOS</span>
+                        <span>Mejores Puntuados</span>
                     </div>
                     <div>
                         <%

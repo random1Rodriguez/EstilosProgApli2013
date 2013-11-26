@@ -84,16 +84,15 @@
                 <div id="fondotransparente"> <%--comienza fondo transparente --%>
                 <div  id="contenedorJuegos"> <%-- comienza contenedor juegos --%>
                     <%
-                        
+
                         String ruta = "http://progapli2013.comule.com/imagenes/juegos/";
                         Controladorjuegos cj = Controladorjuegos.getInstancia();
                         //System.out.println("busqueda: " + request.getParameter("busqueda"));
                         //ArrayList juegos = cj.buscar(request.getParameter("busqueda"));
                         ArrayList juegos = null;
-                        if (request.getAttribute("flag") == null){
+                        if (request.getAttribute("flag") == null) {
                             juegos = cj.buscar(request.getParameter("busqueda"));
-                        }
-                        else{
+                        } else {
                             juegos = (ArrayList) request.getAttribute("juegos");
                         }
 
@@ -105,9 +104,9 @@
                                 System.out.println("tamaño mayor a 0");
                     %>
 
-                    <div id="resultado-busqueda">
+                    <%--<div id="resultado-busqueda">
                         <div id="busqueda-filtros">
-                            
+
                             <div id="orden">
                                 <span>Ordenar Por:</span>
                                 <a href="BusquedaConFiltros?orden=alf">Alfabeticamente</a>
@@ -118,7 +117,7 @@
                                 <a href="BusquedaConFiltros?busqueda=<%=request.getParameter("busqueda")%>&inicio=0&fin=3">$0 a $3</a>
                                 <a href="BusquedaConFiltros?busqueda=<%=request.getParameter("busqueda")%>&inicio=3&fin=10">$3 a $10</a>
                                 <a href="BusquedaConFiltros?busqueda=<%=request.getParameter("busqueda")%>&inicio=10">mas de $10</a>
-                                
+
                                 <form id="form-precio" method="GET" action="BusquedaConFiltros">
                                     <input name="inicio" placeholder="Min">
                                     <input name="fin" placeholder="Max">
@@ -130,6 +129,8 @@
                         <div id="cantidad-resultados">
                             <span>Resultados para: <span><%= request.getParameter("busqueda")%> </span>(<%= cant%> Resultados)</span>
                         </div>
+                    </div> --%>
+                    <div id="cantidad-resultados" style="height: 80px">
                     </div>
 
                     <div>
@@ -164,7 +165,6 @@
                         %>
                     </div>
 
-
                     <%
                     } else {
                     %>
@@ -182,7 +182,7 @@
                         <%-- MAS COMPRADOS --%>
                         <div id="mas-comprados" class="contenedor-destacados">
                             <div class="titulo-grande">
-                                <span>LOS MAS COMPRADOS</span>
+                                <span>Mas Comprados</span>
                             </div>
                             <div>
                                 <%
@@ -224,7 +224,40 @@
                         <%-- MEJOR PUNTUADOS --%>
                         <div id="mejor-puntuados" class="contenedor-destacados">
                             <div class="titulo-grande">
-                                <span>LOS MEJORES PUNTUADOS</span>
+                                <span>Mejores Puntuados</span>
+                            </div>
+                            <div>
+                                <%
+                                    ArrayList juegos_masPuntuados = (ArrayList) cj.listarMejorPuntuados(3);
+                                    i = 0;
+
+                                    while (i < juegos_masPuntuados.size()) {
+                                        Juego j = (Juego) juegos_masPuntuados.get(i);
+                                        //out.write("<li>");
+                                        out.write("<div class='ModuloJuego'><a href='verInfoJuego?id=" + j.getId() + "'>");
+                                        out.write("<div class='imgJuego'>");
+                                        out.write("<img class='imgJuego' src='" + ruta + j.getPortada() + "'>");
+                                        out.write("</div>");
+                                        out.write("<div class='nombrejuego'><b>");
+                                        out.write(j.getNombre());
+                                        out.write("</b></div>");
+                                        out.write("<div class='descjuego'>");
+                                        String desc = j.getDescripcion();
+                                        if (desc.length() > 200) {
+                                            out.write(desc.substring(0, 200) + "...");
+                                        } else {
+                                            out.write(desc);
+                                        }
+                                        out.write("</div>");
+                                        out.write("<div class='preciojuego'> u$s <b>");
+                                        out.write(Double.toString(j.getPrecio()));
+                                        out.write("</b></div>");
+                                        out.write("</a>");
+                                        out.write("</div>");
+                                        //out.write("</li>");
+                                        i++;
+                                    }
+                                %>
                             </div>
                         </div>
                         <%-- TERMINA MEJOR PUNTUADOS --%>
@@ -236,9 +269,15 @@
                             }
                         }
                     %>
+                    <div class="div-ajuste">
+
+                    </div>
                 </div> <%-- termina contenedor juegos --%>
             </div> <%--termina fondo transparente --%>
         </div> <%--termina contenedor --%>
+        <div class="div-ajuste">
+
+        </div>
         <footer id="footer">
             <div id="txtfooter">
                 Random PlayStore © || Todos los derechos reservados || Programacion de Aplicaciones || 2013 
