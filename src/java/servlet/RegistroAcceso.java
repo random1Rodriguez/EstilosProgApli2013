@@ -57,7 +57,7 @@ public class RegistroAcceso extends HttpServlet {
         try {
             String sql = "insert into registro_acceso (navegador, so, ip, url, fecha) "
                     + "values('"+nav+"', '"+so+"', '"+ip+"', '"+url+"', '"+fecha+"')";
-            System.out.println(sql);
+            //System.out.println(sql);
             ManejadorBD.getInstancia().INSERT(sql);
         } catch (SQLException ex) {
             Logger.getLogger(RegistroAcceso.class.getName()).log(Level.SEVERE, null, ex);
