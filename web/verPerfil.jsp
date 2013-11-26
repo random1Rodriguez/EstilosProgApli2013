@@ -53,6 +53,9 @@
                 <span>
                     <a href="ConsultaReclamo?idUsu=<%=session.getAttribute("idU").toString()%>" class="btn">Ver Reclamos</a>
                 </span>
+                <span>
+                    <a href="verEstadisticas.jsp" class="btn">Ver estadisticas</a>
+                </span>
                 <%
             }
                 %>
@@ -156,7 +159,7 @@
                             + "</a></div><br><a class='btn btnr' href='altaReclamo.jsp?id="+j.getId()+"'>Reclamo</a><br></li>");
                     i++;
                 }
-                out.write("<div class='div-ajuste'><br></div></ul>");
+                out.write("<div class='div-ajuste'><br><br></div></ul>");
             }
             %>
             <%-- 
