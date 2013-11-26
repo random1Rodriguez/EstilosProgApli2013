@@ -62,5 +62,5 @@ function rateIt(me){
 // Send the rating information somewhere using Ajax or something like that.
 function sendRate(sel){
 	alert("Usted ha votado: "+sel.title);
+        $("#Puntaje").attr("value", sel.title);
 }
-

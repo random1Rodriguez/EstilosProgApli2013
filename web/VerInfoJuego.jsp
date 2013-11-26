@@ -171,8 +171,12 @@
                     }, function() {
                         $(this).text("Comprar");
                     });
-                    
-                    $("");
+
+                    $(".btnresp").on("click", function(e) {
+                        e.preventDefault();//anular que valla al href
+                        var idCP = $(this).attr("id");
+                        $("#idCP").attr("value", idCP);
+                    });
                 });
             </script>
 
@@ -251,46 +255,38 @@
 
                     ArrayList<Comentario> lstCom = (ArrayList<Comentario>) ju.getComentarios();
                     i = 0;
-              %>
-              <div id="addcomentario">
-                    <input name="idU" type="hidden" value="<%= session.getAttribute("idU")%>">
+            %>
+            <div id="addcomentario">
+                <form name="frm" action="AltaComentario" method="POST">
+                    <input name="idU" type="hidden" value="<%= session.getAttribute("idU").toString()%>">
                     <input name="idJ" type="hidden" value="<%= request.getParameter("id")%>">
-                    <%
-                        String idCP = request.getParameter("idCP");
-                        if (request.getParameter("idCP") != null) {
-                            out.write("<input name='idCP' type='hidden' value='" + idCP + "'>");
-                        } else {
-                            out.write("<input name='idCP' type='hidden' value='" + idCP + "'>");
-                        }
-                    %>
+                    <input id="idCP" name="idCP" type="hidden" value="">
+                    <input id="Puntaje" name="Puntaje" type="hidden" value="">
+                    <b> Ingresa tu comentario:</b><br><br>
+                    <textarea id="desc" name="desc" placeholder="Descripcion" style="width: 400px; height: 150px;"></textarea><br>
+                    <span id="rateStatus">Votar</span>
+                    <span id="ratingSaved">Voto Guardado</span>
+                    <div id="rateMe" title="Votar">
+                        <a onclick="rateIt(this)" id="_1" title="1" onmouseover="rating(this)" onmouseout="off(this)"></a>
+                        <a onclick="rateIt(this)" id="_2" title="2" onmouseover="rating(this)" onmouseout="off(this)"></a>
+                        <a onclick="rateIt(this)" id="_3" title="3" onmouseover="rating(this)" onmouseout="off(this)"></a>
+                        <a onclick="rateIt(this)" id="_4" title="4" onmouseover="rating(this)" onmouseout="off(this)"></a>
+                        <a onclick="rateIt(this)" id="_5" title="5" onmouseover="rating(this)" onmouseout="off(this)"></a>
+                    </div>
+                    <button type="submit" value="comentar" class="btn" style="margin-top: 5px;"> Comentar </button>
+                </form>
+            </div>
 
+            <%
 
-                    <form name="frm" action="altaReclamo" method="POST">
-                        <b> Ingresa tu comentario:</b><br><br>
-                        <textarea id="desc" name="desc" placeholder="Descripcion" style="width: 400px; height: 150px;"></textarea><br>
-                        <span id="rateStatus">Votar</span>
-                        <span id="ratingSaved">Voto Guardado</span>
-                        <div id="rateMe" title="Votar">
-                            <a onclick="rateIt(this)" id="_1" title="Muy Malo" onmouseover="rating(this)" onmouseout="off(this)"></a>
-                            <a onclick="rateIt(this)" id="_2" title="Malo" onmouseover="rating(this)" onmouseout="off(this)"></a>
-                            <a onclick="rateIt(this)" id="_3" title="Bueno" onmouseover="rating(this)" onmouseout="off(this)"></a>
-                            <a onclick="rateIt(this)" id="_4" title="Muy Bueno" onmouseover="rating(this)" onmouseout="off(this)"></a>
-                            <a onclick="rateIt(this)" id="_5" title="Excelente" onmouseover="rating(this)" onmouseout="off(this)"></a>
-                        </div>
-                        <button type="submit" value="comentar" class="btn" style="margin-top: 5px;"> Comentar </button>
-                    </form>
-                </div>
-              
-              <%
-                    
-                    System.out.println("Cantidad comentarios =" + lstCom.size());
-                    if (lstCom.size() != 0) {
+                System.out.println("Cantidad comentarios =" + lstCom.size());
+                if (lstCom.size() != 0) {
 
 
             %>
             <b style="color:white;">Comentarios:</b>
             <div id="comentsPH" style="clear: both; height: 267px;"> 
-                
+
                 <ul id='InfoJComents'>
 
                     <%                        Comentario com = null;
@@ -298,7 +294,7 @@
                             com = lstCom.get(i);
                             if (com.getId_padre() == 0) {
                                 out.write("<li class='root-coments coments_resp'>");
-                                out.write("<a class='ajax' href='VerComentariosAjax?id_com=" + com.getId() + "'>" + com.getTexto() + "</a> <a href='#desc?idCP=" + com.getId() + "'> Responder </a>");
+                                out.write("<a class='ajax' href='VerComentariosAjax?id_com=" + com.getId() + "'>" + com.getTexto() + "</a> <a class='btnresp' href='#' id='" + com.getId() + "'> Responder </a>");
                             }
                             i++;
                         }
