@@ -243,6 +243,8 @@ li .menos{
     width: 170px;
     height: 160px;
     display: inline;
+    float: left;
+    margin: 8px;
 }
 
 #info_compras img{
