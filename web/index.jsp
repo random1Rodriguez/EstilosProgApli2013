@@ -179,15 +179,16 @@
                                 }
                         %> 
                         <div id="paginado">
-                            <%
-                                if(request.getParameter("pagina")== "1") {
-                            %>
-                            <a class="btn" onclick="history.back()">Anterior</a>
-                            <%                                
-                                }
-                            %>
+                                
+                            <a class="btn" onclick="history.back()">Anterior</a>    
 
+                            <%
+                                if (request.getAttribute("cantPagJuegos") == null || (Integer.valueOf(request.getAttribute("cantPagJuegos").toString()) > Integer.valueOf(request.getParameter("pagina")))) {
+                            %>
                             <a class="btn" href="juegosCategoria?id=<%out.write(request.getParameter("id"));%>&pagina=<%out.write(request.getParameter("pagina"));%>">Siguiente</a>
+
+                            <%
+                                }%>
                         </div>
 
                         <%
