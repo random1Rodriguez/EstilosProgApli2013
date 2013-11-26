@@ -258,7 +258,7 @@
             %>
             <div id="addcomentario">
                 <form name="frm" action="AltaComentario" method="POST">
-                    <input name="idU" type="hidden" value="<%= session.getAttribute("idU").toString()%>">
+                    <input name="idU" type="hidden" value="<%= session.getAttribute("idU")%>">
                     <input name="idJ" type="hidden" value="<%= request.getParameter("id")%>">
                     <input id="idCP" name="idCP" type="hidden" value="">
                     <input id="Puntaje" name="Puntaje" type="hidden" value="">
@@ -285,7 +285,7 @@
 
             %>
             <b style="color:white;">Comentarios:</b>
-            <div id="comentsPH" style="clear: both; height: 267px;"> 
+            <div id="comentsPH" height: 267px;"> 
 
                 <ul id='InfoJComents'>
 
@@ -314,15 +314,14 @@
                         out.write("<div id='comentsPH'> <ul id='InfoJComents'> El juego no tiene comentarios</ul></div>");
                     }
                 }
-                out.write("</div>");
-
-
             %>
             <div class="div-ajuste">
 
             </div>
+            <%
 
-
+                out.write("</div>");
+            %>
         </div>
         <footer id="footer">
             <div id="txtfooter">
