@@ -90,7 +90,7 @@
                 }
                 function drawChart2() {
                     var data2 = google.visualization.arrayToDataTable([
-                        ['Month', 'Porcentaje de ganancia por juego'],
+                        ['Month', 'Ganancias por mes'],
             <%
                 ArrayList<mesGanancia> lstmesGanancia = cu.gananciaPorMes(cu.find(sesion.getAttribute("usuario").toString()).getId()).getListaGananciasPorMes();
                 for (int i = 0; i < lstmesGanancia.size(); i++) {

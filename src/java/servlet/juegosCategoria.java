@@ -56,6 +56,7 @@ public class juegosCategoria extends HttpServlet {
             
             ArrayList juegos = jj.listarJuegosPorCategoria(valor, inicio, cantidad);
 
+            request.setAttribute("cantPagJuegos", jj.obtenerNroPag(valor, cantidad));
             request.setAttribute("listaJuegos", juegos);
             pagina+=1;
             request.getRequestDispatcher("index.jsp?id="+cad+"&pagina="+pagina).forward(request, response);
